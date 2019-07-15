@@ -12,10 +12,9 @@ const convert = require('../scripts/convert');
 
 /**
  * @param {string} jalali jalali date string
- * @param {string} timezone timezone
  * @return {boolean|GregorianDateObject}
  */
-module.exports = (jalali, timezone = null) => {
+module.exports = jalali => {
     if (!jalali) return false;
 
     let [year, month, day] = jalali.split('-');
