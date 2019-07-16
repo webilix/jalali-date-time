@@ -1,20 +1,22 @@
 {
     "name": "jalali-date-time",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "description": "Lightweight library for parsing and formating Jalali date with timezone functionality",
     "main": "index.js",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/webilix/jalali-date-time.git"
     },
+    "scripts": {
+        "test": "jest"
+    },
     "keywords": [
         "date",
         "time",
-        "jdate",
         "jalali",
+        "gregorian",
         "persian",
-        "farsi",
-        "webilix"
+        "farsi"
     ],
     "author": "Ali Amirnezhad",
     "license": "MIT",
@@ -24,5 +26,8 @@
     "homepage": "https://github.com/webilix/jalali-date-time#readme",
     "dependencies": {
         "moment-timezone": "^0.5.26"
+    },
+    "devDependencies": {
+        "jest": "^24.8.0"
     }
 }

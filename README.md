@@ -15,6 +15,7 @@
     8. [gregorian](#gregorian)
     9. [timezones](#timezones)
 -   [Custom Types](#custom-types)
+-   [Tests](#tests)
 
 ---
 
@@ -44,7 +45,7 @@ const jalaliDateTime = require('jalali-date-time');
 const jalali = jalaliDateTime(config);
 ```
 
-or
+OR
 
 ```javascript
 // inline configurations
@@ -58,7 +59,7 @@ const jalali = require('jalali-date-time')({
 });
 ```
 
-or
+OR
 
 ```javascript
 // Without configurations / using default values
@@ -103,25 +104,25 @@ const jalali = require('jalali-date-time')();
 
 ## API Features
 
-1. ## [now](#now)
+1. **[now](#now)**
 
     Current jalali date
 
-    #### Parameters:
+    **Parameters**:
 
     | Name   | Type                                          | Required | Description           |
     | ------ | --------------------------------------------- | -------- | --------------------- |
     | config | [Configuration Object](#configuration-object) | No       | Result Configurations |
 
-    Valid Operators in configration Format are: **Y, M, D, H, I, S** (in both uppercase and lowercase)
+    - Valid Operators in configration Format are: **Y, M, D, H, I, S** (in both uppercase and lowercase)
 
-    #### Return Value (String):
+    **Return Value (String):**
 
-    Current jalali date.<br />
-    If format is not specified in configuration then a concatination of **dateFormat** and **timeFormat** in [Default Configuration](#default-configuration) (with an space between) will be used.
+    Current jalali date.
 
+    - If format is not specified in configuration then a concatination of **dateFormat** and **timeFormat** in [Default Configuration](#default-configuration) (with an space between) will be used.
 
-    #### Samples:
+    **Sample:**
 
     ```javascript
     const result = jalali.now();
@@ -135,27 +136,27 @@ const jalali = require('jalali-date-time')();
     // ۱۳۹۸-۰۱-۲۳ ۰۱:۲۳
     ```
 
-2. ### [toDate](#todate)
+2. **[toDate](#todate)**
 
     Jalali date value for an specific Date
 
-    #### Parameters:
+    **Parameters:**
 
     | Name   | Type                                          | Required | Description           |
     | ------ | --------------------------------------------- | -------- | --------------------- |
     | date   | Date                                          | Yes      | Date Value            |
     | config | [Configuration Object](#configuration-object) | No       | Result Configurations |
 
-    Valid Operators in configration Format are: **Y, M, D** (in both uppercase and lowercase)
+    - Valid Operators in configration Format are: **Y, M, D** (in both uppercase and lowercase)
 
-    #### Return Value (String | Boolean):
+    **Return Value (String | Boolean):**
 
-    Jalali date value for an specific date.<br />
-    If date parameter is not a valid Javascript Date then false will be returned.<br />
-    If format is not specified in configuration then the **dateFormat** in [Default Configuration](#default-configuration) will be used.
+    Jalali date value for an specific date.
 
+    - If date parameter is not a valid Javascript Date then false will be returned.
+    - If format is not specified in configuration then the **dateFormat** in [Default Configuration](#default-configuration) will be used.
 
-    #### Samples:
+    **Sample:**
 
     ```javascript
     const result = jalali.toDate(new Date());
@@ -169,27 +170,27 @@ const jalali = require('jalali-date-time')();
     // ۱۳۹۸/۰۱/۲۳
     ```
 
-3. ### [toTime](#totime)
+3. **[toTime](#totime)**
 
     Time value for an specific Date
 
-    #### Parameters:
+    **Parameters:**
 
     | Name   | Type                                          | Required | Description           |
     | ------ | --------------------------------------------- | -------- | --------------------- |
     | date   | Date                                          | Yes      | Date Value            |
     | config | [Configuration Object](#configuration-object) | No       | Result Configurations |
 
-    Valid Operators in configration Format are: **H, I, S** (in both uppercase and lowercase)
+    - Valid Operators in configration Format are: **H, I, S** (in both uppercase and lowercase)
 
-    #### Return Value (String | Boolean):
+    **Return Value (String | Boolean):**
 
-    Date value for an specific date.<br />
-    If date parameter is not a valid Javascript Date then false will be returned.<br />
-    If format is not specified in configuration then the **timeFormat** in [Default Configuration](#default-configuration) will be used.
+    Date value for an specific date.
 
+    - If date parameter is not a valid Javascript Date then false will be returned.<
+    - If format is not specified in configuration then the **timeFormat** in [Default Configuration](#default-configuration) will be used.
 
-    #### Samples:
+    **Sample:**
 
     ```javascript
     const result = jalali.toTime(new Date());
@@ -201,30 +202,29 @@ const jalali = require('jalali-date-time')();
         format: 'H:I'
     });
     // ۰۱:۲۳
-
     ```
 
-4. ### [toString](#tostring)
+4. **[toString](#tostring)**
 
     Jalali date/time value for an specific date.
 
-    #### Parameters:
+    **Parameters:**
 
     | Name   | Type                                          | Required | Description           |
     | ------ | --------------------------------------------- | -------- | --------------------- |
     | date   | Date                                          | Yes      | Date Value            |
     | config | [Configuration Object](#configuration-object) | No       | Result Configurations |
 
-    Valid Operators in configration Format are: **Y, M, D, H, I, S** (in both uppercase and lowercase)
+    - Valid Operators in configration Format are: **Y, M, D, H, I, S** (in both uppercase and lowercase)
 
-    #### Return Value (String | Boolean):
+    **Return Value (String | Boolean):**
 
-    Jalali date/time value for an specific date.<br />
-    If date parameter is not a valid Javascript Date then false will be returned.<br />
-    If format is not specified in configuration then a concatination of **dateFormat** and **timeFormat** in [Default Configuration](#default-configuration) (with an space between) will be used.
+    Jalali date/time value for an specific date.
 
+    - If date parameter is not a valid Javascript Date then false will be returned.
+    - If format is not specified in configuration then a concatination of **dateFormat** and **timeFormat** in [Default Configuration](#default-configuration) (with an space between) will be used.
 
-    #### Samples:
+    **Sample:**
 
     ```javascript
     const result = jalali.toString(new Date());
@@ -238,30 +238,28 @@ const jalali = require('jalali-date-time')();
     // ۱۳۹۸-۰۱-۲۳ ۰۱:۲۳
     ```
 
-5. ### [toTitle](#totitle)
+5. **[toTitle](#totitle)**
 
     Jalali date/time persian title for an specific date.
 
-    #### Parameters:
+    **Parameters:**
 
     | Name   | Type                                          | Required | Description           |
     | ------ | --------------------------------------------- | -------- | --------------------- |
     | date   | Date                                          | Yes      | Date Value            |
     | config | [Configuration Object](#configuration-object) | No       | Result Configurations |
 
-    Valid Operators in configration Format are: **W, N, Y, M, D** (in both uppercase and lowercase)
+    - Valid Operators in configration Format are: **W, N, Y, M, D** (in both uppercase and lowercase)
+    - Default locale configuration for this method is **fa**. Use locale in config parameter to change it. Useing locle in Default Configuration will not effect this method's result
 
-    Default locale configuration for this method is **fa**. Use locale in config parameter to change it. Useing locle in Default Configuration will not effect this method's result
+    **Return Value (String | Boolean):**
 
+    Jalali date/time persian title for an specific date.
 
-    #### Return Value (String | Boolean):
+    - If date parameter is not a valid Javascript Date then false will be returned.
+    - If format is not specified in configuration then the **titleFormat** in [Default Configuration](#default-configuration) will be used.
 
-    Jalali date/time persian title for an specific date.<br />
-    If date parameter is not a valid Javascript Date then false will be returned.<br />
-    If format is not specified in configuration then the **titleFormat** in [Default Configuration](#default-configuration)  will be used.
-
-
-    #### Samples:
+    **Sample:**
 
     ```javascript
     const result = jalali.toTitle(new Date());
@@ -275,30 +273,28 @@ const jalali = require('jalali-date-time')();
     // جمعه - 23 فروردین 98
     ```
 
-6. ### [toFullText](#tofulltext)
+6. **[toFullText](#tofulltext)**
 
     Jalali date/time persian full text for an specific date.
 
-    #### Parameters:
+    **Parameters:**
 
     | Name   | Type                                          | Required | Description           |
     | ------ | --------------------------------------------- | -------- | --------------------- |
     | date   | Date                                          | Yes      | Date Value            |
     | config | [Configuration Object](#configuration-object) | No       | Result Configurations |
 
-    Valid Operators in configration Format are: **W, N, Y, M, D, H, I, S** (in both uppercase and lowercase)
+    - Valid Operators in configration Format are: **W, N, Y, M, D, H, I, S** (in both uppercase and lowercase)
+    - Default locale configuration for this method is **fa**. Use locale in config parameter to change it. Useing locle in Default Configuration will not effect this method's result
 
-    Default locale configuration for this method is **fa**. Use locale in config parameter to change it. Useing locle in Default Configuration will not effect this method's result
+    **Return Value (String | Boolean):**
 
+    Jalali date/time persian full text for an specific date.
 
-    #### Return Value (String | Boolean):
+    - If date parameter is not a valid Javascript Date then false will be returned.
+    - If format is not specified in configuration then the **fullTextFormat** in [Default Configuration](#default-configuration) will be used.
 
-    Jalali date/time persian full text for an specific date.<br />
-    If date parameter is not a valid Javascript Date then false will be returned.<br />
-    If format is not specified in configuration then the **fullTextFormat** in [Default Configuration](#default-configuration)  will be used.
-
-
-    #### Samples:
+    **Sample:**
 
     ```javascript
     const result = jalali.toFullText(new Date());
@@ -312,25 +308,24 @@ const jalali = require('jalali-date-time')();
     // جمعه - 23 فروردین 98 ساعت 1:23:45
     ```
 
-7. ### [toObject](#toobject)
+7. **[toObject](#toobject)**
 
     Jalali date/time object for an specific date.
 
-    #### Parameters:
+    **Parameters:**
 
     | Name     | Type   | Required | Description    |
     | -------- | ------ | -------- | -------------- |
     | date     | Date   | Yes      | Date Value     |
     | timezone | String | No       | Timezone Value |
 
+    **Return Value ([Custom Date Object](#custom-date-object) | Boolean):**
 
-    #### Return Value ([Custom Date Object](#custom-date-object) | Boolean):
+    Jalali date/time object for an specific date.
 
-    Jalali date/time object for an specific date.<br />
-    If date parameter is not a valid Javascript Date then false will be returned.
+    - If date parameter is not a valid Javascript Date then false will be returned.
 
-
-    #### Samples:
+    **Sample:**
 
     ```javascript
     const result = jalali.toObject(new Date());
@@ -346,23 +341,24 @@ const jalali = require('jalali-date-time')();
      */
     ```
 
-8. ### [gregorian](#gregorian)
+8. **[gregorian](#gregorian)**
 
     Gregorian date string for an specific Jalali date.
 
-    #### Parameters:
+    **Parameters:**
 
     | Name   | Type   | Required | Description |
     | ------ | ------ | -------- | ----------- |
     | jalali | String | Yes      | Jalali Date |
 
-    #### Return Value ([Gregorian Date Object](#gregorian-date-object) | Boolean):
+    **Return Value ([Gregorian Date Object](#gregorian-date-object) | Boolean):**
 
-    Gregorian date string for an specific Jalali date.<br />
-    If jalali date parameter is not a valid date string (format: Y-M-D, exampled: 1398-01-23 | 1398-1-23) then false will be returned. Year value in jalai date must have exactly 4 digits
+    Gregorian date string for an specific Jalali date.
 
+    - If jalali date parameter is not a valid date string (format: Y-M-D, exampled: 1398-01-23 | 1398-1-23) then false will be returned.
+    - Year value in jalai date must have exactly 4 digits
 
-    #### Samples:
+    **Sample:**
 
     ```javascript
     const result = jalali.gregorian('1398-01-23');
@@ -375,16 +371,17 @@ const jalali = require('jalali-date-time')();
      */
     ```
 
-9. ### [timezones](#timezones)
+9. **[timezones](#timezones)**
 
     List of Standard timezone identifiers.
 
-    #### Return Value (Stringp[]):
+    **Return Value (Stringp[]):**
 
-    List of Standard timezone identifiers.<br />
-    All values in returned list can be use as timezone on all methods
+    List of Standard timezone identifiers.
 
-    #### Samples:
+    - All values in returned list can be use as timezone on all methods
+
+    **Sample:**
 
     ```javascript
     const result = jalali.timezones();
@@ -406,7 +403,7 @@ const jalali = require('jalali-date-time')();
 
 ## Custom Types
 
--   #### Configuration Object
+-   **Configuration Object**
 
     Used in main methods as configuration parameter
 
@@ -416,7 +413,7 @@ const jalali = require('jalali-date-time')();
     | locale   | Enum en / fa | Numbers locale format (en: 3, fa: ۳) |
     | format   | String       | Return Value Format                  |
 
--   #### Custom Date Object
+-   **Custom Date Object**
 
     Type of result value for **toObject** method
 
@@ -430,7 +427,7 @@ const jalali = require('jalali-date-time')();
     | minute   | Number | Minute Value                    |
     | second   | Number | Second Value                    |
 
--   #### Gregorian Date Object
+-   **Gregorian Date Object**
 
     Type of result value for **gregorian** method
 
@@ -440,3 +437,10 @@ const jalali = require('jalali-date-time')();
     | month    | Number | Month Value                           |
     | day      | Number | Day Value                             |
     | date     | String | Full Date String (sample: 2019-04-12) |
+
+## Tests
+
+```bash
+npm install
+npm test
+```

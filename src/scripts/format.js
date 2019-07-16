@@ -31,7 +31,7 @@ const toObject = date => {
 
 const toString = (date, format, locale) => {
     format = format
-        .replace(/W/g, _week[date.week.toString()])
+        .replace(/W/g, _week[date.week])
         .replace(/N/g, _month[date.month - 1])
         .replace(/Y/g, date.year.toString())
         .replace(/y/g, date.year.toString().substring(2))
