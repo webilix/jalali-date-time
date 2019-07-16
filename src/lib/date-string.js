@@ -14,7 +14,7 @@ const _getDateFormat = config => {
 
 const _string = (date, config, dateFormat) => {
     if (!check.isDate(date)) {
-        return false;
+        throw new TypeError('Invalid Date');
     }
 
     date = moment(date).tz(config.timezone);
@@ -27,7 +27,7 @@ const _string = (date, config, dateFormat) => {
  * @param {string} config.timezone timezone
  * @param {string} config.locale number values locale (en/fa)
  * @param {string} config.format result format string
- * @return {boolean|string}
+ * @return {string}
  */
 const getNow = (config = null) => {
     let dateFormat = _getDateFormat(config);
@@ -44,7 +44,7 @@ const getNow = (config = null) => {
  * @param {string} config.timezone timezone
  * @param {string} config.locale number values locale (en/fa)
  * @param {string} config.format result format string
- * @return {boolean|string}
+ * @return {string}
  */
 const getDate = (date, config = null) => {
     let dateFormat = _getDateFormat(config);
@@ -61,7 +61,7 @@ const getDate = (date, config = null) => {
  * @param {string} config.timezone timezone
  * @param {string} config.locale number values locale (en/fa)
  * @param {string} config.format result format string
- * @return {boolean|string}
+ * @return {string}
  */
 const getTime = (date, config = null) => {
     let dateFormat = _getDateFormat(config);
@@ -78,7 +78,7 @@ const getTime = (date, config = null) => {
  * @param {string} config.timezone timezone
  * @param {string} config.locale number values locale (en/fa)
  * @param {string} config.format result format string
- * @return {boolean|string}
+ * @return {string}
  */
 const getString = (date, config = null) => {
     let dateFormat = _getDateFormat(config);
@@ -95,7 +95,7 @@ const getString = (date, config = null) => {
  * @param {string} config.timezone timezone
  * @param {string} config.locale number values locale (en/fa)
  * @param {string} config.format result format string
- * @return {boolean|string}
+ * @return {string}
  */
 const getTitle = (date, config = null) => {
     let dateFormat = _getDateFormat(config);
@@ -114,7 +114,7 @@ const getTitle = (date, config = null) => {
  * @param {string} config.timezone timezone
  * @param {string} config.locale number values locale (en/fa)
  * @param {string} config.format result format string
- * @return {boolean|string}
+ * @return {string}
  */
 const getFullText = (date, config = null) => {
     let dateFormat = _getDateFormat(config);

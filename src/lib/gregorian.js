@@ -12,18 +12,18 @@ const convert = require('../scripts/convert');
 
 /**
  * @param {string} jalali jalali date string
- * @return {boolean|GregorianDateObject}
+ * @return {GregorianDateObject}
  */
 module.exports = jalali => {
-    if (!jalali) return false;
+    if (typeof jalali !== 'string') throw new TypeError('Date is not String');
 
     let [year, month, day] = jalali.split('-');
     year = parseInt(year, 10);
-    if (isNaN(year) || year < 1000) return false;
+    if (isNaN(year) || year < 1000) throw new RangeError('Year must be 4 digits');
     month = parseInt(month, 10);
-    if (isNaN(month) || month < 1 || month > 12) return false;
+    if (isNaN(month) || month < 1 || month > 12) throw new RangeError('Month is not between 1, 12');
     day = parseInt(day, 10);
-    if (isNaN(day) || day < 1 || day > 31) return false;
+    if (isNaN(day) || day < 1 || day > 31) throw new RangeError('Day is not between 1, 31');
 
     return convert.toGregorian({ year, month, day });
 };

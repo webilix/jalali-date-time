@@ -6,9 +6,11 @@ option.init({});
 
 const dateObject = require('../../src/lib/date-object');
 
-test('toObject: must return false for invalid date parameter', () => {
-    const test = dateObject(null, 'Asia/Tehran');
-    expect(test).toBe(false);
+test('toObject: must throw TypeError for invalid date parameter', () => {
+    const test = () => {
+        dateObject(null);
+    };
+    expect(test).toThrow(TypeError);
 });
 
 test('toObject: must returns an object with specific key-values', () => {

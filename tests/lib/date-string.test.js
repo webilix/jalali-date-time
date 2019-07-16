@@ -12,9 +12,11 @@ test('now: must return string with specific length', () => {
     expect(test.length).toBe(19);
 });
 
-test('getDate: must returns false for invalid date parameter', () => {
-    const test = dateString.getDate(null);
-    expect(test).toBe(false);
+test('getDate: must throw TypeError for invalid date parameter', () => {
+    const test = () => {
+        dateString.getDate(null);
+    };
+    expect(test).toThrow(TypeError);
 });
 
 test('getDate: must returns specific string value', () => {
@@ -22,9 +24,11 @@ test('getDate: must returns specific string value', () => {
     expect(test).toBe('1358-03-13');
 });
 
-test('getTime: must returns false for invalid date parameter', () => {
-    const test = dateString.getTime(null);
-    expect(test).toBe(false);
+test('getTime: must throw TypeError for invalid date parameter', () => {
+    const test = () => {
+        dateString.getTime(null);
+    };
+    expect(test).toThrow(TypeError);
 });
 
 test('getTime: must returns specific string value', () => {
@@ -32,9 +36,11 @@ test('getTime: must returns specific string value', () => {
     expect(test).toBe('01:23:45');
 });
 
-test('getString: must returns false for invalid date parameter', () => {
-    const test = dateString.getString(null);
-    expect(test).toBe(false);
+test('getString: must throw TypeError for invalid date parameter', () => {
+    const test = () => {
+        dateString.getString(null);
+    };
+    expect(test).toThrow(TypeError);
 });
 
 test('getString: must returns specific string value', () => {
@@ -42,9 +48,11 @@ test('getString: must returns specific string value', () => {
     expect(test).toBe('1358-03-13 01:23:45');
 });
 
-test('getTitle: must returns false for invalid date parameter', () => {
-    const test = dateString.getTitle(null);
-    expect(test).toBe(false);
+test('getTitle: must throw TypeError for invalid date parameter', () => {
+    const test = () => {
+        dateString.getTitle(null);
+    };
+    expect(test).toThrow(TypeError);
 });
 
 test('getTitle: must returns specific string value', () => {
@@ -52,9 +60,11 @@ test('getTitle: must returns specific string value', () => {
     expect(test).toBe('یک‌شنبه, ۱۳ خرداد ۱۳۵۸');
 });
 
-test('getFullText: must returns false for invalid date parameter', () => {
-    const test = dateString.getFullText(null);
-    expect(test).toBe(false);
+test('getFullText: must throw TypeError for invalid date parameter', () => {
+    const test = () => {
+        dateString.getFullText(null);
+    };
+    expect(test).toThrow(TypeError);
 });
 
 test('getFullText: must returns specific string value', () => {

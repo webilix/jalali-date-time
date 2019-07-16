@@ -21,11 +21,11 @@ const format = require('../scripts/format');
 /**
  * @param {Date} date date value
  * @param {string} timezone timezone
- * @return {boolean | DateObject}
+ * @return {DateObject}
  */
 module.exports = (date, timezone = null) => {
     if (!check.isDate(date)) {
-        return false;
+        throw new TypeError('Invalid Date');
     }
 
     if (!timezone || !check.isTimezone(timezone)) {
