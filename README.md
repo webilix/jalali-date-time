@@ -104,7 +104,7 @@ const jalali = require('jalali-date-time')();
 
 ## API Features
 
-1. **[now](#now)**
+1. ### now
 
     Current jalali date
 
@@ -136,7 +136,7 @@ const jalali = require('jalali-date-time')();
     // ۱۳۹۸-۰۱-۲۳ ۰۱:۲۳
     ```
 
-2. **[toDate](#todate)**
+2. ### toDate
 
     Jalali date value for an specific Date
 
@@ -170,7 +170,7 @@ const jalali = require('jalali-date-time')();
     // ۱۳۹۸/۰۱/۲۳
     ```
 
-3. **[toTime](#totime)**
+3. ### toTime
 
     Time value for an specific Date
 
@@ -204,7 +204,7 @@ const jalali = require('jalali-date-time')();
     // ۰۱:۲۳
     ```
 
-4. **[toString](#tostring)**
+4. ### toString
 
     Jalali date/time value for an specific date.
 
@@ -238,7 +238,7 @@ const jalali = require('jalali-date-time')();
     // ۱۳۹۸-۰۱-۲۳ ۰۱:۲۳
     ```
 
-5. **[toTitle](#totitle)**
+5. ### toTitle
 
     Jalali date/time persian title for an specific date.
 
@@ -273,7 +273,7 @@ const jalali = require('jalali-date-time')();
     // جمعه - 23 فروردین 98
     ```
 
-6. **[toFullText](#tofulltext)**
+6. ### toFullText
 
     Jalali date/time persian full text for an specific date.
 
@@ -308,7 +308,7 @@ const jalali = require('jalali-date-time')();
     // جمعه - 23 فروردین 98 ساعت 1:23:45
     ```
 
-7. **[toObject](#toobject)**
+7. ### toObject
 
     Jalali date/time object for an specific date.
 
@@ -341,7 +341,7 @@ const jalali = require('jalali-date-time')();
      */
     ```
 
-8. **[gregorian](#gregorian)**
+8. ### gregorian
 
     Gregorian date string for an specific Jalali date.
 
@@ -371,7 +371,7 @@ const jalali = require('jalali-date-time')();
      */
     ```
 
-9. **[timezones](#timezones)**
+9. ### timezones
 
     List of Standard timezone identifiers.
 
@@ -403,7 +403,7 @@ const jalali = require('jalali-date-time')();
 
 ## Custom Types
 
--   **Configuration Object**
+-   ### Configuration Object
 
     Used in main methods as configuration parameter
 
@@ -413,7 +413,7 @@ const jalali = require('jalali-date-time')();
     | locale   | Enum en / fa | Numbers locale format (en: 3, fa: ۳) |
     | format   | String       | Return Value Format                  |
 
--   **Custom Date Object**
+-   ### Custom Date Object
 
     Type of result value for **toObject** method
 
@@ -427,7 +427,7 @@ const jalali = require('jalali-date-time')();
     | minute   | Number | Minute Value                    |
     | second   | Number | Second Value                    |
 
--   **Gregorian Date Object**
+-   ### Gregorian Date Object
 
     Type of result value for **gregorian** method
 
