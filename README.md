@@ -5,7 +5,8 @@ Lightweight library for parsing and formating Jalali date with timezone function
 ## Table of contents
 
 -   [Installation](#installation)
--   [Usage](#usage)
+-   [Usage JavaScript](#usage-javascript)
+-   [Usage TypeScript](#usage-typescript)
 -   [Default Configuration](#default-configuration)
 -   [Formatting Output](#formatting-output)
 -   [API Features](#api-features)
@@ -32,7 +33,7 @@ npm install --save jalali-date-time
 
 ---
 
-## Usage
+## Usage JavaScript
 
 ```javascript
 // Default configuration
@@ -46,8 +47,8 @@ const config = {
 };
 
 // Load modules
-const jalaliDateTime = require('jalali-date-time');
-const jalali = jalaliDateTime(config);
+const JalaliDateTime = require('jalali-date-time');
+const jalali = JalaliDateTime(config);
 ```
 
 OR
@@ -69,6 +70,34 @@ OR
 ```javascript
 // Without configurations / using default values
 const jalali = require('jalali-date-time')();
+```
+
+---
+
+## Usage TypeScript
+
+```typescript
+// Default configuration
+const config = {
+    timezone: 'Asia/Tehran',
+    locale: 'en',
+    fullTextFormat: 'W, D N Y H:I:S',
+    titleFormat: 'W, D N Y',
+    dateFormat: 'Y-M-D',
+    timeFormat: 'H:I:S'
+};
+
+// Load modules
+import { JalaliDateTime } from 'jalali-date-time';
+const jalali = JalaliDateTime(config);
+```
+
+OR
+
+```javascript
+// Without configurations / using default values
+import { JalaliDateTime } from 'jalali-date-time';
+const jalali = JalaliDateTime();
 ```
 
 ---
