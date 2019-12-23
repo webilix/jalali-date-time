@@ -8,7 +8,7 @@ test('JDT: check default values', () => {
         fullTextFormat: 'W, D N Y H:I:S',
         titleFormat: 'W, D N Y',
         dateFormat: 'Y-M-D',
-        timeFormat: 'H:I:S'
+        timeFormat: 'H:I:S',
     });
 });
 
@@ -20,7 +20,7 @@ test('JDT: check incorrect values', () => {
         fullTextFormat: 'W, D N Y H:I:S',
         titleFormat: 'W, D N Y',
         dateFormat: 'Y-M-D',
-        timeFormat: 'H:I:S'
+        timeFormat: 'H:I:S',
     });
 });
 

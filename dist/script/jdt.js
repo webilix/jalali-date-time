@@ -15,7 +15,7 @@ const type = {
     date: 'DATE',
     time: 'TIME',
     title: 'TITLE',
-    fullText: 'FULL-TEXT'
+    fullText: 'FULL-TEXT',
 };
 exports.type = type;
 const init = (options) => {

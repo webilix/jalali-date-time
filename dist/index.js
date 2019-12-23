@@ -15,6 +15,7 @@ const string_1 = require("./lib/string");
 const title_1 = require("./lib/title");
 const full_text_1 = require("./lib/full-text");
 const object_1 = require("./lib/object");
+const calendar_1 = require("./lib/calendar");
 const gregorian_1 = require("./lib/gregorian");
 const timezones_1 = require("./lib/timezones");
 function JalaliDateTime(options) {
@@ -27,8 +28,9 @@ function JalaliDateTime(options) {
         toTitle: title_1.toTitle,
         toFullText: full_text_1.toFullText,
         toObject: object_1.toObject,
+        calendar: calendar_1.calendar,
         gregorian: gregorian_1.gregorian,
-        timezones: timezones_1.timezones
+        timezones: timezones_1.timezones,
     };
 }
 exports.JalaliDateTime = JalaliDateTime;

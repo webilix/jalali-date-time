@@ -41,7 +41,7 @@ test('JDate: toJalali', () => {
         day: 13,
         hour: 12,
         minute: 34,
-        second: 56
+        second: 56,
     });
 });
 

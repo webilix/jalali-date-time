@@ -9,6 +9,7 @@ import { toString } from './lib/string';
 import { toTitle } from './lib/title';
 import { toFullText } from './lib/full-text';
 import { toObject } from './lib/object';
+import { calendar } from './lib/calendar';
 import { gregorian } from './lib/gregorian';
 import { timezones } from './lib/timezones';
 import { JalaliDateTimeOptions } from './interface/options';
@@ -20,6 +21,7 @@ export declare function JalaliDateTime(options?: JalaliDateTimeOptions): {
     toTitle: typeof toTitle;
     toFullText: typeof toFullText;
     toObject: typeof toObject;
+    calendar: typeof calendar;
     gregorian: typeof gregorian;
     timezones: typeof timezones;
 };

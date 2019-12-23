@@ -11,7 +11,7 @@ const type = {
     date: 'DATE',
     time: 'TIME',
     title: 'TITLE',
-    fullText: 'FULL-TEXT'
+    fullText: 'FULL-TEXT',
 };
 
 const init = (options?: JalaliDateTimeOptions): JalaliDateTimeOptions => {

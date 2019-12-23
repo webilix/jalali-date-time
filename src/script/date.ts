@@ -15,6 +15,17 @@ const checkTimezone = (timezone: string): boolean => {
     return moment.tz.names().indexOf(timezone) !== -1;
 };
 
+const checkMonth = (month: string): boolean => {
+    if (month.length !== 7 || month.indexOf('-') !== 4) return false;
+    const [yString, mString] = month.split('-');
+
+    var regex = new RegExp('^[0-9]+$');
+    if (!regex.test(yString) || yString < '1000' || yString > '9999') return false;
+    if (!regex.test(mString) || mString < '01' || mString > '12') return false;
+
+    return true;
+};
+
 const _week: string[] = ['شنبه', 'یک‌شنبه', 'دوشنبه', 'سه‌شنبه', 'چهارشنبه', 'پنج‌شنبه', 'جمعه'];
 const _month: string[] = [
     'فروردین',
@@ -28,7 +39,7 @@ const _month: string[] = [
     'آذر',
     'دی',
     'بهمن',
-    'اسفند'
+    'اسفند',
 ];
 
 const _fa: number[] = [31, 31, 31, 31, 31, 31, 30, 30, 30, 30, 30, 29];
@@ -75,7 +86,7 @@ const toJalali = (date: JalaliDateTimeObject): JalaliDateTimeObject => {
         day: jd,
         hour: date.hour,
         minute: date.minute,
-        second: date.second
+        second: date.second,
     };
 };
 
@@ -123,7 +134,7 @@ const toGregorian = (date: JalaliDateTimeObject): JalaliDateTimeGregorian => {
         year: gy,
         month: gm,
         day: gd,
-        date: gregorian
+        date: gregorian,
     };
 };
 
@@ -135,7 +146,7 @@ const toObject = (date: Moment): JalaliDateTimeObject => {
         day: date.date(),
         hour: date.hour(),
         minute: date.minute(),
-        second: date.second()
+        second: date.second(),
     };
 };
 
@@ -173,4 +184,4 @@ const toString = (jalali: JalaliDateTimeObject, format: string, locale: string):
     return format;
 };
 
-export { checkDate, checkLocale, checkTimezone, toJalali, toGregorian, toObject, toString };
+export { checkDate, checkLocale, checkTimezone, checkMonth, toJalali, toGregorian, toObject, toString };

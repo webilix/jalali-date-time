@@ -17,6 +17,7 @@ Lightweight library for parsing and formating Jalali date with timezone function
     -   [toTitle](#totitle)
     -   [toFullText](#tofulltext)
     -   [toObject](#toobject)
+    -   [calendar](#calendar)
     -   [gregorian](#gregorian)
     -   [timezones](#timezones)
 -   [Custom Types](#custom-types)
@@ -43,7 +44,7 @@ const config = {
     fullTextFormat: 'W, D N Y H:I:S',
     titleFormat: 'W, D N Y',
     dateFormat: 'Y-M-D',
-    timeFormat: 'H:I:S'
+    timeFormat: 'H:I:S',
 };
 
 // Load modules
@@ -61,7 +62,7 @@ const jalali = require('jalali-date-time')({
     fullTextFormat: 'W, D N Y H:I:S',
     titleFormat: 'W, D N Y',
     dateFormat: 'Y-M-D',
-    timeFormat: 'H:I:S'
+    timeFormat: 'H:I:S',
 });
 ```
 
@@ -84,7 +85,7 @@ const config = {
     fullTextFormat: 'W, D N Y H:I:S',
     titleFormat: 'W, D N Y',
     dateFormat: 'Y-M-D',
-    timeFormat: 'H:I:S'
+    timeFormat: 'H:I:S',
 };
 
 // Load modules
@@ -149,6 +150,7 @@ Following characters can be used to specify the format of the outputted date str
 | [toTitle](#totitle)       | Jalali date/time persian title for an specific date     |
 | [toFullText](#tofulltext) | Jalali date/time persian full text for an specific date |
 | [toObject](#toobject)     | Jalali date/time object for an specific date            |
+| [calendar](#calendar)     | Jalali monthly calendar                                 |
 | [gregorian](#gregorian)   | Gregorian date string for an specific Jalali date       |
 | [timezones](#timezones)   | List of Standard timezone identifiers                   |
 
@@ -181,7 +183,7 @@ const result = jalali.now();
 const result = jalali.now({
     timezone: 'Asia/Tehran',
     locale: 'fa',
-    format: 'Y-M-D H:I'
+    format: 'Y-M-D H:I',
 });
 // ۱۳۹۸-۰۱-۲۳ ۰۱:۲۳
 ```
@@ -216,7 +218,7 @@ const result = jalali.toDate(new Date());
 const result = jalali.toDate(new Date(), {
     timezone: 'Asia/Tehran',
     locale: 'fa',
-    format: 'Y/M/D'
+    format: 'Y/M/D',
 });
 // ۱۳۹۸/۰۱/۲۳
 ```
@@ -251,7 +253,7 @@ const result = jalali.toTime(new Date());
 const result = jalali.toTime(new Date(), {
     timezone: 'Asia/Tehran',
     locale: 'fa',
-    format: 'H:I'
+    format: 'H:I',
 });
 // ۰۱:۲۳
 ```
@@ -286,7 +288,7 @@ const result = jalali.toString(new Date());
 const result = jalali.toString(new Date(), {
     timezone: 'Asia/Tehran',
     locale: 'fa',
-    format: 'Y-M-D H:I'
+    format: 'Y-M-D H:I',
 });
 // ۱۳۹۸-۰۱-۲۳ ۰۱:۲۳
 ```
@@ -323,7 +325,7 @@ const result = jalali.toTitle(new Date());
 const result = jalali.toTitle(new Date(), {
     timezone: 'Asia/Tehran',
     locale: 'en',
-    format: 'W - D N y'
+    format: 'W - D N y',
 });
 // جمعه - 23 فروردین 98
 ```
@@ -360,7 +362,7 @@ const result = jalali.toFullText(new Date());
 const result = jalali.toFullText(new Date(), {
     timezone: 'Asia/Tehran',
     locale: 'en',
-    format: 'W - D N y ساعت h:I:S'
+    format: 'W - D N y ساعت h:I:S',
 });
 // جمعه - 23 فروردین 98 ساعت 1:23:45
 ```
@@ -394,6 +396,92 @@ const result = jalali.toObject(new Date());
  *      hour: 1,
  *      minute: 23,
  *      second: 45
+ *   }
+ */
+```
+
+### [calendar](#calendar)
+
+Jalali monthly calendar
+
+**Parameters:**
+
+| Name  | Type   | Required | Description  |
+| ----- | ------ | -------- | ------------ |
+| month | String | No       | Jalali Month |
+
+**Return Value ([Jalali Calendar Object](#jalali-calendar-object)):**
+
+Jalali monthly calendar info.
+
+If month value is not a valid month string (format: Y-M, sample: 1398-01) then **TypeError** will thrown.
+
+If month value is not specified then current Jalali month will be used instead.
+
+**Sample:**
+
+```javascript
+const result = jalali.calendar('1398-01');
+/*   {
+ *       month: '1398-01',
+ *       title: 'فروردین ۱۳۹۸',
+ *       weeks:
+ *          [
+ *              [
+ *                  { date: '1397-12-25', month: '1397-12', day: 25 },
+ *                  { date: '1397-12-26', month: '1397-12', day: 26 },
+ *                  { date: '1397-12-27', month: '1397-12', day: 27 },
+ *                  { date: '1397-12-28', month: '1397-12', day: 28 },
+ *                  { date: '1397-12-29', month: '1397-12', day: 29 },
+ *                  { date: '1398-01-01', month: '1398-01', day: 1 },
+ *                  { date: '1398-01-02', month: '1398-01', day: 2 }
+ *              ],
+ *              [
+ *                  { date: '1398-01-03', month: '1398-01', day: 3 },
+ *                  { date: '1398-01-04', month: '1398-01', day: 4 },
+ *                  { date: '1398-01-05', month: '1398-01', day: 5 },
+ *                  { date: '1398-01-06', month: '1398-01', day: 6 },
+ *                  { date: '1398-01-07', month: '1398-01', day: 7 },
+ *                  { date: '1398-01-08', month: '1398-01', day: 8 },
+ *                  { date: '1398-01-09', month: '1398-01', day: 9 }
+ *              ],
+ *              [
+ *                  { date: '1398-01-10', month: '1398-01', day: 10 },
+ *                  { date: '1398-01-11', month: '1398-01', day: 11 },
+ *                  { date: '1398-01-12', month: '1398-01', day: 12 },
+ *                  { date: '1398-01-13', month: '1398-01', day: 13 },
+ *                  { date: '1398-01-14', month: '1398-01', day: 14 },
+ *                  { date: '1398-01-15', month: '1398-01', day: 15 },
+ *                  { date: '1398-01-16', month: '1398-01', day: 16 }
+ *              ],
+ *              [
+ *                  { date: '1398-01-17', month: '1398-01', day: 17 },
+ *                  { date: '1398-01-18', month: '1398-01', day: 18 },
+ *                  { date: '1398-01-19', month: '1398-01', day: 19 },
+ *                  { date: '1398-01-20', month: '1398-01', day: 20 },
+ *                  { date: '1398-01-21', month: '1398-01', day: 21 },
+ *                  { date: '1398-01-22', month: '1398-01', day: 22 },
+ *                  { date: '1398-01-23', month: '1398-01', day: 23 }
+ *              ],
+ *              [
+ *                  { date: '1398-01-24', month: '1398-01', day: 24 },
+ *                  { date: '1398-01-25', month: '1398-01', day: 25 },
+ *                  { date: '1398-01-26', month: '1398-01', day: 26 },
+ *                  { date: '1398-01-27', month: '1398-01', day: 27 },
+ *                  { date: '1398-01-28', month: '1398-01', day: 28 },
+ *                  { date: '1398-01-29', month: '1398-01', day: 29 },
+ *                  { date: '1398-01-30', month: '1398-01', day: 30 }
+ *              ],
+ *              [
+ *                  { date: '1398-01-31', month: '1398-01', day: 31 },
+ *                  { date: '1398-02-01', month: '1398-02', day: 1 },
+ *                  { date: '1398-02-02', month: '1398-02', day: 2 },
+ *                  { date: '1398-02-03', month: '1398-02', day: 3 },
+ *                  { date: '1398-02-04', month: '1398-02', day: 4 },
+ *                  { date: '1398-02-05', month: '1398-02', day: 5 },
+ *                  { date: '1398-02-06', month: '1398-02', day: 6 }
+ *              ]
+ *          ]
  *   }
  */
 ```
@@ -494,6 +582,19 @@ Result value type for **toObject** method
 | hour     | Number | Hour Value                      |
 | minute   | Number | Minute Value                    |
 | second   | Number | Second Value                    |
+
+### [Jalali Calendar Object](#jalali-calendar-object)
+
+Result value type for **calendar** method
+
+| Property             | Type            | Description              |
+| -------------------- | --------------- | ------------------------ |
+| month                | String          | Jalali Month Value       |
+| title                | String          | Jalali Month Title       |
+| weeks                | Array of Arrays | Weeks Data               |
+| weeks[\*][1-7].date  | String          | Day values: Jalali Date  |
+| weeks[\*][1-7].month | String          | Day values: Jalali Month |
+| weeks[\*][1-7].day   | Number          | Day values: Day Number   |
 
 ### [Gregorian Date Object](#gregorian-date-object)
 
