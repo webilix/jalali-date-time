@@ -1,6 +1,7 @@
 export { JalaliDateTimeOptions } from './interface/options';
 export { JalaliDateTimeConfig } from './interface/config';
 export { JalaliDateTimeObject } from './interface/object';
+export { JalaliDateTimeCalendar, JalaliDateTimeCalendarDay } from './interface/calendar';
 export { JalaliDateTimeGregorian } from './interface/gregorian';
 
 import * as JDT from './script/jdt';
