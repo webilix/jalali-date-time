@@ -13,6 +13,7 @@ import { toString } from './lib/string';
 import { toTitle } from './lib/title';
 import { toFullText } from './lib/full-text';
 import { toObject } from './lib/object';
+import { daysInMonth } from './lib/days-in-month';
 import { calendar } from './lib/calendar';
 import { gregorian } from './lib/gregorian';
 import { timezones } from './lib/timezones';
@@ -29,6 +30,7 @@ export function JalaliDateTime(options?: JalaliDateTimeOptions) {
         toTitle,
         toFullText,
         toObject,
+        daysInMonth,
         calendar,
         gregorian,
         timezones,

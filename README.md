@@ -17,6 +17,7 @@ Lightweight library for parsing and formating Jalali date with timezone function
     -   [toTitle](#totitle)
     -   [toFullText](#tofulltext)
     -   [toObject](#toobject)
+    -   [daysInMonth](#daysinmonth)
     -   [calendar](#calendar)
     -   [gregorian](#gregorian)
     -   [timezones](#timezones)
@@ -141,18 +142,19 @@ Following characters can be used to specify the format of the outputted date str
 
 ## API Features
 
-| Method                    | Description                                             |
-| ------------------------- | ------------------------------------------------------- |
-| [now](#now)               | Current jalali date                                     |
-| [toDate](#todate)         | Jalali date value for an specific date                  |
-| [toTime](#totime)         | Time value for an specific date/timezone                |
-| [toString](#tostring)     | Jalali date/time value for an specific date.            |
-| [toTitle](#totitle)       | Jalali date/time persian title for an specific date     |
-| [toFullText](#tofulltext) | Jalali date/time persian full text for an specific date |
-| [toObject](#toobject)     | Jalali date/time object for an specific date            |
-| [calendar](#calendar)     | Jalali monthly calendar                                 |
-| [gregorian](#gregorian)   | Gregorian date string for an specific Jalali date       |
-| [timezones](#timezones)   | List of Standard timezone identifiers                   |
+| Method                      | Description                                             |
+| --------------------------- | ------------------------------------------------------- |
+| [now](#now)                 | Current jalali date                                     |
+| [toDate](#todate)           | Jalali date value for an specific date                  |
+| [toTime](#totime)           | Time value for an specific date/timezone                |
+| [toString](#tostring)       | Jalali date/time value for an specific date.            |
+| [toTitle](#totitle)         | Jalali date/time persian title for an specific date     |
+| [toFullText](#tofulltext)   | Jalali date/time persian full text for an specific date |
+| [toObject](#toobject)       | Jalali date/time object for an specific date            |
+| [daysInMonth](#daysinmonth) | Number of days in Jalali calendar for specific month    |
+| [calendar](#calendar)       | Jalali monthly calendar                                 |
+| [gregorian](#gregorian)     | Gregorian date string for an specific Jalali date       |
+| [timezones](#timezones)     | List of Standard timezone identifiers                   |
 
 ---
 
@@ -398,6 +400,31 @@ const result = jalali.toObject(new Date());
  *      second: 45
  *   }
  */
+```
+
+### [daysInMonth](#daysinmonth)
+
+Number of days in Jalali calendar for specific month
+
+**Parameters:**
+
+| Name  | Type   | Required | Description  |
+| ----- | ------ | -------- | ------------ |
+| month | String | No       | Jalali Month |
+
+**Return Value (number):**
+
+If month value is not a valid month string (format: Y-M, sample: 1398-01) then **TypeError** will thrown.
+
+If month value is not specified then current Jalali month will be used instead.
+
+**Sample:**
+
+```javascript
+const result1 = jalali.daysInMonth('1390-01'); // 31
+const result2 = jalali.daysInMonth('1390-07'); // 30
+const result3 = jalali.daysInMonth('1390-12'); // 29
+const result4 = jalali.daysInMonth('1391-12'); // 30
 ```
 
 ### [calendar](#calendar)

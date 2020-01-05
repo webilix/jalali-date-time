@@ -31,6 +31,16 @@ test('JDate: check timezone (FALSE)', () => {
     expect(test).toBe(false);
 });
 
+test('JDate: check month (TRUE)', () => {
+    const test = JDate.checkMonth('1398-01');
+    expect(test).toBe(true);
+});
+
+test('JDate: check month (FALSE)', () => {
+    const test = JDate.checkMonth('1398-21');
+    expect(test).toBe(false);
+});
+
 test('JDate: toJalali', () => {
     const date: JalaliDateTimeObject = { week: 1, year: 1979, month: 6, day: 3, hour: 12, minute: 34, second: 56 };
     const test = JDate.toJalali(date);

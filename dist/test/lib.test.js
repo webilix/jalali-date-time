@@ -30,6 +30,10 @@ test('toObject', () => {
     const test = jalali.toObject(new Date('1979-06-03 12:00:00'));
     expect(test).toStrictEqual({ week: 1, year: 1358, month: 3, day: 13, hour: 12, minute: 0, second: 0 });
 });
+test('daysInMonth', () => {
+    const test = jalali.daysInMonth('1391-12');
+    expect(test).toBe(30);
+});
 test('gregorian', () => {
     const test = jalali.gregorian('1358-03-13');
     expect(test).toStrictEqual({ year: 1979, month: 6, day: 3, date: '1979-06-03' });
