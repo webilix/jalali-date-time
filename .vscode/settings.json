@@ -1,0 +1,23 @@
+{
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "typescript.preferences.importModuleSpecifier": "relative",
+
+    "files.exclude": {
+        "**/.git": true,
+        "**/dist": true,
+        "**/node_modules": true
+    },
+
+    "search.exclude": {
+        "**/.git": true,
+        "**/dist": true,
+        "**/node_modules": true
+    },
+
+    "files.watcherExclude": {
+        "**/.git": true,
+        "**/dist": true,
+        "**/node_modules": true
+    }
+}
