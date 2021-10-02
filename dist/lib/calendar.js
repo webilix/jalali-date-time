@@ -14,7 +14,7 @@ var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
     __setModuleDefault(result, mod);
     return result;
 };
@@ -26,18 +26,18 @@ const string_1 = require("./string");
 const date_1 = require("./date");
 const full_text_1 = require("./full-text");
 function calendar(month) {
-    month = month ? month : string_1.toString(new Date(), { format: 'Y-M' });
+    month = month ? month : (0, string_1.toString)(new Date(), { format: 'Y-M' });
     if (!JDate.checkMonth(month))
         throw new TypeError('Invalid Month');
-    const gDate = gregorian_1.gregorian(month + '-01').date;
+    const gDate = (0, gregorian_1.gregorian)(month + '-01').date;
     const cDate = new Date(gDate + 'T12:00:00');
-    const title = full_text_1.toFullText(cDate, { format: 'N Y' });
+    const title = (0, full_text_1.toFullText)(cDate, { format: 'N Y' });
     let begin = cDate;
     while (begin.getDay() !== 6)
         begin = new Date(begin.getTime() - 24 * 3600 * 1000);
     const weeks = [];
     let days = [];
-    let date = date_1.toDate(begin);
+    let date = (0, date_1.toDate)(begin);
     while (date.substr(0, 7) <= month || days.length % 7 !== 0) {
         days.push({
             date,
@@ -49,7 +49,7 @@ function calendar(month) {
             days = [];
         }
         begin = new Date(begin.getTime() + 24 * 3600 * 1000);
-        date = date_1.toDate(begin);
+        date = (0, date_1.toDate)(begin);
     }
     return { month, title, weeks };
 }

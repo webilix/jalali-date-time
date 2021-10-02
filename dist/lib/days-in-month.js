@@ -14,7 +14,7 @@ var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
     __setModuleDefault(result, mod);
     return result;
 };
@@ -24,7 +24,7 @@ const JDate = __importStar(require("../script/date"));
 const string_1 = require("./string");
 const gregorian_1 = require("./gregorian");
 function daysInMonth(month) {
-    month = month ? month : string_1.toString(new Date(), { format: 'Y-M' });
+    month = month ? month : (0, string_1.toString)(new Date(), { format: 'Y-M' });
     if (!JDate.checkMonth(month))
         throw new TypeError('Invalid Month');
     let daysInMonth = 31;
@@ -32,8 +32,8 @@ function daysInMonth(month) {
     if (jalaliMonth > 6 && jalaliMonth < 12)
         daysInMonth = 30;
     else if (jalaliMonth === 12) {
-        const date = gregorian_1.gregorian(month + '-30').date + 'T12:00:00';
-        const have30Days = string_1.toString(new Date(date)).substr(8, 2) === '30';
+        const date = (0, gregorian_1.gregorian)(month + '-30').date + 'T12:00:00';
+        const have30Days = (0, string_1.toString)(new Date(date)).substr(8, 2) === '30';
         daysInMonth = have30Days ? 30 : 29;
     }
     return daysInMonth;

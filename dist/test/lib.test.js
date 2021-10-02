@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const index_1 = require("../index");
-const jalali = index_1.JalaliDateTime();
+const jalali = (0, index_1.JalaliDateTime)();
 test('now', () => {
     const test = jalali.now();
     expect(test.length).toBe(19);
