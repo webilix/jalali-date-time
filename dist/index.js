@@ -32,6 +32,9 @@ const days_in_month_1 = require("./lib/days-in-month");
 const calendar_1 = require("./lib/calendar");
 const gregorian_1 = require("./lib/gregorian");
 const timezones_1 = require("./lib/timezones");
+const hour_1 = require("./lib/period/hour");
+const day_1 = require("./lib/period/day");
+const month_1 = require("./lib/period/month");
 function JalaliDateTime(options) {
     JDT.init(options);
     return {
@@ -46,6 +49,9 @@ function JalaliDateTime(options) {
         calendar: calendar_1.calendar,
         gregorian: gregorian_1.gregorian,
         timezones: timezones_1.timezones,
+        periodHour: hour_1.periodHour,
+        periodDay: day_1.periodDay,
+        periodMonth: month_1.periodMonth,
     };
 }
 exports.JalaliDateTime = JalaliDateTime;
