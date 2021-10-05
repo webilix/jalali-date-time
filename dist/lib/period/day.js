@@ -30,7 +30,7 @@ const periodDay = (days, date, timezone) => {
     if (!JDate.checkTimezone(timezone || ''))
         timezone = JDT.timezone();
     if (isNaN(days) || days < 1)
-        throw new TypeError('Invalid Days number');
+        throw new TypeError('Days must be bigger than 0');
     const to = moment
         .default(date)
         .tz(timezone || 'Asia/Tehran')

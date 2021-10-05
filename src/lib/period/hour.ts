@@ -8,7 +8,7 @@ export const periodHour = (hours: number, date?: Date, timezone?: string): Jalal
     date = date || new Date();
     if (!JDate.checkDate(date)) throw new TypeError('Invalid Date');
     if (!JDate.checkTimezone(timezone || '')) timezone = JDT.timezone();
-    if (isNaN(hours) || hours < 1) throw new TypeError('Invalid Hours number');
+    if (isNaN(hours) || hours < 1) throw new TypeError('Hours must be bigger than 0');
 
     const to: Date = moment
         .default(date)

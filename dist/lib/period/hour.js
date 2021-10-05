@@ -30,7 +30,7 @@ const periodHour = (hours, date, timezone) => {
     if (!JDate.checkTimezone(timezone || ''))
         timezone = JDT.timezone();
     if (isNaN(hours) || hours < 1)
-        throw new TypeError('Invalid Hours number');
+        throw new TypeError('Hours must be bigger than 0');
     const to = moment
         .default(date)
         .tz(timezone || 'Asia/Tehran')

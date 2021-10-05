@@ -30,7 +30,7 @@ export const periodMonth = (months: number, date?: Date, timezone?: string): Jal
     date = date || new Date();
     if (!JDate.checkDate(date)) throw new TypeError('Invalid Date');
     if (!JDate.checkTimezone(timezone || '')) timezone = JDT.timezone();
-    if (isNaN(months) || months < 1) throw new TypeError('Invalid Months number');
+    if (isNaN(months) || months < 1) throw new TypeError('Months must be bigger than 0');
 
     const to: Date = getTo(date, timezone || 'Asia/Tehran');
     let from: Date = getFirstDay(to, timezone || 'Asia/Tehran');

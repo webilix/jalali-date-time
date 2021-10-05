@@ -48,7 +48,7 @@ const periodMonth = (months, date, timezone) => {
     if (!JDate.checkTimezone(timezone || ''))
         timezone = JDT.timezone();
     if (isNaN(months) || months < 1)
-        throw new TypeError('Invalid Months number');
+        throw new TypeError('Months must be bigger than 0');
     const to = getTo(date, timezone || 'Asia/Tehran');
     let from = getFirstDay(to, timezone || 'Asia/Tehran');
     const periods = [{ from, to }];
