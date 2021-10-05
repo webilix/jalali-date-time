@@ -6,8 +6,8 @@ import { toString } from './string';
 import { toDate } from './date';
 import { toFullText } from './full-text';
 
-export function calendar(month?: string): JalaliDateTimeCalendar {
-    month = month ? month : toString(new Date(), { format: 'Y-M' });
+export const calendar = (month?: string): JalaliDateTimeCalendar => {
+    month = month || toString(new Date(), { format: 'Y-M' });
     if (!JDate.checkMonth(month)) throw new TypeError('Invalid Month');
 
     const gDate: string = gregorian(month + '-01').date;
@@ -36,4 +36,4 @@ export function calendar(month?: string): JalaliDateTimeCalendar {
     }
 
     return { month, title, weeks };
-}
+};

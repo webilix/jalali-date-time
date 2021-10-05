@@ -2,7 +2,7 @@ import { JalaliDateTimeGregorian } from '../interface/gregorian';
 
 import * as JDate from '../script/date';
 
-export function gregorian(jalali: string): JalaliDateTimeGregorian {
+export const gregorian = (jalali: string): JalaliDateTimeGregorian => {
     if (typeof jalali !== 'string') throw new TypeError('Date is not String');
 
     let [Y, M, D] = jalali.split('-');
@@ -17,4 +17,4 @@ export function gregorian(jalali: string): JalaliDateTimeGregorian {
     if (isNaN(day) || day < 1 || day > 31) throw new RangeError('Day is not between 1, 31');
 
     return JDate.toGregorian({ year, month, day, week: 0, hour: 0, minute: 0, second: 0 });
-}
+};

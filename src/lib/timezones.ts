@@ -1,5 +1,5 @@
 import * as moment from 'moment-timezone';
 
-export function timezones(): string[] {
+export const timezones = (): string[] => {
     return moment.tz.names();
-}
+};

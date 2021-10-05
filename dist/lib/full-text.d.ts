@@ -1,3 +1,3 @@
 import { JalaliDateTimeConfig } from '../interface/config';
-export declare function toFullText(date: Date, config?: JalaliDateTimeConfig): string;
+export declare const toFullText: (date: Date, config?: JalaliDateTimeConfig | undefined) => string;
 //# sourceMappingURL=full-text.d.ts.map

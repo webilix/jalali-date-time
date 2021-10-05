@@ -21,12 +21,12 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.toTitle = void 0;
 const JDT = __importStar(require("../script/jdt"));
-function toTitle(date, config) {
+const toTitle = (date, config) => {
     const locale = !config || !config.locale || config.locale != 'en' ? 'fa' : 'en';
-    config = JDT.check(config ? config : {}, JDT.type.title);
+    config = JDT.check(config || {}, JDT.type.title);
     config.locale = locale;
-    const format = JDT.format(config.format ? config.format : '', ['W', 'N', 'Y', 'M', 'D']);
+    const format = JDT.format(config.format || '', ['W', 'N', 'Y', 'M', 'D']);
     return JDT.string(date, config, format);
-}
+};
 exports.toTitle = toTitle;
 //# sourceMappingURL=title.js.map

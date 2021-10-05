@@ -4,10 +4,10 @@ import * as moment from 'moment-timezone';
 import * as JDate from '../../script/date';
 import * as JDT from '../../script/jdt';
 
-export function periodHour(hours: number, date?: Date, timezone?: string): JalaliDateTimePeriod {
+export const periodHour = (hours: number, date?: Date, timezone?: string): JalaliDateTimePeriod => {
     date = date || new Date();
     if (!JDate.checkDate(date)) throw new TypeError('Invalid Date');
-    if (!JDate.checkTimezone(timezone ? timezone : '')) timezone = JDT.timezone();
+    if (!JDate.checkTimezone(timezone || '')) timezone = JDT.timezone();
     if (isNaN(hours) || hours < 1) throw new TypeError('Invalid Hours number');
 
     const to: Date = moment
@@ -25,4 +25,4 @@ export function periodHour(hours: number, date?: Date, timezone?: string): Jalal
     }
 
     return { from, to, periods };
-}
+};

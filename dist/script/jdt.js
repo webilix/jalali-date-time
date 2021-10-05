@@ -79,11 +79,11 @@ const check = (config, format) => {
     return config;
 };
 exports.check = check;
-const timezone = () => (_default.timezone ? _default.timezone : 'Asia/Tehran');
+const timezone = () => _default.timezone || 'Asia/Tehran';
 exports.timezone = timezone;
 const format = (format, check) => {
     const operators = ['W', 'N', 'Y', 'M', 'D', 'H', 'I', 'S'];
-    operators.forEach(operator => {
+    operators.forEach((operator) => {
         if (check.indexOf(operator) !== -1)
             return;
         const regex = new RegExp(operator, 'ig');
@@ -95,9 +95,9 @@ exports.format = format;
 const string = (date, config, format) => {
     if (!JDate.checkDate(date))
         throw new TypeError('Invalid Date');
-    const value = moment.default(date).tz(config.timezone ? config.timezone : 'Asia/Tehran');
+    const value = moment.default(date).tz(config.timezone || 'Asia/Tehran');
     const jalali = JDate.toJalali(JDate.toObject(value));
-    return JDate.toString(jalali, format, config.locale ? config.locale : 'en');
+    return JDate.toString(jalali, format, config.locale || 'en');
 };
 exports.string = string;
 //# sourceMappingURL=jdt.js.map

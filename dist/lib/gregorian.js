@@ -21,7 +21,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.gregorian = void 0;
 const JDate = __importStar(require("../script/date"));
-function gregorian(jalali) {
+const gregorian = (jalali) => {
     if (typeof jalali !== 'string')
         throw new TypeError('Date is not String');
     let [Y, M, D] = jalali.split('-');
@@ -35,6 +35,6 @@ function gregorian(jalali) {
     if (isNaN(day) || day < 1 || day > 31)
         throw new RangeError('Day is not between 1, 31');
     return JDate.toGregorian({ year, month, day, week: 0, hour: 0, minute: 0, second: 0 });
-}
+};
 exports.gregorian = gregorian;
 //# sourceMappingURL=gregorian.js.map

@@ -26,10 +26,10 @@ const getFirstDay = (date: Date, timezone: string): Date => {
     return new Date(date.getTime() - days * 24 * 3600_000 + 1);
 };
 
-export function periodMonth(months: number, date?: Date, timezone?: string): JalaliDateTimePeriod {
+export const periodMonth = (months: number, date?: Date, timezone?: string): JalaliDateTimePeriod => {
     date = date || new Date();
     if (!JDate.checkDate(date)) throw new TypeError('Invalid Date');
-    if (!JDate.checkTimezone(timezone ? timezone : '')) timezone = JDT.timezone();
+    if (!JDate.checkTimezone(timezone || '')) timezone = JDT.timezone();
     if (isNaN(months) || months < 1) throw new TypeError('Invalid Months number');
 
     const to: Date = getTo(date, timezone || 'Asia/Tehran');
@@ -45,4 +45,4 @@ export function periodMonth(months: number, date?: Date, timezone?: string): Jal
     periods.reverse();
 
     return { from, to, periods };
-}
+};

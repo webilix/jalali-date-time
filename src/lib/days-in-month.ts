@@ -3,8 +3,8 @@ import * as JDate from '../script/date';
 import { toString } from './string';
 import { gregorian } from './gregorian';
 
-export function daysInMonth(month?: string): number {
-    month = month ? month : toString(new Date(), { format: 'Y-M' });
+export const daysInMonth = (month?: string): number => {
+    month = month || toString(new Date(), { format: 'Y-M' });
     if (!JDate.checkMonth(month)) throw new TypeError('Invalid Month');
 
     let daysInMonth: number = 31;
@@ -17,4 +17,4 @@ export function daysInMonth(month?: string): number {
     }
 
     return daysInMonth;
-}
+};

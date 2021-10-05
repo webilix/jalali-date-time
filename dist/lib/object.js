@@ -23,13 +23,13 @@ exports.toObject = void 0;
 const moment = __importStar(require("moment-timezone"));
 const JDate = __importStar(require("../script/date"));
 const JDT = __importStar(require("../script/jdt"));
-function toObject(date, timezone) {
+const toObject = (date, timezone) => {
     if (!JDate.checkDate(date))
         throw new TypeError('Invalid Date');
-    if (!JDate.checkTimezone(timezone ? timezone : ''))
+    if (!JDate.checkTimezone(timezone || ''))
         timezone = JDT.timezone();
-    const value = moment.default(date).tz(timezone ? timezone : 'Asia/Tehran');
+    const value = moment.default(date).tz(timezone || 'Asia/Tehran');
     return JDate.toJalali(JDate.toObject(value));
-}
+};
 exports.toObject = toObject;
 //# sourceMappingURL=object.js.map

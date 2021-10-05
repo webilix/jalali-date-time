@@ -1,2 +1,2 @@
-export declare function daysInMonth(month?: string): number;
+export declare const daysInMonth: (month?: string | undefined) => number;
 //# sourceMappingURL=days-in-month.d.ts.map

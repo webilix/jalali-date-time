@@ -65,9 +65,6 @@ const _en = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 const _div = (a, b) => {
     return Math.floor(a / b);
 };
-const _zeroFill = (value) => {
-    return (value < 10 ? '0' : '') + value.toString();
-};
 const toJalali = (date) => {
     let gy = date.year - 1600;
     let gm = date.month - 1;
@@ -135,7 +132,7 @@ const toGregorian = (date) => {
         g_day_no -= _en[i] + (i === 1 && leap ? 1 : 0);
     let gm = i + 1;
     let gd = g_day_no + 1;
-    const gregorian = gy.toString() + '-' + _zeroFill(gm) + '-' + _zeroFill(gd);
+    const gregorian = gy.toString() + '-' + gm.toString().padStart(2, '0') + '-' + gd.toString().padStart(2, '0');
     return {
         year: gy,
         month: gm,
@@ -162,15 +159,15 @@ const toString = (jalali, format, locale) => {
         .replace(/N/g, _month[jalali.month - 1])
         .replace(/Y/g, jalali.year.toString())
         .replace(/y/g, jalali.year.toString().substring(2))
-        .replace(/M/g, _zeroFill(jalali.month))
+        .replace(/M/g, jalali.month.toString().padStart(2, '0'))
         .replace(/m/g, jalali.month.toString())
-        .replace(/D/g, _zeroFill(jalali.day))
+        .replace(/D/g, jalali.day.toString().padStart(2, '0'))
         .replace(/d/g, jalali.day.toString())
-        .replace(/H/g, _zeroFill(jalali.hour))
+        .replace(/H/g, jalali.hour.toString().padStart(2, '0'))
         .replace(/h/g, jalali.hour.toString())
-        .replace(/I/g, _zeroFill(jalali.minute))
+        .replace(/I/g, jalali.minute.toString().padStart(2, '0'))
         .replace(/i/g, jalali.minute.toString())
-        .replace(/S/g, _zeroFill(jalali.second))
+        .replace(/S/g, jalali.second.toString().padStart(2, '0'))
         .replace(/s/g, jalali.second.toString());
     if (locale.toLowerCase() === 'fa') {
         format = format

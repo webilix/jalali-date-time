@@ -21,8 +21,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.timezones = void 0;
 const moment = __importStar(require("moment-timezone"));
-function timezones() {
+const timezones = () => {
     return moment.tz.names();
-}
+};
 exports.timezones = timezones;
 //# sourceMappingURL=timezones.js.map

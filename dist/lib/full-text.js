@@ -21,12 +21,12 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.toFullText = void 0;
 const JDT = __importStar(require("../script/jdt"));
-function toFullText(date, config) {
+const toFullText = (date, config) => {
     const locale = !config || !config.locale || config.locale != 'en' ? 'fa' : 'en';
-    config = JDT.check(config ? config : {}, JDT.type.fullText);
+    config = JDT.check(config || {}, JDT.type.fullText);
     config.locale = locale;
-    const format = JDT.format(config.format ? config.format : '', ['W', 'N', 'Y', 'M', 'D', 'H', 'I', 'S']);
+    const format = JDT.format(config.format || '', ['W', 'N', 'Y', 'M', 'D', 'H', 'I', 'S']);
     return JDT.string(date, config, format);
-}
+};
 exports.toFullText = toFullText;
 //# sourceMappingURL=full-text.js.map

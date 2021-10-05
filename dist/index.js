@@ -35,7 +35,7 @@ const timezones_1 = require("./lib/timezones");
 const hour_1 = require("./lib/period/hour");
 const day_1 = require("./lib/period/day");
 const month_1 = require("./lib/period/month");
-function JalaliDateTime(options) {
+const JalaliDateTime = (options) => {
     JDT.init(options);
     return {
         now: now_1.now,
@@ -53,6 +53,6 @@ function JalaliDateTime(options) {
         periodDay: day_1.periodDay,
         periodMonth: month_1.periodMonth,
     };
-}
+};
 exports.JalaliDateTime = JalaliDateTime;
 //# sourceMappingURL=index.js.map

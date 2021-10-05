@@ -25,8 +25,8 @@ const gregorian_1 = require("./gregorian");
 const string_1 = require("./string");
 const date_1 = require("./date");
 const full_text_1 = require("./full-text");
-function calendar(month) {
-    month = month ? month : (0, string_1.toString)(new Date(), { format: 'Y-M' });
+const calendar = (month) => {
+    month = month || (0, string_1.toString)(new Date(), { format: 'Y-M' });
     if (!JDate.checkMonth(month))
         throw new TypeError('Invalid Month');
     const gDate = (0, gregorian_1.gregorian)(month + '-01').date;
@@ -52,6 +52,6 @@ function calendar(month) {
         date = (0, date_1.toDate)(begin);
     }
     return { month, title, weeks };
-}
+};
 exports.calendar = calendar;
 //# sourceMappingURL=calendar.js.map

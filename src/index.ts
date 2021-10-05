@@ -24,7 +24,7 @@ import { periodDay } from './lib/period/day';
 import { periodMonth } from './lib/period/month';
 
 import { JalaliDateTimeOptions } from './interface/options';
-export function JalaliDateTime(options?: JalaliDateTimeOptions) {
+export const JalaliDateTime = (options?: JalaliDateTimeOptions) => {
     JDT.init(options);
 
     return {
@@ -44,4 +44,4 @@ export function JalaliDateTime(options?: JalaliDateTimeOptions) {
         periodDay,
         periodMonth,
     };
-}
+};

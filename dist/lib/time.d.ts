@@ -1,3 +1,3 @@
 import { JalaliDateTimeConfig } from '../interface/config';
-export declare function toTime(date: Date, config?: JalaliDateTimeConfig): string;
+export declare const toTime: (date: Date, config?: JalaliDateTimeConfig | undefined) => string;
 //# sourceMappingURL=time.d.ts.map

@@ -21,10 +21,10 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.toDate = void 0;
 const JDT = __importStar(require("../script/jdt"));
-function toDate(date, config) {
-    config = JDT.check(config ? config : {}, JDT.type.date);
-    const format = JDT.format(config.format ? config.format : '', ['Y', 'M', 'D']);
+const toDate = (date, config) => {
+    config = JDT.check(config || {}, JDT.type.date);
+    const format = JDT.format(config.format || '', ['Y', 'M', 'D']);
     return JDT.string(date, config, format);
-}
+};
 exports.toDate = toDate;
 //# sourceMappingURL=date.js.map

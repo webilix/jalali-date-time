@@ -41,11 +41,11 @@ const getFirstDay = (date, timezone) => {
     const days = (0, days_in_month_1.daysInMonth)(month);
     return new Date(date.getTime() - days * 24 * 3600000 + 1);
 };
-function periodMonth(months, date, timezone) {
+const periodMonth = (months, date, timezone) => {
     date = date || new Date();
     if (!JDate.checkDate(date))
         throw new TypeError('Invalid Date');
-    if (!JDate.checkTimezone(timezone ? timezone : ''))
+    if (!JDate.checkTimezone(timezone || ''))
         timezone = JDT.timezone();
     if (isNaN(months) || months < 1)
         throw new TypeError('Invalid Months number');
@@ -59,6 +59,6 @@ function periodMonth(months, date, timezone) {
     }
     periods.reverse();
     return { from, to, periods };
-}
+};
 exports.periodMonth = periodMonth;
 //# sourceMappingURL=month.js.map

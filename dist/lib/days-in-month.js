@@ -23,8 +23,8 @@ exports.daysInMonth = void 0;
 const JDate = __importStar(require("../script/date"));
 const string_1 = require("./string");
 const gregorian_1 = require("./gregorian");
-function daysInMonth(month) {
-    month = month ? month : (0, string_1.toString)(new Date(), { format: 'Y-M' });
+const daysInMonth = (month) => {
+    month = month || (0, string_1.toString)(new Date(), { format: 'Y-M' });
     if (!JDate.checkMonth(month))
         throw new TypeError('Invalid Month');
     let daysInMonth = 31;
@@ -37,6 +37,6 @@ function daysInMonth(month) {
         daysInMonth = have30Days ? 30 : 29;
     }
     return daysInMonth;
-}
+};
 exports.daysInMonth = daysInMonth;
 //# sourceMappingURL=days-in-month.js.map

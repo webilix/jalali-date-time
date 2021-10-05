@@ -55,11 +55,11 @@ const check = (config: JalaliDateTimeConfig, format: string): JalaliDateTimeConf
     return config;
 };
 
-const timezone = (): string => (_default.timezone ? _default.timezone : 'Asia/Tehran');
+const timezone = (): string => _default.timezone || 'Asia/Tehran';
 
 const format = (format: string, check: string[]): string => {
     const operators: string[] = ['W', 'N', 'Y', 'M', 'D', 'H', 'I', 'S'];
-    operators.forEach(operator => {
+    operators.forEach((operator) => {
         if (check.indexOf(operator) !== -1) return;
 
         const regex = new RegExp(operator, 'ig');
@@ -71,9 +71,9 @@ const format = (format: string, check: string[]): string => {
 const string = (date: Date, config: JalaliDateTimeConfig, format: string): string => {
     if (!JDate.checkDate(date)) throw new TypeError('Invalid Date');
 
-    const value = moment.default(date).tz(config.timezone ? config.timezone : 'Asia/Tehran');
+    const value = moment.default(date).tz(config.timezone || 'Asia/Tehran');
     const jalali = JDate.toJalali(JDate.toObject(value));
-    return JDate.toString(jalali, format, config.locale ? config.locale : 'en');
+    return JDate.toString(jalali, format, config.locale || 'en');
 };
 
 export { type, init, check, timezone, format, string };

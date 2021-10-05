@@ -23,11 +23,11 @@ exports.periodHour = void 0;
 const moment = __importStar(require("moment-timezone"));
 const JDate = __importStar(require("../../script/date"));
 const JDT = __importStar(require("../../script/jdt"));
-function periodHour(hours, date, timezone) {
+const periodHour = (hours, date, timezone) => {
     date = date || new Date();
     if (!JDate.checkDate(date))
         throw new TypeError('Invalid Date');
-    if (!JDate.checkTimezone(timezone ? timezone : ''))
+    if (!JDate.checkTimezone(timezone || ''))
         timezone = JDT.timezone();
     if (isNaN(hours) || hours < 1)
         throw new TypeError('Invalid Hours number');
@@ -44,6 +44,6 @@ function periodHour(hours, date, timezone) {
         start = new Date(start.getTime() + 3600000);
     }
     return { from, to, periods };
-}
+};
 exports.periodHour = periodHour;
 //# sourceMappingURL=hour.js.map
