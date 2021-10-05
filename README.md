@@ -21,6 +21,9 @@ Lightweight library for parsing and formating Jalali date with timezone function
     -   [calendar](#calendar)
     -   [gregorian](#gregorian)
     -   [timezones](#timezones)
+    -   [periodHour](#periodhour)
+    -   [periodDay](#periodday)
+    -   [periodMonth](#periodmonth)
 -   [Custom Types](#custom-types)
 -   [Errors](#errors)
 -   [Tests](#tests)
@@ -576,6 +579,110 @@ const result = jalali.timezones();
  */
 ```
 
+### [periodHour](#periodhour)
+
+Hourly date/time period values based of number of hours
+
+**Parameters:**
+
+| Name     | Type   | Required | Description     |
+| -------- | ------ | -------- | --------------- |
+| hours    | Number | Yes      | Nomber of hours |
+| date     | Date   | No       | End Date Value  |
+| timezone | String | No       | Timezone Value  |
+
+**Return Value ([Period Object](#period-object)):**
+
+If hours value is NaN or less than 1 then **TypeError** will thrown.
+
+If date parameter is not a valid Javascript Date then **TypeError** will thrown.
+
+**Sample:**
+
+```javascript
+const result = jalali.periodHour(3);
+/*   {
+*      from: 2021-10-05T01:30:00.000Z,
+*      to: 2021-10-05T04:29:59.999Z,
+*      periods: [
+*        { from: 2021-10-05T01:30:00.000Z, to: 2021-10-05T02:29:59.999Z },
+*        { from: 2021-10-05T02:30:00.000Z, to: 2021-10-05T03:29:59.999Z },
+*        { from: 2021-10-05T03:30:00.000Z, to: 2021-10-05T04:29:59.999Z }
+*      ]
+*    }
+```
+
+### [periodDay](#periodday)
+
+Daily date/time period values based of number of days
+
+**Parameters:**
+
+| Name     | Type   | Required | Description    |
+| -------- | ------ | -------- | -------------- |
+| days     | Number | Yes      | Nomber of days |
+| date     | Date   | No       | End Date Value |
+| timezone | String | No       | Timezone Value |
+
+**Return Value ([Period Object](#period-object)):**
+
+If days value is NaN or less than 1 then **TypeError** will thrown.
+
+If date parameter is not a valid Javascript Date then **TypeError** will thrown.
+
+**Sample:**
+
+```javascript
+const result = jalali.periodDays(7);
+/*   {
+*      from: 2021-09-28T20:30:00.000Z,
+*      to: 2021-10-05T20:29:59.999Z,
+*      periods: [
+*        { from: 2021-09-28T20:30:00.000Z, to: 2021-09-29T20:29:59.999Z },
+*        { from: 2021-09-29T20:30:00.000Z, to: 2021-09-30T20:29:59.999Z },
+*        { from: 2021-09-30T20:30:00.000Z, to: 2021-10-01T20:29:59.999Z },
+*        { from: 2021-10-01T20:30:00.000Z, to: 2021-10-02T20:29:59.999Z },
+*        { from: 2021-10-02T20:30:00.000Z, to: 2021-10-03T20:29:59.999Z },
+*        { from: 2021-10-03T20:30:00.000Z, to: 2021-10-04T20:29:59.999Z },
+*        { from: 2021-10-04T20:30:00.000Z, to: 2021-10-05T20:29:59.999Z }
+*      ]
+*    }
+```
+
+### [periodMonth](#periodmonth)
+
+Monthly (jalali month) date/time period values based of number of months
+
+**Parameters:**
+
+| Name     | Type   | Required | Description      |
+| -------- | ------ | -------- | ---------------- |
+| months   | Number | Yes      | Nomber of months |
+| date     | Date   | No       | End Date Value   |
+| timezone | String | No       | Timezone Value   |
+
+**Return Value ([Period Object](#period-object)):**
+
+If months value is NaN or less than 1 then **TypeError** will thrown.
+
+If date parameter is not a valid Javascript Date then **TypeError** will thrown.
+
+**Sample:**
+
+```javascript
+const result = jalali.periodMonth(4);
+/*   {
+*      from: 2020-10-21T20:30:00.000Z,
+*      to: 2021-10-22T20:29:59.999Z,
+*      periods: [
+*        { from: 2021-06-21T20:30:00.000Z, to: 2021-07-22T20:29:59.999Z },
+*        { from: 2021-07-22T20:30:00.000Z, to: 2021-08-22T20:29:59.999Z },
+*        { from: 2021-08-22T20:30:00.000Z, to: 2021-09-22T20:29:59.999Z },
+*        { from: 2021-09-22T20:30:00.000Z, to: 2021-10-22T20:29:59.999Z }
+*      ]
+*    }
+```
+
 ---
 
 ## Custom Types
@@ -585,6 +692,7 @@ const result = jalali.timezones();
 | [Configuration Object](#configuration-object)   | Main methods configuration parameter       |
 | [Custom Date Object](#custom-date-object)       | Result value type for **toObject** method  |
 | [Gregorian Date Object](#gregorian-date-object) | Result value type for **gregorian** method |
+| [Period Object](#period-object)                 | Result value type for **period** methods   |
 
 ### [Configuration Object](#configuration-object)
 
@@ -634,22 +742,38 @@ Result value type for **gregorian** method
 | day      | Number | Day Value                             |
 | date     | String | Full Date String (sample: 2019-04-12) |
 
+### [Period Object](#period-object)
+
+Result value type for **period** methods
+
+| Property | Type                                     | Description     |
+| -------- | ---------------------------------------- | --------------- |
+| from     | Date                                     | Start of period |
+| to       | Date                                     | End of period   |
+| periods  | Array of Object { from: Date, to: Date } | Periods list    |
+
 ---
 
 ## Errors
 
-| Error      | Method                    | Parameter | Message                    |
-| ---------- | ------------------------- | --------- | -------------------------- |
-| TypeError  | [toDate](#todate)         | date      | Invalid Date               |
-| TypeError  | [toTime](#totime)         | date      | Invalid Date               |
-| TypeError  | [toString](#tostring)     | date      | Invalid Date               |
-| TypeError  | [toTitle](#totitle)       | date      | Invalid Date               |
-| TypeError  | [toFullText](#tofulltext) | date      | Invalid Date               |
-| TypeError  | [toObject](#toobject)     | date      | Invalid Date               |
-| TypeError  | [gregorian](#gregorian)   | jalali    | Date is not String         |
-| RangeError | [gregorian](#gregorian)   | jalali    | Year must be 4 digits      |
-| RangeError | [gregorian](#gregorian)   | jalali    | Month is not between 1, 12 |
-| RangeError | [gregorian](#gregorian)   | jalali    | Day is not between 1, 31   |
+| Error      | Method                      | Parameter | Message                      |
+| ---------- | --------------------------- | --------- | ---------------------------- |
+| TypeError  | [toDate](#todate)           | date      | Invalid Date                 |
+| TypeError  | [toTime](#totime)           | date      | Invalid Date                 |
+| TypeError  | [toString](#tostring)       | date      | Invalid Date                 |
+| TypeError  | [toTitle](#totitle)         | date      | Invalid Date                 |
+| TypeError  | [toFullText](#tofulltext)   | date      | Invalid Date                 |
+| TypeError  | [toObject](#toobject)       | date      | Invalid Date                 |
+| TypeError  | [gregorian](#gregorian)     | jalali    | Date is not String           |
+| RangeError | [gregorian](#gregorian)     | jalali    | Year must be 4 digits        |
+| RangeError | [gregorian](#gregorian)     | jalali    | Month is not between 1, 12   |
+| RangeError | [gregorian](#gregorian)     | jalali    | Day is not between 1, 31     |
+| TypeError  | [periodHour](#periodhour)   | hours     | Hours must be bigger than 0  |
+| TypeError  | [periodHour](#periodhour)   | date      | Invalid Date                 |
+| TypeError  | [periodDay](#periodday)     | days      | Days must be bigger than 0   |
+| TypeError  | [periodDay](#periodday)     | date      | Invalid Date                 |
+| TypeError  | [periodMonth](#periodmonth) | months    | Months must be bigger than 0 |
+| TypeError  | [periodMonth](#periodmonth) | date      | Invalid Date                 |
 
 ---
 
