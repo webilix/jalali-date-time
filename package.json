@@ -1,6 +1,6 @@
 {
     "name": "jalali-date-time",
-    "version": "3.2.3",
+    "version": "4.0.1",
     "description": "Lightweight library for parsing and formating Jalali date with timezone functionality",
     "main": "./dist/index.js",
     "repository": {
