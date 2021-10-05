@@ -1,4 +1,3 @@
-import { JalaliDateTimeObject } from '../interface/object';
 import { JalaliDateTime } from '../index';
 const jalali = JalaliDateTime();
 
@@ -50,4 +49,21 @@ test('gregorian', () => {
 test('timezones', () => {
     const test = jalali.timezones();
     expect(test.indexOf('Asia/Tehran') !== -1).toBe(true);
+});
+
+test('periodHour', () => {
+    const test = jalali.periodHour(24);
+    expect(test.periods.length).toBe(24);
+    expect(test.to.getTime() - test.from.getTime()).toBe(24 * 3600_000 - 1);
+});
+
+test('periodDay', () => {
+    const test = jalali.periodDay(7);
+    expect(test.periods.length).toBe(7);
+    expect(test.to.getTime() - test.from.getTime()).toBe(7 * 24 * 3600_000 - 1);
+});
+
+test('periodMonth', () => {
+    const test = jalali.periodMonth(12);
+    expect(test.periods.length).toBe(12);
 });
