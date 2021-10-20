@@ -34,6 +34,7 @@ const gregorian_1 = require("./lib/gregorian");
 const timezones_1 = require("./lib/timezones");
 const hour_1 = require("./lib/period/hour");
 const day_1 = require("./lib/period/day");
+const week_1 = require("./lib/period/week");
 const month_1 = require("./lib/period/month");
 const JalaliDateTime = (options) => {
     JDT.init(options);
@@ -51,6 +52,7 @@ const JalaliDateTime = (options) => {
         timezones: timezones_1.timezones,
         periodHour: hour_1.periodHour,
         periodDay: day_1.periodDay,
+        periodWeek: week_1.periodWeek,
         periodMonth: month_1.periodMonth,
     };
 };

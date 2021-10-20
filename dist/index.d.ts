@@ -19,6 +19,7 @@ export declare const JalaliDateTime: (options?: JalaliDateTimeOptions | undefine
     timezones: () => string[];
     periodHour: (hours: number, date?: Date | undefined, timezone?: string | undefined) => import("./interface/period").JalaliDateTimePeriod;
     periodDay: (days: number, date?: Date | undefined, timezone?: string | undefined) => import("./interface/period").JalaliDateTimePeriod;
+    periodWeek: (weeks: number, date?: Date | undefined, timezone?: string | undefined) => import("./interface/period").JalaliDateTimePeriod;
     periodMonth: (months: number, date?: Date | undefined, timezone?: string | undefined) => import("./interface/period").JalaliDateTimePeriod;
 };
 //# sourceMappingURL=index.d.ts.map
