@@ -1,1 +1,1 @@
-{"version":3,"file":"month.d.ts","sourceRoot":"","sources":["../../../src/lib/period/month.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,oBAAoB,EAAE,MAAM,wBAAwB,CAAC;AA4B9D,eAAO,MAAM,WAAW,WAAY,MAAM,6DAAmC,oBAmB5E,CAAC"}
+{"version":3,"file":"month.d.ts","sourceRoot":"","sources":["../../../src/lib/period/month.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,oBAAoB,EAAE,MAAM,wBAAwB,CAAC;AA8B9D,eAAO,MAAM,WAAW,WAAY,MAAM,6DAAmC,oBAmB5E,CAAC"}

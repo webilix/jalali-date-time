@@ -26,6 +26,22 @@ const checkMonth = (month: string): boolean => {
     return true;
 };
 
+const getStartOf = (unit: 'h' | 'D', date: Date, timezone?: string): Date => {
+    return moment
+        .default(date)
+        .tz(timezone || 'Asia/Tehran')
+        .startOf(unit)
+        .toDate();
+};
+
+const getEndOf = (unit: 'h' | 'D', date: Date, timezone?: string): Date => {
+    return moment
+        .default(date)
+        .tz(timezone || 'Asia/Tehran')
+        .endOf(unit)
+        .toDate();
+};
+
 const _week: string[] = ['شنبه', 'یک‌شنبه', 'دوشنبه', 'سه‌شنبه', 'چهارشنبه', 'پنج‌شنبه', 'جمعه'];
 const _month: string[] = [
     'فروردین',
@@ -180,4 +196,15 @@ const toString = (jalali: JalaliDateTimeObject, format: string, locale: string):
     return format;
 };
 
-export { checkDate, checkLocale, checkTimezone, checkMonth, toJalali, toGregorian, toObject, toString };
+export {
+    checkDate,
+    checkLocale,
+    checkTimezone,
+    checkMonth,
+    getStartOf,
+    getEndOf,
+    toJalali,
+    toGregorian,
+    toObject,
+    toString,
+};

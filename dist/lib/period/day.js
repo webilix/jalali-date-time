@@ -31,17 +31,17 @@ const periodDay = (days, date, timezone) => {
         timezone = JDT.timezone();
     if (isNaN(days) || days < 1)
         throw new TypeError('Days must be bigger than 0');
-    const to = moment
-        .default(date)
-        .tz(timezone || 'Asia/Tehran')
-        .endOf('D')
-        .toDate();
-    const from = new Date(to.getTime() - days * 24 * 3600000 + 1);
+    const to = JDate.getEndOf('D', date, timezone);
+    const from = JDate.getStartOf('D', new Date(to.getTime() - days * 24 * 3600000 + 1), timezone);
     const periods = [];
     let start = from;
     while (start < to) {
-        periods.push({ from: start, to: new Date(start.getTime() + 24 * 3600000 - 1) });
-        start = new Date(start.getTime() + 24 * 3600000);
+        periods.push({ from: start, to: JDate.getEndOf('D', start, timezone) });
+        start = JDate.getStartOf('D', moment
+            .default(start)
+            .tz(timezone || 'Asia/Tehran')
+            .add(1, 'day')
+            .toDate(), timezone);
     }
     return { from, to, periods };
 };

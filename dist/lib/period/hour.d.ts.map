@@ -1,1 +1,1 @@
-{"version":3,"file":"hour.d.ts","sourceRoot":"","sources":["../../../src/lib/period/hour.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,oBAAoB,EAAE,MAAM,wBAAwB,CAAC;AAM9D,eAAO,MAAM,UAAU,UAAW,MAAM,6DAAmC,oBAqB1E,CAAC"}
+{"version":3,"file":"hour.d.ts","sourceRoot":"","sources":["../../../src/lib/period/hour.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,oBAAoB,EAAE,MAAM,wBAAwB,CAAC;AAM9D,eAAO,MAAM,UAAU,UAAW,MAAM,6DAAmC,oBAyB1E,CAAC"}

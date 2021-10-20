@@ -7,23 +7,25 @@ import { toString } from '../string';
 import { daysInMonth } from '../days-in-month';
 
 const getTo = (date: Date, timezone: string): Date => {
-    const to: Date = moment
-        .default(date)
-        .tz(timezone || 'Asia/Tehran')
-        .endOf('D')
-        .toDate();
+    const to: Date = JDate.getEndOf('D', date, timezone);
     const day: string = toString(to, { timezone, format: 'D' });
 
     const month: string = toString(to, { timezone, format: 'Y-M' });
     const days: number = daysInMonth(month);
 
-    return new Date(to.getTime() + (days - +day) * 24 * 3600_000);
+    return JDate.getEndOf('D', new Date(to.getTime() + (days - +day) * 24 * 3600_000), timezone);
 };
 
 const getFirstDay = (date: Date, timezone: string): Date => {
     const month: string = toString(date, { timezone, format: 'Y-M' });
     const days: number = daysInMonth(month);
-    return new Date(date.getTime() - days * 24 * 3600_000 + 1);
+    const last: Date = moment
+        .default(date)
+        .tz(timezone || 'Asia/Tehran')
+        .subtract(days, 'day')
+        .toDate();
+
+    return new Date(last.getTime() + 1);
 };
 
 export const periodMonth = (months: number, date?: Date, timezone?: string): JalaliDateTimePeriod => {

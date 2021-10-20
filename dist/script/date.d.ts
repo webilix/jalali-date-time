@@ -5,9 +5,11 @@ declare const checkDate: (date: Date) => boolean;
 declare const checkLocale: (locale: string) => boolean;
 declare const checkTimezone: (timezone: string) => boolean;
 declare const checkMonth: (month: string) => boolean;
+declare const getStartOf: (unit: 'h' | 'D', date: Date, timezone?: string | undefined) => Date;
+declare const getEndOf: (unit: 'h' | 'D', date: Date, timezone?: string | undefined) => Date;
 declare const toJalali: (date: JalaliDateTimeObject) => JalaliDateTimeObject;
 declare const toGregorian: (date: JalaliDateTimeObject) => JalaliDateTimeGregorian;
 declare const toObject: (date: Moment) => JalaliDateTimeObject;
 declare const toString: (jalali: JalaliDateTimeObject, format: string, locale: string) => string;
-export { checkDate, checkLocale, checkTimezone, checkMonth, toJalali, toGregorian, toObject, toString };
+export { checkDate, checkLocale, checkTimezone, checkMonth, getStartOf, getEndOf, toJalali, toGregorian, toObject, toString, };
 //# sourceMappingURL=date.d.ts.map
