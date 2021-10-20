@@ -23,6 +23,7 @@ Lightweight library for parsing and formating Jalali date with timezone function
     -   [timezones](#timezones)
     -   [periodHour](#periodhour)
     -   [periodDay](#periodday)
+    -   [periodWeek](#periodweek)
     -   [periodMonth](#periodmonth)
 -   [Custom Types](#custom-types)
 -   [Errors](#errors)
@@ -647,6 +648,41 @@ const result = jalali.periodDays(7);
  *        { from: 2021-10-03T20:30:00.000Z, to: 2021-10-04T20:29:59.999Z },
  *        { from: 2021-10-04T20:30:00.000Z, to: 2021-10-05T20:29:59.999Z }
  *      ]
+ *   }
+ */
+```
+
+### [periodWeek](#periodweek)
+
+Weekly date/time period values based of number of days
+
+**Parameters:**
+
+| Name     | Type   | Required | Description     |
+| -------- | ------ | -------- | --------------- |
+| weeks    | Number | Yes      | Nomber of weekd |
+| date     | Date   | No       | End Date Value  |
+| timezone | String | No       | Timezone Value  |
+
+**Return Value ([Period Object](#period-object)):**
+
+If weeks value is NaN or less than 1 then **TypeError** will thrown.
+
+If date parameter is not a valid Javascript Date then **TypeError** will thrown.
+
+**Sample:**
+
+```javascript
+const result = jalali.periodWeeks(4);
+/*   {
+ *       from: 2021-09-24T20:30:00.000Z,
+ *       to: 2021-10-22T20:29:59.999Z,
+ *       periods: [
+ *         { from: 2021-09-24T20:30:00.000Z, to: 2021-10-01T20:29:59.999Z },
+ *         { from: 2021-10-01T20:30:00.000Z, to: 2021-10-08T20:29:59.999Z },
+ *         { from: 2021-10-08T20:30:00.000Z, to: 2021-10-15T20:29:59.999Z },
+ *         { from: 2021-10-15T20:30:00.000Z, to: 2021-10-22T20:29:59.999Z }
+ *       ]
  *    }
  */
 ```
