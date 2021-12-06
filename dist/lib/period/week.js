@@ -23,10 +23,27 @@ exports.periodWeek = void 0;
 const moment = __importStar(require("moment-timezone"));
 const JDate = __importStar(require("../../script/date"));
 const JDT = __importStar(require("../../script/jdt"));
-const getTo = (date, timezone) => {
-    while (date.getDay() != 5)
-        date = new Date(date.getTime() + 24 * 3600000);
-    return JDate.getEndOf('D', date, timezone);
+const getFriday = (date, timezone) => {
+    date = moment.default(date).tz(timezone).endOf('D').toDate();
+    while (date.getDay() !== 5) {
+        date = moment
+            .default(new Date(date.getTime() + 1))
+            .tz(timezone)
+            .endOf('D')
+            .toDate();
+    }
+    return date;
+};
+const getSaturday = (date, timezone) => {
+    date = moment.default(date).tz(timezone).startOf('D').toDate();
+    while (date.getDay() !== 6) {
+        date = moment
+            .default(new Date(date.getTime() - 1))
+            .tz(timezone)
+            .startOf('D')
+            .toDate();
+    }
+    return date;
 };
 const periodWeek = (weeks, date, timezone) => {
     date = date || new Date();
@@ -36,22 +53,14 @@ const periodWeek = (weeks, date, timezone) => {
         timezone = JDT.timezone();
     if (isNaN(weeks) || weeks < 1)
         throw new TypeError('Weeks must be bigger than 0');
-    const to = getTo(date, timezone || 'Asia/Tehran');
-    const from = JDate.getStartOf('D', new Date(to.getTime() - weeks * 7 * 24 * 3600000 + 1), timezone);
+    let to = getFriday(date, timezone || 'Asia/Tehran');
     const periods = [];
-    let start = from;
-    while (start < to) {
-        periods.push({
-            from: start,
-            to: JDate.getEndOf('D', new Date(start.getTime() + 7 * 24 * 3600000 - 1), timezone),
-        });
-        start = JDate.getStartOf('D', moment
-            .default(start)
-            .tz(timezone || 'Asia/Tehran')
-            .add(7, 'day')
-            .toDate(), timezone);
+    while (periods.length < weeks) {
+        const from = getSaturday(to, timezone || 'Asia/Tehran');
+        periods.unshift({ from, to });
+        to = new Date(from.getTime() - 1);
     }
-    return { from, to, periods };
+    return { from: periods[0].from, to: periods[periods.length - 1].to, periods };
 };
 exports.periodWeek = periodWeek;
 //# sourceMappingURL=week.js.map

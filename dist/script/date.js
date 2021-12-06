@@ -19,7 +19,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.toString = exports.toObject = exports.toGregorian = exports.toJalali = exports.getEndOf = exports.getStartOf = exports.checkMonth = exports.checkTimezone = exports.checkLocale = exports.checkDate = void 0;
+exports.toString = exports.toObject = exports.toGregorian = exports.toJalali = exports.checkMonth = exports.checkTimezone = exports.checkLocale = exports.checkDate = void 0;
 const moment = __importStar(require("moment-timezone"));
 const checkDate = (date) => {
     return Object.prototype.toString.call(date) === '[object Date]';
@@ -45,22 +45,6 @@ const checkMonth = (month) => {
     return true;
 };
 exports.checkMonth = checkMonth;
-const getStartOf = (unit, date, timezone) => {
-    return moment
-        .default(date)
-        .tz(timezone || 'Asia/Tehran')
-        .startOf(unit)
-        .toDate();
-};
-exports.getStartOf = getStartOf;
-const getEndOf = (unit, date, timezone) => {
-    return moment
-        .default(date)
-        .tz(timezone || 'Asia/Tehran')
-        .endOf(unit)
-        .toDate();
-};
-exports.getEndOf = getEndOf;
 const _week = ['شنبه', 'یک‌شنبه', 'دوشنبه', 'سه‌شنبه', 'چهارشنبه', 'پنج‌شنبه', 'جمعه'];
 const _month = [
     'فروردین',

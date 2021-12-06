@@ -31,19 +31,22 @@ const periodDay = (days, date, timezone) => {
         timezone = JDT.timezone();
     if (isNaN(days) || days < 1)
         throw new TypeError('Days must be bigger than 0');
-    const to = JDate.getEndOf('D', date, timezone);
-    const from = JDate.getStartOf('D', new Date(to.getTime() - days * 24 * 3600000 + 1), timezone);
+    let to = moment
+        .default(date)
+        .tz(timezone || 'Asia/Tehran')
+        .endOf('D')
+        .toDate();
     const periods = [];
-    let start = from;
-    while (start < to) {
-        periods.push({ from: start, to: JDate.getEndOf('D', start, timezone) });
-        start = JDate.getStartOf('D', moment
-            .default(start)
+    while (periods.length < days) {
+        const from = moment
+            .default(to)
             .tz(timezone || 'Asia/Tehran')
-            .add(1, 'day')
-            .toDate(), timezone);
+            .startOf('D')
+            .toDate();
+        periods.unshift({ from, to });
+        to = new Date(from.getTime() - 1);
     }
-    return { from, to, periods };
+    return { from: periods[0].from, to: periods[periods.length - 1].to, periods };
 };
 exports.periodDay = periodDay;
 //# sourceMappingURL=day.js.map

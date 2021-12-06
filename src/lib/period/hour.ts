@@ -10,23 +10,23 @@ export const periodHour = (hours: number, date?: Date, timezone?: string): Jalal
     if (!JDate.checkTimezone(timezone || '')) timezone = JDT.timezone();
     if (isNaN(hours) || hours < 1) throw new TypeError('Hours must be bigger than 0');
 
-    const to: Date = JDate.getEndOf('h', date, timezone);
-    const from: Date = JDate.getStartOf('h', new Date(to.getTime() - hours * 3600_000 + 1), timezone);
+    let to: Date = moment
+        .default(date)
+        .tz(timezone || 'Asia/Tehran')
+        .endOf('h')
+        .toDate();
 
     const periods: { from: Date; to: Date }[] = [];
-    let start: Date = from;
-    while (start < to) {
-        periods.push({ from: start, to: JDate.getEndOf('h', start, timezone) });
-        start = JDate.getStartOf(
-            'h',
-            moment
-                .default(start)
-                .tz(timezone || 'Asia/Tehran')
-                .add(1, 'hour')
-                .toDate(),
-            timezone,
-        );
+    while (periods.length < hours) {
+        const from: Date = moment
+            .default(to)
+            .tz(timezone || 'Asia/Tehran')
+            .startOf('h')
+            .toDate();
+        periods.unshift({ from, to });
+
+        to = new Date(from.getTime() - 1);
     }
 
-    return { from, to, periods };
+    return { from: periods[0].from, to: periods[periods.length - 1].to, periods };
 };

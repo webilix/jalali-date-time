@@ -25,22 +25,17 @@ const JDate = __importStar(require("../../script/date"));
 const JDT = __importStar(require("../../script/jdt"));
 const string_1 = require("../string");
 const days_in_month_1 = require("../days-in-month");
-const getTo = (date, timezone) => {
-    const to = JDate.getEndOf('D', date, timezone);
-    const day = (0, string_1.toString)(to, { timezone, format: 'D' });
-    const month = (0, string_1.toString)(to, { timezone, format: 'Y-M' });
+const gregorian_1 = require("../gregorian");
+const getLastDay = (date, timezone) => {
+    const month = (0, string_1.toString)(date, { timezone, format: 'Y-M' });
     const days = (0, days_in_month_1.daysInMonth)(month);
-    return JDate.getEndOf('D', new Date(to.getTime() + (days - +day) * 24 * 3600000), timezone);
+    const g = (0, gregorian_1.gregorian)(`${month}-${days}`).date;
+    return moment.default(new Date(g)).tz(timezone).endOf('D').toDate();
 };
 const getFirstDay = (date, timezone) => {
     const month = (0, string_1.toString)(date, { timezone, format: 'Y-M' });
-    const days = (0, days_in_month_1.daysInMonth)(month);
-    const last = moment
-        .default(date)
-        .tz(timezone || 'Asia/Tehran')
-        .subtract(days, 'day')
-        .toDate();
-    return new Date(last.getTime() + 1);
+    const g = (0, gregorian_1.gregorian)(`${month}-01`).date;
+    return moment.default(new Date(g)).tz(timezone).startOf('D').toDate();
 };
 const periodMonth = (months, date, timezone) => {
     date = date || new Date();
@@ -50,16 +45,14 @@ const periodMonth = (months, date, timezone) => {
         timezone = JDT.timezone();
     if (isNaN(months) || months < 1)
         throw new TypeError('Months must be bigger than 0');
-    const to = getTo(date, timezone || 'Asia/Tehran');
-    let from = getFirstDay(to, timezone || 'Asia/Tehran');
-    const periods = [{ from, to }];
-    for (let i = 1; i < months; i++) {
-        const last = new Date(from.getTime() - 1);
-        from = getFirstDay(last, timezone || 'Asia/Tehran');
-        periods.push({ from, to: last });
+    let to = getLastDay(date, timezone || 'Asia/Tehran');
+    const periods = [];
+    while (periods.length < months) {
+        const from = getFirstDay(to, timezone || 'Asia/Tehran');
+        periods.unshift({ from, to });
+        to = new Date(from.getTime() - 1);
     }
-    periods.reverse();
-    return { from, to, periods };
+    return { from: periods[0].from, to: periods[periods.length - 1].to, periods };
 };
 exports.periodMonth = periodMonth;
 //# sourceMappingURL=month.js.map
