@@ -6,7 +6,7 @@ import * as JDT from '../../script/jdt';
 
 const getFriday = (date: Date, timezone: string): Date => {
     date = moment.default(date).tz(timezone).endOf('D').toDate();
-    while (date.getDay() !== 5) {
+    while (moment.default(date).tz(timezone).weekday() !== 5) {
         date = moment
             .default(new Date(date.getTime() + 1))
             .tz(timezone)
@@ -19,7 +19,7 @@ const getFriday = (date: Date, timezone: string): Date => {
 
 const getSaturday = (date: Date, timezone: string): Date => {
     date = moment.default(date).tz(timezone).startOf('D').toDate();
-    while (date.getDay() !== 6) {
+    while (moment.default(date).tz(timezone).weekday() !== 6) {
         date = moment
             .default(new Date(date.getTime() - 1))
             .tz(timezone)

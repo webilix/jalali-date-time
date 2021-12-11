@@ -25,7 +25,7 @@ const JDate = __importStar(require("../../script/date"));
 const JDT = __importStar(require("../../script/jdt"));
 const getFriday = (date, timezone) => {
     date = moment.default(date).tz(timezone).endOf('D').toDate();
-    while (date.getDay() !== 5) {
+    while (moment.default(date).tz(timezone).weekday() !== 5) {
         date = moment
             .default(new Date(date.getTime() + 1))
             .tz(timezone)
@@ -36,7 +36,7 @@ const getFriday = (date, timezone) => {
 };
 const getSaturday = (date, timezone) => {
     date = moment.default(date).tz(timezone).startOf('D').toDate();
-    while (date.getDay() !== 6) {
+    while (moment.default(date).tz(timezone).weekday() !== 6) {
         date = moment
             .default(new Date(date.getTime() - 1))
             .tz(timezone)
