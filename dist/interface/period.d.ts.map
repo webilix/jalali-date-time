@@ -1,1 +1,0 @@
-{"version":3,"file":"period.d.ts","sourceRoot":"","sources":["../../src/interface/period.ts"],"names":[],"mappings":"AAAA,MAAM,WAAW,oBAAoB;IACjC,IAAI,EAAE,IAAI,CAAC;IACX,EAAE,EAAE,IAAI,CAAC;IACT,OAAO,EAAE;QACL,IAAI,EAAE,IAAI,CAAC;QACX,EAAE,EAAE,IAAI,CAAC;KACZ,EAAE,CAAC;CACP"}
