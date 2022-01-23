@@ -1,15 +1,12 @@
 import { JalaliDateTimePeriod } from '../..';
-import * as moment from 'moment-timezone';
 
 import * as JDate from '../../script/date';
 import * as JDT from '../../script/jdt';
 
-const getFriday = (date: Date, timezone: string): Date => {
-    date = moment.default(date).tz(timezone).endOf('D').toDate();
-    while (moment.default(date).tz(timezone).weekday() !== 5) {
-        date = moment
-            .default(new Date(date.getTime() + 1))
-            .tz(timezone)
+const getFriday = (date: Date, timezone?: string): Date => {
+    date = JDate.getMoment(date, timezone).endOf('D').toDate();
+    while (JDate.getMoment(date, timezone).weekday() !== 5) {
+        date = JDate.getMoment(new Date(date.getTime() + 1), timezone)
             .endOf('D')
             .toDate();
     }
@@ -17,12 +14,10 @@ const getFriday = (date: Date, timezone: string): Date => {
     return date;
 };
 
-const getSaturday = (date: Date, timezone: string): Date => {
-    date = moment.default(date).tz(timezone).startOf('D').toDate();
-    while (moment.default(date).tz(timezone).weekday() !== 6) {
-        date = moment
-            .default(new Date(date.getTime() - 1))
-            .tz(timezone)
+const getSaturday = (date: Date, timezone?: string): Date => {
+    date = JDate.getMoment(date, timezone).startOf('D').toDate();
+    while (JDate.getMoment(date, timezone).weekday() !== 6) {
+        date = JDate.getMoment(new Date(date.getTime() - 1), timezone)
             .startOf('D')
             .toDate();
     }
@@ -36,11 +31,11 @@ export const periodWeek = (weeks: number, date?: Date, timezone?: string): Jalal
     if (!JDate.checkTimezone(timezone || '')) timezone = JDT.timezone();
     if (isNaN(weeks) || weeks < 1) throw new TypeError('Weeks must be bigger than 0');
 
-    let to: Date = getFriday(date, timezone || 'Asia/Tehran');
+    let to: Date = getFriday(date, timezone);
 
     const periods: { from: Date; to: Date }[] = [];
     while (periods.length < weeks) {
-        const from: Date = getSaturday(to, timezone || 'Asia/Tehran');
+        const from: Date = getSaturday(to, timezone);
         periods.unshift({ from, to });
 
         to = new Date(from.getTime() - 1);

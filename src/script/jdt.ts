@@ -2,7 +2,6 @@ import { JalaliDateTimeOptions } from '../interface/options';
 import { JalaliDateTimeConfig } from '../interface/config';
 
 import * as JDate from './date';
-import * as moment from 'moment-timezone';
 
 let _default: JalaliDateTimeOptions = {};
 
@@ -71,7 +70,7 @@ const format = (format: string, check: string[]): string => {
 const string = (date: Date, config: JalaliDateTimeConfig, format: string): string => {
     if (!JDate.checkDate(date)) throw new TypeError('Invalid Date');
 
-    const value = moment.default(date).tz(config.timezone || 'Asia/Tehran');
+    const value = JDate.getMoment(date, config.timezone);
     const jalali = JDate.toJalali(JDate.toObject(value));
     return JDate.toString(jalali, format, config.locale || 'en');
 };

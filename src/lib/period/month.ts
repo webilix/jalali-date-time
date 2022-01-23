@@ -1,8 +1,8 @@
 import { JalaliDateTimePeriod } from '../../interface/period';
-import * as moment from 'moment-timezone';
 
 import * as JDate from '../../script/date';
 import * as JDT from '../../script/jdt';
+
 import { toString } from '../string';
 import { daysInMonth } from '../days-in-month';
 import { gregorian } from '../gregorian';
@@ -12,14 +12,14 @@ const getLastDay = (date: Date, timezone: string): Date => {
     const days: number = daysInMonth(month);
 
     const g: string = gregorian(`${month}-${days}`).date;
-    return moment.default(new Date(g)).tz(timezone).endOf('D').toDate();
+    return JDate.getMoment(new Date(g), timezone).endOf('D').toDate();
 };
 
 const getFirstDay = (date: Date, timezone: string): Date => {
     const month: string = toString(date, { timezone, format: 'Y-M' });
 
     const g: string = gregorian(`${month}-01`).date;
-    return moment.default(new Date(g)).tz(timezone).startOf('D').toDate();
+    return JDate.getMoment(new Date(g), timezone).startOf('D').toDate();
 };
 
 export const periodMonth = (months: number, date?: Date, timezone?: string): JalaliDateTimePeriod => {

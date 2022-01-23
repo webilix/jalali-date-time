@@ -26,6 +26,8 @@ const checkMonth = (month: string): boolean => {
     return true;
 };
 
+const getMoment = (date: Date, timezone?: string): moment.Moment => moment.default(date).tz(timezone || 'Asia/Tehran');
+
 const _week: string[] = ['شنبه', 'یک‌شنبه', 'دوشنبه', 'سه‌شنبه', 'چهارشنبه', 'پنج‌شنبه', 'جمعه'];
 const _month: string[] = [
     'فروردین',
@@ -180,4 +182,4 @@ const toString = (jalali: JalaliDateTimeObject, format: string, locale: string):
     return format;
 };
 
-export { checkDate, checkLocale, checkTimezone, checkMonth, toJalali, toGregorian, toObject, toString };
+export { checkDate, checkLocale, checkTimezone, checkMonth, getMoment, toJalali, toGregorian, toObject, toString };
