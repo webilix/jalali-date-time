@@ -1,0 +1,66 @@
+"use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.JalaliDateTime = void 0;
+const JDT = __importStar(require("./script/jdt"));
+const now_1 = require("./lib/now");
+const date_1 = require("./lib/date");
+const time_1 = require("./lib/time");
+const string_1 = require("./lib/string");
+const title_1 = require("./lib/title");
+const full_text_1 = require("./lib/full-text");
+const object_1 = require("./lib/object");
+const days_in_month_1 = require("./lib/days-in-month");
+const calendar_1 = require("./lib/calendar");
+const gregorian_1 = require("./lib/gregorian");
+const timezones_1 = require("./lib/timezones");
+const day_1 = require("./lib/next/day");
+const month_1 = require("./lib/next/month");
+const year_1 = require("./lib/next/year");
+const hour_1 = require("./lib/period/hour");
+const day_2 = require("./lib/period/day");
+const week_1 = require("./lib/period/week");
+const month_2 = require("./lib/period/month");
+const JalaliDateTime = (options) => {
+    JDT.init(options);
+    return {
+        now: now_1.now,
+        toDate: date_1.toDate,
+        toTime: time_1.toTime,
+        toString: string_1.toString,
+        toTitle: title_1.toTitle,
+        toFullText: full_text_1.toFullText,
+        toObject: object_1.toObject,
+        daysInMonth: days_in_month_1.daysInMonth,
+        calendar: calendar_1.calendar,
+        gregorian: gregorian_1.gregorian,
+        timezones: timezones_1.timezones,
+        nextDay: day_1.nextDay,
+        nextMonth: month_1.nextMonth,
+        nextYear: year_1.nextYear,
+        periodHour: hour_1.periodHour,
+        periodDay: day_2.periodDay,
+        periodWeek: week_1.periodWeek,
+        periodMonth: month_2.periodMonth,
+    };
+};
+exports.JalaliDateTime = JalaliDateTime;
+//# sourceMappingURL=index.js.map
