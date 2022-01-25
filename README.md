@@ -617,11 +617,11 @@ Specific days in next month according to specific date in Jalali calendar
 
 **Parameters:**
 
-| Name     | Type   | Required | Description                         |
-| -------- | ------ | -------- | ----------------------------------- |
-| type     | String | Yes      | Result type: 'FIRST', 'LAST', 'DAY' |
-| date     | Date   | No       | Date Value                          |
-| timezone | String | No       | Timezone Value                      |
+| Name     | Type           | Required | Description                                   |
+| -------- | -------------- | -------- | --------------------------------------------- |
+| type     | String, number | Yes      | Result type: 'FIRST', 'LAST', number (1 - 31) |
+| date     | Date           | No       | Date Value                                    |
+| timezone | String         | No       | Timezone Value                                |
 
 **Return Value (Date):**
 

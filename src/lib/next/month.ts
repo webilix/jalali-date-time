@@ -5,11 +5,12 @@ import { toString } from '../string';
 import { daysInMonth } from '../days-in-month';
 import { gregorian } from '../gregorian';
 
-export const nextMonth = (type: 'FIRST' | 'LAST' | 'DAY', date?: Date, timezone?: string): Date => {
+export const nextMonth = (type: 'FIRST' | 'LAST' | number, date?: Date, timezone?: string): Date => {
     date = date || new Date();
     if (!JDate.checkDate(date)) throw new TypeError('Invalid Date');
     if (!JDate.checkTimezone(timezone || '')) timezone = JDT.timezone();
-    if (!['FIRST', 'LAST', 'DAY'].includes(type)) throw new TypeError('Change type must be FIRST, LAST or DAY');
+    if (!['FIRST', 'LAST'].includes(type.toString()) && (typeof type !== 'number' || type < 1 || type > 31))
+        throw new TypeError('Type must be FIRST, LAST or number between 1, 31');
 
     let y: number = +toString(date, { timezone, format: 'Y' });
     let m: number = +toString(date, { timezone, format: 'M' }) + 1;
@@ -30,8 +31,8 @@ export const nextMonth = (type: 'FIRST' | 'LAST' | 'DAY', date?: Date, timezone?
             gDate = gregorian(`${month}-${days}`).date;
             break;
 
-        case 'DAY':
-            const day: number = +toString(date, { timezone, format: 'D' });
+        default:
+            const day: number = type;
             gDate = gregorian(`${month}-${day.toString().padStart(2, '0')}`).date;
             while (+toString(JDate.getMoment(new Date(gDate), timezone).toDate(), { format: 'D' }) !== day) {
                 m++;

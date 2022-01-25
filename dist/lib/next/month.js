@@ -31,8 +31,8 @@ const nextMonth = (type, date, timezone) => {
         throw new TypeError('Invalid Date');
     if (!JDate.checkTimezone(timezone || ''))
         timezone = JDT.timezone();
-    if (!['FIRST', 'LAST', 'DAY'].includes(type))
-        throw new TypeError('Change type must be FIRST, LAST or DAY');
+    if (!['FIRST', 'LAST'].includes(type.toString()) && (typeof type !== 'number' || type < 1 || type > 31))
+        throw new TypeError('Type must be FIRST, LAST or number between 1, 31');
     let y = +(0, string_1.toString)(date, { timezone, format: 'Y' });
     let m = +(0, string_1.toString)(date, { timezone, format: 'M' }) + 1;
     if (m >= 13) {
@@ -49,8 +49,8 @@ const nextMonth = (type, date, timezone) => {
             const days = (0, days_in_month_1.daysInMonth)(month);
             gDate = (0, gregorian_1.gregorian)(`${month}-${days}`).date;
             break;
-        case 'DAY':
-            const day = +(0, string_1.toString)(date, { timezone, format: 'D' });
+        default:
+            const day = type;
             gDate = (0, gregorian_1.gregorian)(`${month}-${day.toString().padStart(2, '0')}`).date;
             while (+(0, string_1.toString)(JDate.getMoment(new Date(gDate), timezone).toDate(), { format: 'D' }) !== day) {
                 m++;
