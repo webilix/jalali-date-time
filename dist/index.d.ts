@@ -18,7 +18,7 @@ export declare const JalaliDateTime: (options?: JalaliDateTimeOptions | undefine
     gregorian: (jalali: string) => import("./interface/gregorian").JalaliDateTimeGregorian;
     timezones: () => string[];
     nextDay: (day: number, date?: Date | undefined, timezone?: string | undefined) => Date;
-    nextMonth: (type: number | "FIRST" | "LAST", date?: Date | undefined, timezone?: string | undefined) => Date;
+    nextMonth: (day: number | "FIRST" | "LAST", date?: Date | undefined, timezone?: string | undefined) => Date;
     nextYear: (date?: Date | undefined, timezone?: string | undefined) => Date;
     periodHour: (hours: number, date?: Date | undefined, timezone?: string | undefined) => import("./interface/period").JalaliDateTimePeriod;
     periodDay: (days: number, date?: Date | undefined, timezone?: string | undefined) => import("./interface/period").JalaliDateTimePeriod;

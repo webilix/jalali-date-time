@@ -5,34 +5,40 @@ import { toString } from '../string';
 import { daysInMonth } from '../days-in-month';
 import { gregorian } from '../gregorian';
 
-export const nextMonth = (type: 'FIRST' | 'LAST' | number, date?: Date, timezone?: string): Date => {
+export const nextMonth = (day: 'FIRST' | 'LAST' | number, date?: Date, timezone?: string): Date => {
     date = date || new Date();
     if (!JDate.checkDate(date)) throw new TypeError('Invalid Date');
     if (!JDate.checkTimezone(timezone || '')) timezone = JDT.timezone();
-    if (!['FIRST', 'LAST'].includes(type.toString()) && (typeof type !== 'number' || type < 1 || type > 31))
+    if (!['FIRST', 'LAST'].includes(day.toString()) && (typeof day !== 'number' || day < 1 || day > 31))
         throw new TypeError('Type must be FIRST, LAST or number between 1, 31');
 
+    const d: number = +toString(date, { timezone, format: 'D' });
     let y: number = +toString(date, { timezone, format: 'Y' });
-    let m: number = +toString(date, { timezone, format: 'M' }) + 1;
+    let m: number = +toString(date, { timezone, format: 'M' });
+
+    const cMonth: string = `${y.toString()}-${m.toString().padStart(2, '0')}`;
+    const cDays: number = daysInMonth(cMonth);
+
+    m++;
     if (m >= 13) {
         y++;
         m = 1;
     }
+    const nMonth: string = `${y.toString()}-${m.toString().padStart(2, '0')}`;
+    const nDays: number = daysInMonth(nMonth);
 
-    const month: string = `${y.toString()}-${m.toString().padStart(2, '0')}`;
     let gDate: string;
-    switch (type) {
+    switch (day) {
         case 'FIRST':
-            gDate = gregorian(`${month}-01`).date;
+            gDate = gregorian(`${nMonth}-01`).date;
             break;
 
         case 'LAST':
-            const days: number = daysInMonth(month);
-            gDate = gregorian(`${month}-${days}`).date;
+            gDate = d >= cDays ? gregorian(`${nMonth}-${nDays}`).date : gregorian(`${cMonth}-${cDays}`).date;
             break;
 
         default:
-            const day: number = type;
+            const month: string = d >= day ? nMonth : cMonth;
             gDate = gregorian(`${month}-${day.toString().padStart(2, '0')}`).date;
             while (+toString(JDate.getMoment(new Date(gDate), timezone).toDate(), { format: 'D' }) !== day) {
                 m++;
