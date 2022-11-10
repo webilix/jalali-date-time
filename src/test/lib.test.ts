@@ -42,7 +42,7 @@ test('daysInMonth', () => {
 });
 
 test('gregorian', () => {
-    const test = jalali.gregorian('1358-03-13 00:00:00 GMT+4:30');
+    const test = jalali.gregorian('1358-03-13');
     expect(test).toStrictEqual({ year: 1979, month: 6, day: 3, date: '1979-06-03' });
 });
 
@@ -52,22 +52,22 @@ test('timezones', () => {
 });
 
 test('nextDay', () => {
-    const date = new Date(jalali.gregorian('1403-12-30 00:00:00 GMT+4:30').date);
-    const test = jalali.nextDay(0, date);
-    expect(test.getTime()).toBe(1742671800000);
+    const date = new Date(jalali.gregorian('1358-03-13').date);
+    const test = jalali.toDate(jalali.nextDay(0, date));
+    expect(test).toBe('1358-03-20');
 });
 
 test('nextMonth', () => {
-    const date = new Date(jalali.gregorian('1403-12-30 00:00:00 GMT+4:30').date);
-    const first = jalali.nextMonth('FIRST', date);
-    const last = jalali.nextMonth('LAST', date);
+    const date = new Date(jalali.gregorian('1358-03-13').date);
+    const first = jalali.toDate(jalali.nextMonth('FIRST', date));
+    const last = jalali.toDate(jalali.nextMonth('LAST', date));
 
-    expect(first.getTime()).toBe(1742502600000);
-    expect(last.getTime()).toBe(1745091000000);
+    expect(first).toBe('1358-04-01');
+    expect(last).toBe('1358-03-31');
 });
 
 test('nextYear', () => {
-    const date = new Date(jalali.gregorian('1403-12-30 00:00:00 GMT+4:30').date);
+    const date = new Date(jalali.gregorian('1403-12-30').date);
     const test = jalali.nextYear(date);
     expect(test.getTime()).toBe(1900182600000);
 });

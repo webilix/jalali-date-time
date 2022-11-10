@@ -1,3 +1,3 @@
 import { JalaliDateTimePeriod } from '../..';
-export declare const periodWeek: (weeks: number, date?: Date | undefined, timezone?: string | undefined) => JalaliDateTimePeriod;
+export declare const periodWeek: (weeks: number, date?: Date, timezone?: string) => JalaliDateTimePeriod;
 //# sourceMappingURL=week.d.ts.map

@@ -1,2 +1,2 @@
-export declare const nextDay: (day: number, date?: Date | undefined, timezone?: string | undefined) => Date;
+export declare const nextDay: (day: number, date?: Date, timezone?: string) => Date;
 //# sourceMappingURL=day.d.ts.map

@@ -7,7 +7,7 @@ declare const type: {
     title: string;
     fullText: string;
 };
-declare const init: (options?: JalaliDateTimeOptions | undefined) => JalaliDateTimeOptions;
+declare const init: (options?: JalaliDateTimeOptions) => JalaliDateTimeOptions;
 declare const check: (config: JalaliDateTimeConfig, format: string) => JalaliDateTimeConfig;
 declare const timezone: () => string;
 declare const format: (format: string, check: string[]) => string;

@@ -5,7 +5,7 @@ export { JalaliDateTimeCalendar, JalaliDateTimeCalendarDay } from './interface/c
 export { JalaliDateTimeGregorian } from './interface/gregorian';
 export { JalaliDateTimePeriod } from './interface/period';
 import { JalaliDateTimeOptions } from './interface/options';
-export declare const JalaliDateTime: (options?: JalaliDateTimeOptions | undefined) => {
+export declare const JalaliDateTime: (options?: JalaliDateTimeOptions) => {
     now: (config?: import("./interface/config").JalaliDateTimeConfig | undefined) => string;
     toDate: (date: Date, config?: import("./interface/config").JalaliDateTimeConfig | undefined) => string;
     toTime: (date: Date, config?: import("./interface/config").JalaliDateTimeConfig | undefined) => string;
