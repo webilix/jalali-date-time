@@ -1,4 +1,4 @@
-# jalali-date-time
+# @webilix/jalali-date-time
 
 Lightweight library for parsing and formating Jalali date with timezone functionality
 
@@ -37,7 +37,7 @@ Lightweight library for parsing and formating Jalali date with timezone function
 ## Installation
 
 ```bash
-npm install --save jalali-date-time
+npm install --save @webilix/jalali-date-time
 ```
 
 ---
@@ -56,7 +56,7 @@ const config = {
 };
 
 // Load modules
-const JalaliDateTime = require('jalali-date-time');
+const JalaliDateTime = require('@webilix/jalali-date-time');
 const jalali = JalaliDateTime(config);
 ```
 
@@ -64,7 +64,7 @@ OR
 
 ```javascript
 // inline configurations
-const jalali = require('jalali-date-time')({
+const jalali = require('@webilix/jalali-date-time')({
     timezone: 'Asia/Tehran',
     locale: 'en',
     fullTextFormat: 'W, D N Y H:I:S',
@@ -78,7 +78,7 @@ OR
 
 ```javascript
 // Without configurations / using default values
-const jalali = require('jalali-date-time')();
+const jalali = require('@webilix/jalali-date-time')();
 ```
 
 ---
@@ -97,7 +97,7 @@ const config = {
 };
 
 // Load modules
-import { JalaliDateTime } from 'jalali-date-time';
+import { JalaliDateTime } from '@webilix/jalali-date-time';
 const jalali = JalaliDateTime(config);
 ```
 
@@ -105,7 +105,7 @@ OR
 
 ```javascript
 // Without configurations / using default values
-import { JalaliDateTime } from 'jalali-date-time';
+import { JalaliDateTime } from '@webilix/jalali-date-time';
 const jalali = JalaliDateTime();
 ```
 
