@@ -27,6 +27,7 @@ import { periodHour } from './lib/period/hour';
 import { periodDay } from './lib/period/day';
 import { periodWeek } from './lib/period/week';
 import { periodMonth } from './lib/period/month';
+import { periodYear } from './lib/period/year';
 
 import { JalaliDateTimeOptions } from './interface/options';
 export const JalaliDateTime = (options?: JalaliDateTimeOptions) => {
@@ -53,5 +54,6 @@ export const JalaliDateTime = (options?: JalaliDateTimeOptions) => {
         periodDay,
         periodWeek,
         periodMonth,
+        periodYear,
     };
 };

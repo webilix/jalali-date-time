@@ -28,6 +28,7 @@ Lightweight library for parsing and formating Jalali date with timezone function
     -   [periodDay](#periodday)
     -   [periodWeek](#periodweek)
     -   [periodMonth](#periodmonth)
+    -   [periodYear](#periodyear)
 -   [Custom Types](#custom-types)
 -   [Errors](#errors)
 -   [Tests](#tests)
@@ -809,6 +810,41 @@ const result = jalali.periodMonth(4);
  *        { from: 2021-09-22T20:30:00.000Z, to: 2021-10-22T20:29:59.999Z }
  *      ]
  *    }
+ */
+```
+
+### [periodYear](#periodyear)
+
+Yearly (jalali year) date/time period values based of number of years
+
+**Parameters:**
+
+| Name     | Type   | Required | Description     |
+| -------- | ------ | -------- | --------------- |
+| years    | Number | Yes      | Nomber of years |
+| date     | Date   | No       | End Date Value  |
+| timezone | String | No       | Timezone Value  |
+
+**Return Value ([Period Object](#period-object)):**
+
+If years value is NaN or less than 1 then **TypeError** will thrown.
+
+If date parameter is not a valid Javascript Date then **TypeError** will thrown.
+
+**Sample:**
+
+```javascript
+const result = jalali.periodYear(4);
+/*   {
+ *      from: 2019-03-20T20:30:00.000Z,
+ *      to: 2023-03-20T20:29:59.999Z,
+ *      periods: [
+ *        { from: 2019-03-20T20:30:00.000Z, to: 2020-03-19T20:29:59.999Z },
+ *        { from: 2020-03-19T20:30:00.000Z, to: 2021-03-20T20:29:59.999Z },
+ *        { from: 2021-03-20T20:30:00.000Z, to: 2022-03-20T20:29:59.999Z },
+ *        { from: 2022-03-20T20:30:00.000Z, to: 2023-03-20T20:29:59.999Z }
+ *      ]
+ *   }
  */
 ```
 

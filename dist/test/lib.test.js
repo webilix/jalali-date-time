@@ -73,4 +73,10 @@ test('periodMonth', () => {
     const test = jalali.periodMonth(12);
     expect(test.periods.length).toBe(12);
 });
+test('periodYear', () => {
+    const date = new Date();
+    const test = jalali.periodYear(12, date);
+    expect(test.periods.length).toBe(12);
+    expect(+jalali.toString(test.from, { format: 'Y' })).toBe(+jalali.toString(date, { format: 'Y' }) - 11);
+});
 //# sourceMappingURL=lib.test.js.map

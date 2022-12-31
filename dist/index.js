@@ -43,6 +43,7 @@ const hour_1 = require("./lib/period/hour");
 const day_2 = require("./lib/period/day");
 const week_1 = require("./lib/period/week");
 const month_2 = require("./lib/period/month");
+const year_2 = require("./lib/period/year");
 const JalaliDateTime = (options) => {
     JDT.init(options);
     return {
@@ -64,6 +65,7 @@ const JalaliDateTime = (options) => {
         periodDay: day_2.periodDay,
         periodWeek: week_1.periodWeek,
         periodMonth: month_2.periodMonth,
+        periodYear: year_2.periodYear,
     };
 };
 exports.JalaliDateTime = JalaliDateTime;
