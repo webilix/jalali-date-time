@@ -36,6 +36,19 @@ test('toObject', () => {
     expect(test).toStrictEqual({ week: 1, year: 1358, month: 3, day: 13, hour: 12, minute: 0, second: 0 });
 });
 
+test('daysOfWeek', () => {
+    const test = jalali.daysOfWeek(new Date('1979-06-03'));
+    expect(test).toBe(1);
+
+    const index: number[] = [...Array(7).keys()];
+    const days: number[] = index.map((i: number) => {
+        const date: Date = new Date(new Date().getTime() + i * 24 * 3600 * 1000);
+        return jalali.daysOfWeek(date);
+    });
+
+    days.forEach((day: number) => expect(index.includes(day)).toBe(true));
+});
+
 test('daysInMonth', () => {
     const test = jalali.daysInMonth('1391-12');
     expect(test).toBe(30);
