@@ -13,6 +13,7 @@ export declare const JalaliDateTime: (options?: JalaliDateTimeOptions) => {
     toTitle: (date: Date, config?: import("./interface/config").JalaliDateTimeConfig | undefined) => string;
     toFullText: (date: Date, config?: import("./interface/config").JalaliDateTimeConfig | undefined) => string;
     toObject: (date: Date, timezone?: string | undefined) => import("./interface/object").JalaliDateTimeObject;
+    daysOfWeek: (date?: Date | undefined, timezone?: string | undefined) => number;
     daysInMonth: (month?: string | undefined) => number;
     calendar: (month?: string | undefined) => import("./interface/calendar").JalaliDateTimeCalendar;
     gregorian: (jalali: string) => import("./interface/gregorian").JalaliDateTimeGregorian;
