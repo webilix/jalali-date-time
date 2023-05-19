@@ -30,13 +30,13 @@ test('toObject', () => {
     const test = jalali.toObject(new Date('1979-06-03 12:00:00 GMT+4:30'));
     expect(test).toStrictEqual({ week: 1, year: 1358, month: 3, day: 13, hour: 12, minute: 0, second: 0 });
 });
-test('daysOfWeek', () => {
-    const test = jalali.daysOfWeek(new Date('1979-06-03'));
+test('dayOfWeek', () => {
+    const test = jalali.dayOfWeek(new Date('1979-06-03'));
     expect(test).toBe(1);
     const index = [...Array(7).keys()];
     const days = index.map((i) => {
         const date = new Date(new Date().getTime() + i * 24 * 3600 * 1000);
-        return jalali.daysOfWeek(date);
+        return jalali.dayOfWeek(date);
     });
     days.forEach((day) => expect(index.includes(day)).toBe(true));
 });

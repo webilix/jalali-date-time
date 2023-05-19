@@ -55,7 +55,7 @@ const JalaliDateTime = (options) => {
         toTitle: title_1.toTitle,
         toFullText: full_text_1.toFullText,
         toObject: object_1.toObject,
-        daysOfWeek: day_of_week_1.daysOfWeek,
+        dayOfWeek: day_of_week_1.dayOfWeek,
         daysInMonth: days_in_month_1.daysInMonth,
         calendar: calendar_1.calendar,
         gregorian: gregorian_1.gregorian,

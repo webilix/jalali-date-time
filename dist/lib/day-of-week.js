@@ -23,10 +23,10 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.daysOfWeek = void 0;
+exports.dayOfWeek = void 0;
 const JDate = __importStar(require("../script/date"));
 const JDT = __importStar(require("../script/jdt"));
-const daysOfWeek = (date, timezone) => {
+const dayOfWeek = (date, timezone) => {
     date = date || new Date();
     if (!JDate.checkDate(date))
         throw new TypeError('Invalid Date');
@@ -35,5 +35,5 @@ const daysOfWeek = (date, timezone) => {
     const moment = JDate.getMoment(date, timezone).endOf('D').toDate();
     return (moment.getDay() + 1) % 7;
 };
-exports.daysOfWeek = daysOfWeek;
+exports.dayOfWeek = dayOfWeek;
 //# sourceMappingURL=day-of-week.js.map
