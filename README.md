@@ -17,6 +17,7 @@ Lightweight library for parsing and formating Jalali date with timezone function
     -   [toTitle](#totitle)
     -   [toFullText](#tofulltext)
     -   [toObject](#toobject)
+    -   [dayOfWeek](#dayofweek)
     -   [daysInMonth](#daysinmonth)
     -   [calendar](#calendar)
     -   [gregorian](#gregorian)
@@ -408,6 +409,29 @@ const result = jalali.toObject(new Date());
  *      second: 45
  *   }
  */
+```
+
+### [dayOfWeek](#dayofweek)
+
+Week day number in jalali calendar
+
+Starts with Saturday as 0 and ends with Friday as 6
+
+**Parameters:**
+
+| Name     | Type   | Required | Description    |
+| -------- | ------ | -------- | -------------- |
+| date     | Date   | No       | Date Value     |
+| timezone | String | No       | Timezone Value |
+
+**Return Value (number, 0 - 6):**
+
+If date parameter is not a valid Javascript Date then **TypeError** will thrown.
+
+**Sample:**
+
+```javascript
+const result = jalali.dayOfWeek();
 ```
 
 ### [daysInMonth](#daysinmonth)
