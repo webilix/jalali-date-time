@@ -1,6 +1,6 @@
 {
     "name": "@webilix/jalali-date-time",
-    "version": "1.2.4",
+    "version": "1.2.5",
     "description": "Lightweight library for parsing and formating Jalali date with timezone functionality",
     "main": "./dist/index.js",
     "repository": {
