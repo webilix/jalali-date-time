@@ -22,11 +22,18 @@ const getFirstDay = (date: Date, timezone: string): Date => {
     return JDate.getMoment(new Date(g), timezone).startOf('D').toDate();
 };
 
-export const periodMonth = (months: number, date?: Date, timezone?: string): JalaliDateTimePeriod => {
-    date = date || new Date();
-    if (!JDate.checkDate(date)) throw new TypeError('Invalid Date');
-    if (!JDate.checkTimezone(timezone || '')) timezone = JDT.timezone();
+export function periodMonth(months: number): JalaliDateTimePeriod;
+export function periodMonth(months: number, date: Date): JalaliDateTimePeriod;
+export function periodMonth(months: number, timezone: string): JalaliDateTimePeriod;
+export function periodMonth(months: number, date: Date, timezone: string): JalaliDateTimePeriod;
+export function periodMonth(months: number, arg1?: any, arg2?: any): JalaliDateTimePeriod {
     if (isNaN(months) || months < 1) throw new TypeError('Months must be bigger than 0');
+
+    const date: Date = arg1 && JDate.checkDate(arg1) ? arg1 : new Date();
+    if (!JDate.checkDate(date)) throw new TypeError('Invalid Date');
+
+    let timezone: string = arg1 && typeof arg1 === 'string' ? arg1 : arg2 || '';
+    if (!JDate.checkTimezone(timezone)) timezone = JDT.timezone();
 
     let to: Date = getLastDay(date, timezone || 'Asia/Tehran');
 
@@ -39,4 +46,4 @@ export const periodMonth = (months: number, date?: Date, timezone?: string): Jal
     }
 
     return { from: periods[0].from, to: periods[periods.length - 1].to, periods };
-};
+}

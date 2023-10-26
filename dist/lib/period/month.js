@@ -40,14 +40,15 @@ const getFirstDay = (date, timezone) => {
     const g = (0, gregorian_1.gregorian)(`${month}-01`).date;
     return JDate.getMoment(new Date(g), timezone).startOf('D').toDate();
 };
-const periodMonth = (months, date, timezone) => {
-    date = date || new Date();
-    if (!JDate.checkDate(date))
-        throw new TypeError('Invalid Date');
-    if (!JDate.checkTimezone(timezone || ''))
-        timezone = JDT.timezone();
+function periodMonth(months, arg1, arg2) {
     if (isNaN(months) || months < 1)
         throw new TypeError('Months must be bigger than 0');
+    const date = arg1 && JDate.checkDate(arg1) ? arg1 : new Date();
+    if (!JDate.checkDate(date))
+        throw new TypeError('Invalid Date');
+    let timezone = arg1 && typeof arg1 === 'string' ? arg1 : arg2 || '';
+    if (!JDate.checkTimezone(timezone))
+        timezone = JDT.timezone();
     let to = getLastDay(date, timezone || 'Asia/Tehran');
     const periods = [];
     while (periods.length < months) {
@@ -56,6 +57,6 @@ const periodMonth = (months, date, timezone) => {
         to = new Date(from.getTime() - 1);
     }
     return { from: periods[0].from, to: periods[periods.length - 1].to, periods };
-};
+}
 exports.periodMonth = periodMonth;
 //# sourceMappingURL=month.js.map
