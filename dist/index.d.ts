@@ -5,6 +5,7 @@ export { JalaliDateTimeCalendar, JalaliDateTimeCalendarDay } from './interface/c
 export { JalaliDateTimeGregorian } from './interface/gregorian';
 export { JalaliDateTimePeriod } from './interface/period';
 import { toDate } from './lib/date';
+import { toFullText } from './lib/full-text';
 import { dayOfWeek } from './lib/day-of-week';
 import { daysInMonth } from './lib/days-in-month';
 import { calendar } from './lib/calendar';
@@ -23,7 +24,7 @@ export declare const JalaliDateTime: (options?: JalaliDateTimeOptions) => {
     toTime: (date: Date, config?: import("./interface/config").JalaliDateTimeConfig | undefined) => string;
     toString: (date: Date, config?: import("./interface/config").JalaliDateTimeConfig | undefined) => string;
     toTitle: (date: Date, config?: import("./interface/config").JalaliDateTimeConfig | undefined) => string;
-    toFullText: (date: Date, config?: import("./interface/config").JalaliDateTimeConfig | undefined) => string;
+    toFullText: typeof toFullText;
     toObject: (date: Date, timezone?: string | undefined) => import("./interface/object").JalaliDateTimeObject;
     dayOfWeek: typeof dayOfWeek;
     daysInMonth: typeof daysInMonth;
