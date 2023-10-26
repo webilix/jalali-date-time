@@ -29,7 +29,7 @@ const string_1 = require("./string");
 const gregorian_1 = require("./gregorian");
 function daysInMonth(month) {
     month = month || (0, string_1.toString)(new Date(), { format: 'Y-M' });
-    if (!JDate.checkMonth(month))
+    if (!JDate.isMonth(month))
         throw new TypeError('Invalid Month');
     let daysInMonth = 31;
     const jalaliMonth = Number(month.substr(5, 2));

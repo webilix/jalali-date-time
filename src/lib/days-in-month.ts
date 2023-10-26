@@ -7,7 +7,7 @@ export function daysInMonth(): number;
 export function daysInMonth(month: string): number;
 export function daysInMonth(month?: string): number {
     month = month || toString(new Date(), { format: 'Y-M' });
-    if (!JDate.checkMonth(month)) throw new TypeError('Invalid Month');
+    if (!JDate.isMonth(month)) throw new TypeError('Invalid Month');
 
     let daysInMonth: number = 31;
     const jalaliMonth: number = Number(month.substr(5, 2));

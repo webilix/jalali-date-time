@@ -23,21 +23,15 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.toString = exports.toObject = exports.toGregorian = exports.toJalali = exports.getMoment = exports.checkMonth = exports.checkTimezone = exports.checkLocale = exports.checkDate = void 0;
+exports.toString = exports.toObject = exports.toGregorian = exports.toJalali = exports.getMoment = exports.isMonth = exports.isTimezone = exports.isLocale = exports.isDate = void 0;
 const moment = __importStar(require("moment-timezone"));
-const checkDate = (date) => {
-    return Object.prototype.toString.call(date) === '[object Date]';
-};
-exports.checkDate = checkDate;
-const checkLocale = (locale) => {
-    return ['EN', 'FA'].indexOf(locale.toUpperCase()) !== -1;
-};
-exports.checkLocale = checkLocale;
-const checkTimezone = (timezone) => {
-    return moment.tz.names().indexOf(timezone) !== -1;
-};
-exports.checkTimezone = checkTimezone;
-const checkMonth = (month) => {
+const isDate = (date) => Object.prototype.toString.call(date) === '[object Date]';
+exports.isDate = isDate;
+const isLocale = (locale) => ['EN', 'FA'].indexOf(locale.toUpperCase()) !== -1;
+exports.isLocale = isLocale;
+const isTimezone = (timezone) => moment.tz.names().indexOf(timezone) !== -1;
+exports.isTimezone = isTimezone;
+const isMonth = (month) => {
     if (month.length !== 7 || month.indexOf('-') !== 4)
         return false;
     const [yString, mString] = month.split('-');
@@ -48,7 +42,7 @@ const checkMonth = (month) => {
         return false;
     return true;
 };
-exports.checkMonth = checkMonth;
+exports.isMonth = isMonth;
 const getMoment = (date, timezone) => moment.default(date).tz(timezone || 'Asia/Tehran');
 exports.getMoment = getMoment;
 const _week = ['شنبه', 'یک‌شنبه', 'دوشنبه', 'سه‌شنبه', 'چهارشنبه', 'پنج‌شنبه', 'جمعه'];

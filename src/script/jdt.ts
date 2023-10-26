@@ -16,8 +16,8 @@ const type = {
 const init = (options?: JalaliDateTimeOptions): JalaliDateTimeOptions => {
     if (options === undefined) options = {};
 
-    if (options.timezone === undefined || !JDate.checkTimezone(options.timezone)) options.timezone = 'Asia/Tehran';
-    if (options.locale === undefined || !JDate.checkLocale(options.locale)) options.locale = 'en';
+    if (options.timezone === undefined || !JDate.isTimezone(options.timezone)) options.timezone = 'Asia/Tehran';
+    if (options.locale === undefined || !JDate.isLocale(options.locale)) options.locale = 'en';
     if (options.fullTextFormat === undefined) options.fullTextFormat = 'W, D N Y H:I:S';
     if (options.titleFormat === undefined) options.titleFormat = 'W, D N Y';
     if (options.dateFormat === undefined) options.dateFormat = 'Y-M-D';
@@ -68,7 +68,7 @@ const format = (format: string, check: string[]): string => {
 };
 
 const string = (date: Date, config: JalaliDateTimeConfig, format: string): string => {
-    if (!JDate.checkDate(date)) throw new TypeError('Invalid Date');
+    if (!JDate.isDate(date)) throw new TypeError('Invalid Date');
 
     const value = JDate.getMoment(date, config.timezone);
     const jalali = JDate.toJalali(JDate.toObject(value));
@@ -76,12 +76,12 @@ const string = (date: Date, config: JalaliDateTimeConfig, format: string): strin
 };
 
 const date_timezone = (arg1: any, arg2: any): { date: Date; timezone: string } => {
-    const date: Date = arg1 && JDate.checkDate(arg1) ? arg1 : new Date();
-    if (!JDate.checkDate(date)) throw new TypeError('Invalid Date');
+    const date: Date = arg1 && JDate.isDate(arg1) ? arg1 : new Date();
+    if (!JDate.isDate(date)) throw new TypeError('Invalid Date');
 
     const tz: string = arg1 && typeof arg1 === 'string' ? arg1 : arg2 || '';
 
-    return { date, timezone: JDate.checkTimezone(tz) ? tz : timezone() };
+    return { date, timezone: JDate.isTimezone(tz) ? tz : timezone() };
 };
 
 export { type, init, check, timezone, format, string, date_timezone };

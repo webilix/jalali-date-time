@@ -31,7 +31,7 @@ const date_1 = require("./date");
 const full_text_1 = require("./full-text");
 function calendar(month) {
     month = month || (0, string_1.toString)(new Date(), { format: 'Y-M' });
-    if (!JDate.checkMonth(month))
+    if (!JDate.isMonth(month))
         throw new TypeError('Invalid Month');
     const gDate = (0, gregorian_1.gregorian)(month + '-01').date;
     const cDate = new Date(gDate + 'T12:00:00');

@@ -25,35 +25,35 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const JDate = __importStar(require("../script/date"));
 test('JDate: check date (TRUE)', () => {
-    const test = JDate.checkDate(new Date());
+    const test = JDate.isDate(new Date());
     expect(test).toBe(true);
 });
 test('JDate: check date (FALSE)', () => {
-    const test = eval('JDate.checkDate()');
+    const test = eval('JDate.isDate()');
     expect(test).toBe(false);
 });
 test('JDate: check locale (TRUE)', () => {
-    const test = JDate.checkLocale('Fa');
+    const test = JDate.isLocale('Fa');
     expect(test).toBe(true);
 });
 test('JDate: check locale (FALSE)', () => {
-    const test = JDate.checkLocale('Fn');
+    const test = JDate.isLocale('Fn');
     expect(test).toBe(false);
 });
 test('JDate: check timezone (TRUE)', () => {
-    const test = JDate.checkTimezone('Asia/Tehran');
+    const test = JDate.isTimezone('Asia/Tehran');
     expect(test).toBe(true);
 });
 test('JDate: check timezone (FALSE)', () => {
-    const test = JDate.checkTimezone('Asian/Tehran');
+    const test = JDate.isTimezone('Asian/Tehran');
     expect(test).toBe(false);
 });
 test('JDate: check month (TRUE)', () => {
-    const test = JDate.checkMonth('1398-01');
+    const test = JDate.isMonth('1398-01');
     expect(test).toBe(true);
 });
 test('JDate: check month (FALSE)', () => {
-    const test = JDate.checkMonth('1398-21');
+    const test = JDate.isMonth('1398-21');
     expect(test).toBe(false);
 });
 test('JDate: toJalali', () => {

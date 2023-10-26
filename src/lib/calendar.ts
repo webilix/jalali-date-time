@@ -10,7 +10,7 @@ export function calendar(): JalaliDateTimeCalendar;
 export function calendar(month: string): JalaliDateTimeCalendar;
 export function calendar(month?: string): JalaliDateTimeCalendar {
     month = month || toString(new Date(), { format: 'Y-M' });
-    if (!JDate.checkMonth(month)) throw new TypeError('Invalid Month');
+    if (!JDate.isMonth(month)) throw new TypeError('Invalid Month');
 
     const gDate: string = gregorian(month + '-01').date;
     const cDate: Date = new Date(gDate + 'T12:00:00');

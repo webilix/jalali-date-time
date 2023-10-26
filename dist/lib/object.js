@@ -27,9 +27,9 @@ exports.toObject = void 0;
 const JDate = __importStar(require("../script/date"));
 const JDT = __importStar(require("../script/jdt"));
 function toObject(date, timezone) {
-    if (!JDate.checkDate(date))
+    if (!JDate.isDate(date))
         throw new TypeError('Invalid Date');
-    if (!JDate.checkTimezone(timezone || ''))
+    if (!JDate.isTimezone(timezone || ''))
         timezone = JDT.timezone();
     const value = JDate.getMoment(date, timezone);
     return JDate.toJalali(JDate.toObject(value));

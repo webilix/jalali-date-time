@@ -3,19 +3,10 @@ import { JalaliDateTimeGregorian } from '../interface/gregorian';
 import { Moment } from 'moment';
 import * as moment from 'moment-timezone';
 
-const checkDate = (date: Date): boolean => {
-    return Object.prototype.toString.call(date) === '[object Date]';
-};
-
-const checkLocale = (locale: string): boolean => {
-    return ['EN', 'FA'].indexOf(locale.toUpperCase()) !== -1;
-};
-
-const checkTimezone = (timezone: string): boolean => {
-    return moment.tz.names().indexOf(timezone) !== -1;
-};
-
-const checkMonth = (month: string): boolean => {
+const isDate = (date: Date): boolean => Object.prototype.toString.call(date) === '[object Date]';
+const isLocale = (locale: string): boolean => ['EN', 'FA'].indexOf(locale.toUpperCase()) !== -1;
+const isTimezone = (timezone: string): boolean => moment.tz.names().indexOf(timezone) !== -1;
+const isMonth = (month: string): boolean => {
     if (month.length !== 7 || month.indexOf('-') !== 4) return false;
     const [yString, mString] = month.split('-');
 
@@ -182,4 +173,4 @@ const toString = (jalali: JalaliDateTimeObject, format: string, locale: string):
     return format;
 };
 
-export { checkDate, checkLocale, checkTimezone, checkMonth, getMoment, toJalali, toGregorian, toObject, toString };
+export { isDate, isLocale, isTimezone, isMonth, getMoment, toJalali, toGregorian, toObject, toString };

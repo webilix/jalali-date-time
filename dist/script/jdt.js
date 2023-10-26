@@ -37,9 +37,9 @@ exports.type = type;
 const init = (options) => {
     if (options === undefined)
         options = {};
-    if (options.timezone === undefined || !JDate.checkTimezone(options.timezone))
+    if (options.timezone === undefined || !JDate.isTimezone(options.timezone))
         options.timezone = 'Asia/Tehran';
-    if (options.locale === undefined || !JDate.checkLocale(options.locale))
+    if (options.locale === undefined || !JDate.isLocale(options.locale))
         options.locale = 'en';
     if (options.fullTextFormat === undefined)
         options.fullTextFormat = 'W, D N Y H:I:S';
@@ -96,7 +96,7 @@ const format = (format, check) => {
 };
 exports.format = format;
 const string = (date, config, format) => {
-    if (!JDate.checkDate(date))
+    if (!JDate.isDate(date))
         throw new TypeError('Invalid Date');
     const value = JDate.getMoment(date, config.timezone);
     const jalali = JDate.toJalali(JDate.toObject(value));
@@ -104,11 +104,11 @@ const string = (date, config, format) => {
 };
 exports.string = string;
 const date_timezone = (arg1, arg2) => {
-    const date = arg1 && JDate.checkDate(arg1) ? arg1 : new Date();
-    if (!JDate.checkDate(date))
+    const date = arg1 && JDate.isDate(arg1) ? arg1 : new Date();
+    if (!JDate.isDate(date))
         throw new TypeError('Invalid Date');
     const tz = arg1 && typeof arg1 === 'string' ? arg1 : arg2 || '';
-    return { date, timezone: JDate.checkTimezone(tz) ? tz : timezone() };
+    return { date, timezone: JDate.isTimezone(tz) ? tz : timezone() };
 };
 exports.date_timezone = date_timezone;
 //# sourceMappingURL=jdt.js.map
