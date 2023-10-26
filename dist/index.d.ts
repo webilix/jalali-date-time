@@ -9,6 +9,7 @@ import { nextMonth, nextDayOfMonth } from './lib/next/day-of-month';
 import { nextYear, nextDayOfYear } from './lib/next/day-of-year';
 import { periodHour } from './lib/period/hour';
 import { periodDay } from './lib/period/day';
+import { periodWeek } from './lib/period/week';
 import { periodMonth } from './lib/period/month';
 import { JalaliDateTimeOptions } from './interface/options';
 export declare const JalaliDateTime: (options?: JalaliDateTimeOptions) => {
@@ -32,7 +33,7 @@ export declare const JalaliDateTime: (options?: JalaliDateTimeOptions) => {
     nextDayOfYear: typeof nextDayOfYear;
     periodHour: typeof periodHour;
     periodDay: typeof periodDay;
-    periodWeek: (weeks: number, date?: Date | undefined, timezone?: string | undefined) => import("./interface/period").JalaliDateTimePeriod;
+    periodWeek: typeof periodWeek;
     periodMonth: typeof periodMonth;
     periodYear: (years: number, date?: Date | undefined, timezone?: string | undefined) => import("./interface/period").JalaliDateTimePeriod;
 };
