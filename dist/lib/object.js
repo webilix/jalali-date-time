@@ -26,13 +26,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.toObject = void 0;
 const JDate = __importStar(require("../script/date"));
 const JDT = __importStar(require("../script/jdt"));
-const toObject = (date, timezone) => {
+function toObject(date, timezone) {
     if (!JDate.checkDate(date))
         throw new TypeError('Invalid Date');
     if (!JDate.checkTimezone(timezone || ''))
         timezone = JDT.timezone();
     const value = JDate.getMoment(date, timezone);
     return JDate.toJalali(JDate.toObject(value));
-};
+}
 exports.toObject = toObject;
 //# sourceMappingURL=object.js.map

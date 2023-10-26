@@ -7,6 +7,7 @@ export { JalaliDateTimePeriod } from './interface/period';
 import { now } from './lib/now';
 import { toDate } from './lib/date';
 import { toFullText } from './lib/full-text';
+import { toObject } from './lib/object';
 import { dayOfWeek } from './lib/day-of-week';
 import { daysInMonth } from './lib/days-in-month';
 import { calendar } from './lib/calendar';
@@ -26,7 +27,7 @@ export declare const JalaliDateTime: (options?: JalaliDateTimeOptions) => {
     toString: (date: Date, config?: import("./interface/config").JalaliDateTimeConfig | undefined) => string;
     toTitle: (date: Date, config?: import("./interface/config").JalaliDateTimeConfig | undefined) => string;
     toFullText: typeof toFullText;
-    toObject: (date: Date, timezone?: string | undefined) => import("./interface/object").JalaliDateTimeObject;
+    toObject: typeof toObject;
     dayOfWeek: typeof dayOfWeek;
     daysInMonth: typeof daysInMonth;
     calendar: typeof calendar;

@@ -1,3 +1,4 @@
 import { JalaliDateTimeObject } from '../interface/object';
-export declare const toObject: (date: Date, timezone?: string) => JalaliDateTimeObject;
+export declare function toObject(date: Date): JalaliDateTimeObject;
+export declare function toObject(date: Date, timezone: string): JalaliDateTimeObject;
 //# sourceMappingURL=object.d.ts.map
