@@ -750,7 +750,7 @@ If date parameter is not a valid Javascript Date then **TypeError** will thrown.
 **Sample:**
 
 ```javascript
-const result = jalali.periodDays(7);
+const result = jalali.periodDay(7);
 /*   {
  *      from: 2021-09-28T20:30:00.000Z,
  *      to: 2021-10-05T20:29:59.999Z,
