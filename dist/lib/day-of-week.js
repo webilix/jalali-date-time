@@ -27,12 +27,7 @@ exports.dayOfWeek = void 0;
 const JDate = __importStar(require("../script/date"));
 const JDT = __importStar(require("../script/jdt"));
 function dayOfWeek(arg1, arg2) {
-    const date = arg1 && JDate.checkDate(arg1) ? arg1 : new Date();
-    if (!JDate.checkDate(date))
-        throw new TypeError('Invalid Date');
-    let timezone = arg1 && typeof arg1 === 'string' ? arg1 : arg2 || '';
-    if (!JDate.checkTimezone(timezone))
-        timezone = JDT.timezone();
+    const { date, timezone } = JDT.date_timezone(arg1, arg2);
     const moment = JDate.getMoment(date, timezone).endOf('D').toDate();
     return (moment.getDay() + 1) % 7;
 }

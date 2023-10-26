@@ -32,11 +32,7 @@ export function periodWeek(weeks: number, date: Date, timezone: string): JalaliD
 export function periodWeek(weeks: number, arg1?: any, arg2?: any): JalaliDateTimePeriod {
     if (isNaN(weeks) || weeks < 1) throw new TypeError('Weeks must be bigger than 0');
 
-    const date: Date = arg1 && JDate.checkDate(arg1) ? arg1 : new Date();
-    if (!JDate.checkDate(date)) throw new TypeError('Invalid Date');
-
-    let timezone: string = arg1 && typeof arg1 === 'string' ? arg1 : arg2 || '';
-    if (!JDate.checkTimezone(timezone)) timezone = JDT.timezone();
+    const { date, timezone } = JDT.date_timezone(arg1, arg2);
 
     let to: Date = getFriday(date, timezone);
 

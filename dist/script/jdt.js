@@ -23,7 +23,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.string = exports.format = exports.timezone = exports.check = exports.init = exports.type = void 0;
+exports.date_timezone = exports.string = exports.format = exports.timezone = exports.check = exports.init = exports.type = void 0;
 const JDate = __importStar(require("./date"));
 let _default = {};
 const type = {
@@ -103,4 +103,12 @@ const string = (date, config, format) => {
     return JDate.toString(jalali, format, config.locale || 'en');
 };
 exports.string = string;
+const date_timezone = (arg1, arg2) => {
+    const date = arg1 && JDate.checkDate(arg1) ? arg1 : new Date();
+    if (!JDate.checkDate(date))
+        throw new TypeError('Invalid Date');
+    const tz = arg1 && typeof arg1 === 'string' ? arg1 : arg2 || '';
+    return { date, timezone: JDate.checkTimezone(tz) ? tz : timezone() };
+};
+exports.date_timezone = date_timezone;
 //# sourceMappingURL=jdt.js.map

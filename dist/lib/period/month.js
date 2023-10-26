@@ -43,12 +43,7 @@ const getFirstDay = (date, timezone) => {
 function periodMonth(months, arg1, arg2) {
     if (isNaN(months) || months < 1)
         throw new TypeError('Months must be bigger than 0');
-    const date = arg1 && JDate.checkDate(arg1) ? arg1 : new Date();
-    if (!JDate.checkDate(date))
-        throw new TypeError('Invalid Date');
-    let timezone = arg1 && typeof arg1 === 'string' ? arg1 : arg2 || '';
-    if (!JDate.checkTimezone(timezone))
-        timezone = JDT.timezone();
+    const { date, timezone } = JDT.date_timezone(arg1, arg2);
     let to = getLastDay(date, timezone || 'Asia/Tehran');
     const periods = [];
     while (periods.length < months) {

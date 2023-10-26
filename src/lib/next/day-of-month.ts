@@ -23,11 +23,7 @@ export function nextDayOfMonth(dayOfMonth: 'FIRST' | 'LAST' | number, arg1?: any
     )
         throw new TypeError("dayOfMonth must be 'FIRST', 'LAST' or number between 1, 31");
 
-    const date: Date = arg1 && JDate.checkDate(arg1) ? arg1 : new Date();
-    if (!JDate.checkDate(date)) throw new TypeError('Invalid Date');
-
-    let timezone: string = arg1 && typeof arg1 === 'string' ? arg1 : arg2 || '';
-    if (!JDate.checkTimezone(timezone)) timezone = JDT.timezone();
+    const { date, timezone } = JDT.date_timezone(arg1, arg2);
 
     const d: number = +toString(date, { timezone, format: 'D' });
     let y: number = +toString(date, { timezone, format: 'Y' });

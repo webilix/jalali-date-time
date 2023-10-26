@@ -15,11 +15,7 @@ export function nextDayOfWeek(dayOfWeek: number, date: Date, timezone: string): 
 export function nextDayOfWeek(dayOfWeek: number, arg1?: any, arg2?: any): Date {
     if (isNaN(dayOfWeek) || dayOfWeek < 0 || dayOfWeek > 6) throw new TypeError('dayOfWeek must be between 0 and 6');
 
-    const date: Date = arg1 && JDate.checkDate(arg1) ? arg1 : new Date();
-    if (!JDate.checkDate(date)) throw new TypeError('Invalid Date');
-
-    let timezone: string = arg1 && typeof arg1 === 'string' ? arg1 : arg2 || '';
-    if (!JDate.checkTimezone(timezone)) timezone = JDT.timezone();
+    const { date, timezone } = JDT.date_timezone(arg1, arg2);
 
     let next: Date = JDate.getMoment(date, timezone).add(1, 'd').startOf('D').toDate();
     while (JDate.getMoment(next, timezone).weekday() !== dayOfWeek) {

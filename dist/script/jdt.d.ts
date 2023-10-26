@@ -12,5 +12,9 @@ declare const check: (config: JalaliDateTimeConfig, format: string) => JalaliDat
 declare const timezone: () => string;
 declare const format: (format: string, check: string[]) => string;
 declare const string: (date: Date, config: JalaliDateTimeConfig, format: string) => string;
-export { type, init, check, timezone, format, string };
+declare const date_timezone: (arg1: any, arg2: any) => {
+    date: Date;
+    timezone: string;
+};
+export { type, init, check, timezone, format, string, date_timezone };
 //# sourceMappingURL=jdt.d.ts.map

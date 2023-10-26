@@ -36,12 +36,7 @@ exports.nextDay = nextDay;
 function nextDayOfWeek(dayOfWeek, arg1, arg2) {
     if (isNaN(dayOfWeek) || dayOfWeek < 0 || dayOfWeek > 6)
         throw new TypeError('dayOfWeek must be between 0 and 6');
-    const date = arg1 && JDate.checkDate(arg1) ? arg1 : new Date();
-    if (!JDate.checkDate(date))
-        throw new TypeError('Invalid Date');
-    let timezone = arg1 && typeof arg1 === 'string' ? arg1 : arg2 || '';
-    if (!JDate.checkTimezone(timezone))
-        timezone = JDT.timezone();
+    const { date, timezone } = JDT.date_timezone(arg1, arg2);
     let next = JDate.getMoment(date, timezone).add(1, 'd').startOf('D').toDate();
     while (JDate.getMoment(next, timezone).weekday() !== dayOfWeek) {
         next = JDate.getMoment(next, timezone).add(1, 'd').startOf('D').toDate();

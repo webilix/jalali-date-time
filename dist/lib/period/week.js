@@ -47,12 +47,7 @@ const getSaturday = (date, timezone) => {
 function periodWeek(weeks, arg1, arg2) {
     if (isNaN(weeks) || weeks < 1)
         throw new TypeError('Weeks must be bigger than 0');
-    const date = arg1 && JDate.checkDate(arg1) ? arg1 : new Date();
-    if (!JDate.checkDate(date))
-        throw new TypeError('Invalid Date');
-    let timezone = arg1 && typeof arg1 === 'string' ? arg1 : arg2 || '';
-    if (!JDate.checkTimezone(timezone))
-        timezone = JDT.timezone();
+    const { date, timezone } = JDT.date_timezone(arg1, arg2);
     let to = getFriday(date, timezone);
     const periods = [];
     while (periods.length < weeks) {

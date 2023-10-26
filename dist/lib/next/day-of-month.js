@@ -40,12 +40,7 @@ function nextDayOfMonth(dayOfMonth, arg1, arg2) {
     if (!['FIRST', 'LAST'].includes(dayOfMonth.toString()) &&
         (typeof dayOfMonth !== 'number' || dayOfMonth < 1 || dayOfMonth > 31))
         throw new TypeError("dayOfMonth must be 'FIRST', 'LAST' or number between 1, 31");
-    const date = arg1 && JDate.checkDate(arg1) ? arg1 : new Date();
-    if (!JDate.checkDate(date))
-        throw new TypeError('Invalid Date');
-    let timezone = arg1 && typeof arg1 === 'string' ? arg1 : arg2 || '';
-    if (!JDate.checkTimezone(timezone))
-        timezone = JDT.timezone();
+    const { date, timezone } = JDT.date_timezone(arg1, arg2);
     const d = +(0, string_1.toString)(date, { timezone, format: 'D' });
     let y = +(0, string_1.toString)(date, { timezone, format: 'Y' });
     let m = +(0, string_1.toString)(date, { timezone, format: 'M' });

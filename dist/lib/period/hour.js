@@ -29,12 +29,7 @@ const JDT = __importStar(require("../../script/jdt"));
 function periodHour(hours, arg1, arg2) {
     if (isNaN(hours) || hours < 1)
         throw new TypeError('Hours must be bigger than 0');
-    const date = arg1 && JDate.checkDate(arg1) ? arg1 : new Date();
-    if (!JDate.checkDate(date))
-        throw new TypeError('Invalid Date');
-    let timezone = arg1 && typeof arg1 === 'string' ? arg1 : arg2 || '';
-    if (!JDate.checkTimezone(timezone))
-        timezone = JDT.timezone();
+    const { date, timezone } = JDT.date_timezone(arg1, arg2);
     let to = JDate.getMoment(date, timezone).endOf('h').toDate();
     const periods = [];
     while (periods.length < hours) {

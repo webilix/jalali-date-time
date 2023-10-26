@@ -75,4 +75,13 @@ const string = (date: Date, config: JalaliDateTimeConfig, format: string): strin
     return JDate.toString(jalali, format, config.locale || 'en');
 };
 
-export { type, init, check, timezone, format, string };
+const date_timezone = (arg1: any, arg2: any): { date: Date; timezone: string } => {
+    const date: Date = arg1 && JDate.checkDate(arg1) ? arg1 : new Date();
+    if (!JDate.checkDate(date)) throw new TypeError('Invalid Date');
+
+    const tz: string = arg1 && typeof arg1 === 'string' ? arg1 : arg2 || '';
+
+    return { date, timezone: JDate.checkTimezone(tz) ? tz : timezone() };
+};
+
+export { type, init, check, timezone, format, string, date_timezone };
