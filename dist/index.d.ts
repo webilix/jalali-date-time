@@ -6,6 +6,7 @@ export { JalaliDateTimeGregorian } from './interface/gregorian';
 export { JalaliDateTimePeriod } from './interface/period';
 import { now } from './lib/now';
 import { toDate } from './lib/date';
+import { toTime } from './lib/time';
 import { toString } from './lib/string';
 import { toFullText } from './lib/full-text';
 import { toObject } from './lib/object';
@@ -24,7 +25,7 @@ import { JalaliDateTimeOptions } from './interface/options';
 export declare const JalaliDateTime: (options?: JalaliDateTimeOptions) => {
     now: typeof now;
     toDate: typeof toDate;
-    toTime: (date: Date, config?: import("./interface/config").JalaliDateTimeConfig | undefined) => string;
+    toTime: typeof toTime;
     toString: typeof toString;
     toTitle: (date: Date, config?: import("./interface/config").JalaliDateTimeConfig | undefined) => string;
     toFullText: typeof toFullText;

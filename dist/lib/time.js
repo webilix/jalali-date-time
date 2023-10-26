@@ -25,10 +25,10 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.toTime = void 0;
 const JDT = __importStar(require("../script/jdt"));
-const toTime = (date, config) => {
+function toTime(date, config) {
     config = JDT.check(config || {}, JDT.type.time);
     const format = JDT.format(config.format || '', ['H', 'I', 'S']);
     return JDT.string(date, config, format);
-};
+}
 exports.toTime = toTime;
 //# sourceMappingURL=time.js.map
