@@ -100,6 +100,12 @@ test('nextYear', () => {
     expect(test.getTime()).toBe(1900182600000);
 });
 
+test('nextDayOfYear', () => {
+    const date = new Date(jalali.gregorian('1403-12-30').date);
+    const test = jalali.nextDayOfYear(date);
+    expect(test.getTime()).toBe(1900182600000);
+});
+
 test('periodHour', () => {
     const test = jalali.periodHour(24);
     expect(test.periods.length).toBe(24);

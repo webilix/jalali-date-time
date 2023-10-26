@@ -10,10 +10,23 @@ const getMonth = (y: number, m: string): string => {
     return toString(d, { format: '-M-D' });
 };
 
-export const nextYear = (date?: Date, timezone?: string): Date => {
-    date = date || new Date();
+/**
+ * @deprecated This method is deprecated and will be removed in future versions. Please use nextDayOfYear instead
+ */
+export function nextYear(date?: Date, timezone?: string): Date {
+    return nextDayOfYear(date || new Date(), timezone || JDT.timezone());
+}
+
+export function nextDayOfYear(): Date;
+export function nextDayOfYear(date: Date): Date;
+export function nextDayOfYear(timezone: string): Date;
+export function nextDayOfYear(date: Date, timezone: string): Date;
+export function nextDayOfYear(arg1?: any, arg2?: any): Date {
+    const date: Date = arg1 && JDate.checkDate(arg1) ? arg1 : new Date();
     if (!JDate.checkDate(date)) throw new TypeError('Invalid Date');
-    if (!JDate.checkTimezone(timezone || '')) timezone = JDT.timezone();
+
+    let timezone: string = arg1 && typeof arg1 === 'string' ? arg1 : arg2 || '';
+    if (!JDate.checkTimezone(timezone)) timezone = JDT.timezone();
 
     let y: number = +toString(date, { timezone, format: 'Y' });
     const month: string = toString(date, { timezone, format: '-M-D' });
@@ -24,4 +37,4 @@ export const nextYear = (date?: Date, timezone?: string): Date => {
 
     const gDate: string = gregorian(y.toString() + month).date;
     return JDate.getMoment(new Date(gDate), timezone).startOf('D').toDate();
-};
+}

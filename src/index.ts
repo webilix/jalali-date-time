@@ -22,7 +22,7 @@ import { timezones } from './lib/timezones';
 
 import { nextDay, nextDayOfWeek } from './lib/next/day-of-week';
 import { nextMonth, nextDayOfMonth } from './lib/next/day-of-month';
-import { nextYear } from './lib/next/year';
+import { nextYear, nextDayOfYear } from './lib/next/day-of-year';
 
 import { periodHour } from './lib/period/hour';
 import { periodDay } from './lib/period/day';
@@ -53,6 +53,7 @@ export const JalaliDateTime = (options?: JalaliDateTimeOptions) => {
         nextMonth,
         nextDayOfMonth,
         nextYear,
+        nextDayOfYear,
 
         periodHour,
         periodDay,

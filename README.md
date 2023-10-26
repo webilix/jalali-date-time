@@ -24,7 +24,7 @@ Lightweight library for parsing and formating Jalali date with timezone function
     -   [timezones](#timezones)
     -   [nextDayOfWeek](#nextdayofweek)
     -   [nextDayOfMonth](#nextdayofmonth)
-    -   [nextYear](#nextyear)
+    -   [nextDayOfYear](#nextdayofyear)
     -   [periodHour](#periodhour)
     -   [periodDay](#periodday)
     -   [periodWeek](#periodweek)
@@ -671,7 +671,7 @@ const result = jalali.nextDayOfMonth('LAST');
 /* 2025-04-19T19:30:00.000Z */
 ```
 
-### [nextYear](#nextyear)
+### [nextDayOfYear](#nextdayofyear)
 
 Next years date according to specific date in Jalali calendar
 
@@ -686,12 +686,12 @@ Next years date according to specific date in Jalali calendar
 
 If date parameter is not a valid Javascript Date then **TypeError** will thrown.
 
-If date is not valid for next year, first next year with valid date will be returned (example: 1403-12-30 > 1408-12-30)
+If date is not valid for next year, first year with valid date will be returned (example: 1403-12-30 > 1408-12-30)
 
 **Sample:**
 
 ```javascript
-const result = jalali.nextYear();
+const result = jalali.nextDayOfYear();
 /* 2030-03-19T20:30:00.000Z */
 ```
 

@@ -23,7 +23,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.nextYear = void 0;
+exports.nextDayOfYear = exports.nextYear = void 0;
 const JDate = __importStar(require("../../script/date"));
 const JDT = __importStar(require("../../script/jdt"));
 const string_1 = require("../string");
@@ -33,11 +33,19 @@ const getMonth = (y, m) => {
     const d = new Date(g);
     return (0, string_1.toString)(d, { format: '-M-D' });
 };
-const nextYear = (date, timezone) => {
-    date = date || new Date();
+/**
+ * @deprecated This method is deprecated and will be removed in future versions. Please use nextDayOfYear instead
+ */
+function nextYear(date, timezone) {
+    return nextDayOfYear(date || new Date(), timezone || JDT.timezone());
+}
+exports.nextYear = nextYear;
+function nextDayOfYear(arg1, arg2) {
+    const date = arg1 && JDate.checkDate(arg1) ? arg1 : new Date();
     if (!JDate.checkDate(date))
         throw new TypeError('Invalid Date');
-    if (!JDate.checkTimezone(timezone || ''))
+    let timezone = arg1 && typeof arg1 === 'string' ? arg1 : arg2 || '';
+    if (!JDate.checkTimezone(timezone))
         timezone = JDT.timezone();
     let y = +(0, string_1.toString)(date, { timezone, format: 'Y' });
     const month = (0, string_1.toString)(date, { timezone, format: '-M-D' });
@@ -46,6 +54,6 @@ const nextYear = (date, timezone) => {
     } while (getMonth(y, month) !== month);
     const gDate = (0, gregorian_1.gregorian)(y.toString() + month).date;
     return JDate.getMoment(new Date(gDate), timezone).startOf('D').toDate();
-};
-exports.nextYear = nextYear;
-//# sourceMappingURL=year.js.map
+}
+exports.nextDayOfYear = nextDayOfYear;
+//# sourceMappingURL=day-of-year.js.map
