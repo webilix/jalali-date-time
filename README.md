@@ -22,7 +22,7 @@ Lightweight library for parsing and formating Jalali date with timezone function
     -   [calendar](#calendar)
     -   [gregorian](#gregorian)
     -   [timezones](#timezones)
-    -   [nextDay](#nextday)
+    -   [nextDayOfWeek](#nextdayofweek)
     -   [nextMonth](#nextmonth)
     -   [nextYear](#nextyear)
     -   [periodHour](#periodhour)
@@ -608,31 +608,31 @@ const result = jalali.timezones();
  */
 ```
 
-### [nextDay](#nextday)
+### [nextDayOfWeek](#nextdayofweek)
 
 Next week day according to specific date
 
 **Parameters:**
 
-| Name     | Type   | Required | Description                                 |
-| -------- | ------ | -------- | ------------------------------------------- |
-| day      | Number | Yes      | Week day number (Sunday - Saturday : 0 - 6) |
-| date     | Date   | No       | Date Value                                  |
-| timezone | String | No       | Timezone Value                              |
+| Name      | Type   | Required | Description                               |
+| --------- | ------ | -------- | ----------------------------------------- |
+| dayOfWeek | Number | Yes      | Week day number (Sunday: 0 - Saturday: 6) |
+| date      | Date   | No       | Date Value                                |
+| timezone  | String | No       | Timezone Value                            |
 
 **Return Value (Date):**
 
-If day value is NaN or not between 0, 6 then **TypeError** will thrown.
+If dayOfWeek value is NaN or not between 0, 6 then **TypeError** will thrown.
 
 If date parameter is not a valid Javascript Date then **TypeError** will thrown.
 
 **Sample:**
 
 ```javascript
-const result = jalali.nextDay(0);
+const result = jalali.nextDayOfWeek(0);
 /* 2025-03-22T19:30:00.000Z */
 
-const result = jalali.nextDay(2);
+const result = jalali.nextDayOfWeek(2);
 /* 2025-03-24T19:30:00.000Z */
 ```
 

@@ -70,6 +70,12 @@ test('nextDay', () => {
     expect(test).toBe('1358-03-20');
 });
 
+test('nextDayOfWeek', () => {
+    const date = new Date(jalali.gregorian('1358-03-13').date);
+    const test = jalali.toDate(jalali.nextDayOfWeek(0, date));
+    expect(test).toBe('1358-03-20');
+});
+
 test('nextMonth', () => {
     const date = new Date(jalali.gregorian('1358-03-13').date);
     const first = jalali.toDate(jalali.nextMonth('FIRST', date));

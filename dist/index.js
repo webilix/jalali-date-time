@@ -37,11 +37,11 @@ const days_in_month_1 = require("./lib/days-in-month");
 const calendar_1 = require("./lib/calendar");
 const gregorian_1 = require("./lib/gregorian");
 const timezones_1 = require("./lib/timezones");
-const day_1 = require("./lib/next/day");
+const day_of_week_2 = require("./lib/next/day-of-week");
 const month_1 = require("./lib/next/month");
 const year_1 = require("./lib/next/year");
 const hour_1 = require("./lib/period/hour");
-const day_2 = require("./lib/period/day");
+const day_1 = require("./lib/period/day");
 const week_1 = require("./lib/period/week");
 const month_2 = require("./lib/period/month");
 const year_2 = require("./lib/period/year");
@@ -60,11 +60,12 @@ const JalaliDateTime = (options) => {
         calendar: calendar_1.calendar,
         gregorian: gregorian_1.gregorian,
         timezones: timezones_1.timezones,
-        nextDay: day_1.nextDay,
+        nextDay: day_of_week_2.nextDay,
+        nextDayOfWeek: day_of_week_2.nextDayOfWeek,
         nextMonth: month_1.nextMonth,
         nextYear: year_1.nextYear,
         periodHour: hour_1.periodHour,
-        periodDay: day_2.periodDay,
+        periodDay: day_1.periodDay,
         periodWeek: week_1.periodWeek,
         periodMonth: month_2.periodMonth,
         periodYear: year_2.periodYear,

@@ -20,7 +20,7 @@ import { calendar } from './lib/calendar';
 import { gregorian } from './lib/gregorian';
 import { timezones } from './lib/timezones';
 
-import { nextDay } from './lib/next/day';
+import { nextDay, nextDayOfWeek } from './lib/next/day-of-week';
 import { nextMonth } from './lib/next/month';
 import { nextYear } from './lib/next/year';
 
@@ -49,6 +49,7 @@ export const JalaliDateTime = (options?: JalaliDateTimeOptions) => {
         timezones,
 
         nextDay,
+        nextDayOfWeek,
         nextMonth,
         nextYear,
 

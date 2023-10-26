@@ -23,22 +23,30 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.nextDay = void 0;
+exports.nextDayOfWeek = exports.nextDay = void 0;
 const JDate = __importStar(require("../../script/date"));
 const JDT = __importStar(require("../../script/jdt"));
-const nextDay = (day, date, timezone) => {
-    date = date || new Date();
+/**
+ * @deprecated This method is deprecated and will be removed in future versions. Please use nextDayOfWeek instead
+ */
+function nextDay(day, date, timezone) {
+    return nextDayOfWeek(day, date || new Date(), timezone || JDT.timezone());
+}
+exports.nextDay = nextDay;
+function nextDayOfWeek(dayOfWeek, arg1, arg2) {
+    if (isNaN(dayOfWeek) || dayOfWeek < 0 || dayOfWeek > 6)
+        throw new TypeError('Day must be between 0 and 6');
+    const date = arg1 && JDate.checkDate(arg1) ? arg1 : new Date();
     if (!JDate.checkDate(date))
         throw new TypeError('Invalid Date');
-    if (!JDate.checkTimezone(timezone || ''))
+    let timezone = arg1 && typeof arg1 === 'string' ? arg1 : arg2 || '';
+    if (!JDate.checkTimezone(timezone))
         timezone = JDT.timezone();
-    if (isNaN(day) || day < 0 || day > 6)
-        throw new TypeError('Day must be between 0 and 6');
     let next = JDate.getMoment(date, timezone).add(1, 'd').startOf('D').toDate();
-    while (JDate.getMoment(next, timezone).weekday() !== day) {
+    while (JDate.getMoment(next, timezone).weekday() !== dayOfWeek) {
         next = JDate.getMoment(next, timezone).add(1, 'd').startOf('D').toDate();
     }
     return next;
-};
-exports.nextDay = nextDay;
-//# sourceMappingURL=day.js.map
+}
+exports.nextDayOfWeek = nextDayOfWeek;
+//# sourceMappingURL=day-of-week.js.map
