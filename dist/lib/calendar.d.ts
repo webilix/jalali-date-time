@@ -1,3 +1,4 @@
 import { JalaliDateTimeCalendar } from '../interface/calendar';
-export declare const calendar: (month?: string) => JalaliDateTimeCalendar;
+export declare function calendar(): JalaliDateTimeCalendar;
+export declare function calendar(month: string): JalaliDateTimeCalendar;
 //# sourceMappingURL=calendar.d.ts.map

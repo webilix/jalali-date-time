@@ -29,7 +29,7 @@ const gregorian_1 = require("./gregorian");
 const string_1 = require("./string");
 const date_1 = require("./date");
 const full_text_1 = require("./full-text");
-const calendar = (month) => {
+function calendar(month) {
     month = month || (0, string_1.toString)(new Date(), { format: 'Y-M' });
     if (!JDate.checkMonth(month))
         throw new TypeError('Invalid Month');
@@ -42,12 +42,8 @@ const calendar = (month) => {
     const weeks = [];
     let days = [];
     let date = (0, date_1.toDate)(begin);
-    while (date.substr(0, 7) <= month || days.length % 7 !== 0) {
-        days.push({
-            date,
-            month: date.substr(0, 7),
-            day: Number(date.substr(8)),
-        });
+    while (date.substring(0, 7) <= month || days.length % 7 !== 0) {
+        days.push({ date, month: date.substring(0, 7), day: +date.substring(8) });
         if (days.length === 7) {
             weeks.push(days);
             days = [];
@@ -56,6 +52,6 @@ const calendar = (month) => {
         date = (0, date_1.toDate)(begin);
     }
     return { month, title, weeks };
-};
+}
 exports.calendar = calendar;
 //# sourceMappingURL=calendar.js.map

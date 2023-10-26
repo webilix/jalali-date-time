@@ -6,7 +6,9 @@ import { toString } from './string';
 import { toDate } from './date';
 import { toFullText } from './full-text';
 
-export const calendar = (month?: string): JalaliDateTimeCalendar => {
+export function calendar(): JalaliDateTimeCalendar;
+export function calendar(month: string): JalaliDateTimeCalendar;
+export function calendar(month?: string): JalaliDateTimeCalendar {
     month = month || toString(new Date(), { format: 'Y-M' });
     if (!JDate.checkMonth(month)) throw new TypeError('Invalid Month');
 
@@ -20,12 +22,9 @@ export const calendar = (month?: string): JalaliDateTimeCalendar => {
     const weeks: JalaliDateTimeCalendarDay[][] = [];
     let days: JalaliDateTimeCalendarDay[] = [];
     let date = toDate(begin);
-    while (date.substr(0, 7) <= month || days.length % 7 !== 0) {
-        days.push({
-            date,
-            month: date.substr(0, 7),
-            day: Number(date.substr(8)),
-        });
+
+    while (date.substring(0, 7) <= month || days.length % 7 !== 0) {
+        days.push({ date, month: date.substring(0, 7), day: +date.substring(8) });
         if (days.length === 7) {
             weeks.push(days);
             days = [];
@@ -36,4 +35,4 @@ export const calendar = (month?: string): JalaliDateTimeCalendar => {
     }
 
     return { month, title, weeks };
-};
+}
