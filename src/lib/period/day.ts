@@ -3,11 +3,18 @@ import { JalaliDateTimePeriod } from '../../interface/period';
 import * as JDate from '../../script/date';
 import * as JDT from '../../script/jdt';
 
-export const periodDay = (days: number, date?: Date, timezone?: string): JalaliDateTimePeriod => {
-    date = date || new Date();
-    if (!JDate.checkDate(date)) throw new TypeError('Invalid Date');
-    if (!JDate.checkTimezone(timezone || '')) timezone = JDT.timezone();
+export function periodDay(days: number): JalaliDateTimePeriod;
+export function periodDay(days: number, date: Date): JalaliDateTimePeriod;
+export function periodDay(days: number, timezone: string): JalaliDateTimePeriod;
+export function periodDay(days: number, date: Date, timezone: string): JalaliDateTimePeriod;
+export function periodDay(days: number, arg1?: any, arg2?: any): JalaliDateTimePeriod {
     if (isNaN(days) || days < 1) throw new TypeError('Days must be bigger than 0');
+
+    const date: Date = arg1 && JDate.checkDate(arg1) ? arg1 : new Date();
+    if (!JDate.checkDate(date)) throw new TypeError('Invalid Date');
+
+    let timezone: string = arg1 && typeof arg1 === 'string' ? arg1 : arg2 || '';
+    if (!JDate.checkTimezone(timezone)) timezone = JDT.timezone();
 
     let to: Date = JDate.getMoment(date, timezone).endOf('D').toDate();
 
@@ -20,4 +27,4 @@ export const periodDay = (days: number, date?: Date, timezone?: string): JalaliD
     }
 
     return { from: periods[0].from, to: periods[periods.length - 1].to, periods };
-};
+}

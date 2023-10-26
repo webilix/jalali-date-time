@@ -26,14 +26,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.periodDay = void 0;
 const JDate = __importStar(require("../../script/date"));
 const JDT = __importStar(require("../../script/jdt"));
-const periodDay = (days, date, timezone) => {
-    date = date || new Date();
-    if (!JDate.checkDate(date))
-        throw new TypeError('Invalid Date');
-    if (!JDate.checkTimezone(timezone || ''))
-        timezone = JDT.timezone();
+function periodDay(days, arg1, arg2) {
     if (isNaN(days) || days < 1)
         throw new TypeError('Days must be bigger than 0');
+    const date = arg1 && JDate.checkDate(arg1) ? arg1 : new Date();
+    if (!JDate.checkDate(date))
+        throw new TypeError('Invalid Date');
+    let timezone = arg1 && typeof arg1 === 'string' ? arg1 : arg2 || '';
+    if (!JDate.checkTimezone(timezone))
+        timezone = JDT.timezone();
     let to = JDate.getMoment(date, timezone).endOf('D').toDate();
     const periods = [];
     while (periods.length < days) {
@@ -42,6 +43,6 @@ const periodDay = (days, date, timezone) => {
         to = new Date(from.getTime() - 1);
     }
     return { from: periods[0].from, to: periods[periods.length - 1].to, periods };
-};
+}
 exports.periodDay = periodDay;
 //# sourceMappingURL=day.js.map
