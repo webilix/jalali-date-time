@@ -4,6 +4,7 @@ export { JalaliDateTimeObject } from './interface/object';
 export { JalaliDateTimeCalendar, JalaliDateTimeCalendarDay } from './interface/calendar';
 export { JalaliDateTimeGregorian } from './interface/gregorian';
 export { JalaliDateTimePeriod } from './interface/period';
+import { now } from './lib/now';
 import { toDate } from './lib/date';
 import { toFullText } from './lib/full-text';
 import { dayOfWeek } from './lib/day-of-week';
@@ -19,7 +20,7 @@ import { periodMonth } from './lib/period/month';
 import { periodYear } from './lib/period/year';
 import { JalaliDateTimeOptions } from './interface/options';
 export declare const JalaliDateTime: (options?: JalaliDateTimeOptions) => {
-    now: (config?: import("./interface/config").JalaliDateTimeConfig | undefined) => string;
+    now: typeof now;
     toDate: typeof toDate;
     toTime: (date: Date, config?: import("./interface/config").JalaliDateTimeConfig | undefined) => string;
     toString: (date: Date, config?: import("./interface/config").JalaliDateTimeConfig | undefined) => string;

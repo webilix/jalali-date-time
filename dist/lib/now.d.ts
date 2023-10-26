@@ -1,3 +1,4 @@
 import { JalaliDateTimeConfig } from '../interface/config';
-export declare const now: (config?: JalaliDateTimeConfig) => string;
+export declare function now(): string;
+export declare function now(config: JalaliDateTimeConfig): string;
 //# sourceMappingURL=now.d.ts.map
