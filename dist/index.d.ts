@@ -5,6 +5,7 @@ export { JalaliDateTimeCalendar, JalaliDateTimeCalendarDay } from './interface/c
 export { JalaliDateTimeGregorian } from './interface/gregorian';
 export { JalaliDateTimePeriod } from './interface/period';
 import { nextDay, nextDayOfWeek } from './lib/next/day-of-week';
+import { nextMonth, nextDayOfMonth } from './lib/next/day-of-month';
 import { JalaliDateTimeOptions } from './interface/options';
 export declare const JalaliDateTime: (options?: JalaliDateTimeOptions) => {
     now: (config?: import("./interface/config").JalaliDateTimeConfig | undefined) => string;
@@ -21,7 +22,8 @@ export declare const JalaliDateTime: (options?: JalaliDateTimeOptions) => {
     timezones: () => string[];
     nextDay: typeof nextDay;
     nextDayOfWeek: typeof nextDayOfWeek;
-    nextMonth: (day: number | "FIRST" | "LAST", date?: Date | undefined, timezone?: string | undefined) => Date;
+    nextMonth: typeof nextMonth;
+    nextDayOfMonth: typeof nextDayOfMonth;
     nextYear: (date?: Date | undefined, timezone?: string | undefined) => Date;
     periodHour: (hours: number, date?: Date | undefined, timezone?: string | undefined) => import("./interface/period").JalaliDateTimePeriod;
     periodDay: (days: number, date?: Date | undefined, timezone?: string | undefined) => import("./interface/period").JalaliDateTimePeriod;

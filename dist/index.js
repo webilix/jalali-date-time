@@ -38,12 +38,12 @@ const calendar_1 = require("./lib/calendar");
 const gregorian_1 = require("./lib/gregorian");
 const timezones_1 = require("./lib/timezones");
 const day_of_week_2 = require("./lib/next/day-of-week");
-const month_1 = require("./lib/next/month");
+const day_of_month_1 = require("./lib/next/day-of-month");
 const year_1 = require("./lib/next/year");
 const hour_1 = require("./lib/period/hour");
 const day_1 = require("./lib/period/day");
 const week_1 = require("./lib/period/week");
-const month_2 = require("./lib/period/month");
+const month_1 = require("./lib/period/month");
 const year_2 = require("./lib/period/year");
 const JalaliDateTime = (options) => {
     JDT.init(options);
@@ -62,12 +62,13 @@ const JalaliDateTime = (options) => {
         timezones: timezones_1.timezones,
         nextDay: day_of_week_2.nextDay,
         nextDayOfWeek: day_of_week_2.nextDayOfWeek,
-        nextMonth: month_1.nextMonth,
+        nextMonth: day_of_month_1.nextMonth,
+        nextDayOfMonth: day_of_month_1.nextDayOfMonth,
         nextYear: year_1.nextYear,
         periodHour: hour_1.periodHour,
         periodDay: day_1.periodDay,
         periodWeek: week_1.periodWeek,
-        periodMonth: month_2.periodMonth,
+        periodMonth: month_1.periodMonth,
         periodYear: year_2.periodYear,
     };
 };

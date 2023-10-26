@@ -23,20 +23,29 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.nextMonth = void 0;
+exports.nextDayOfMonth = exports.nextMonth = void 0;
 const JDate = __importStar(require("../../script/date"));
 const JDT = __importStar(require("../../script/jdt"));
 const string_1 = require("../string");
 const days_in_month_1 = require("../days-in-month");
 const gregorian_1 = require("../gregorian");
-const nextMonth = (day, date, timezone) => {
-    date = date || new Date();
+/**
+ * @deprecated This method is deprecated and will be removed in future versions. Please use nextDayOfMonth instead
+ */
+function nextMonth(day, date, timezone) {
+    return nextDayOfMonth(day, date || new Date(), timezone || JDT.timezone());
+}
+exports.nextMonth = nextMonth;
+function nextDayOfMonth(dayOfMonth, arg1, arg2) {
+    if (!['FIRST', 'LAST'].includes(dayOfMonth.toString()) &&
+        (typeof dayOfMonth !== 'number' || dayOfMonth < 1 || dayOfMonth > 31))
+        throw new TypeError("dayOfMonth must be 'FIRST', 'LAST' or number between 1, 31");
+    const date = arg1 && JDate.checkDate(arg1) ? arg1 : new Date();
     if (!JDate.checkDate(date))
         throw new TypeError('Invalid Date');
-    if (!JDate.checkTimezone(timezone || ''))
+    let timezone = arg1 && typeof arg1 === 'string' ? arg1 : arg2 || '';
+    if (!JDate.checkTimezone(timezone))
         timezone = JDT.timezone();
-    if (!['FIRST', 'LAST'].includes(day.toString()) && (typeof day !== 'number' || day < 1 || day > 31))
-        throw new TypeError('Type must be FIRST, LAST or number between 1, 31');
     const d = +(0, string_1.toString)(date, { timezone, format: 'D' });
     let y = +(0, string_1.toString)(date, { timezone, format: 'Y' });
     let m = +(0, string_1.toString)(date, { timezone, format: 'M' });
@@ -50,7 +59,7 @@ const nextMonth = (day, date, timezone) => {
     const nMonth = `${y.toString()}-${m.toString().padStart(2, '0')}`;
     const nDays = (0, days_in_month_1.daysInMonth)(nMonth);
     let gDate;
-    switch (day) {
+    switch (dayOfMonth) {
         case 'FIRST':
             gDate = (0, gregorian_1.gregorian)(`${nMonth}-01`).date;
             break;
@@ -58,9 +67,9 @@ const nextMonth = (day, date, timezone) => {
             gDate = d >= cDays ? (0, gregorian_1.gregorian)(`${nMonth}-${nDays}`).date : (0, gregorian_1.gregorian)(`${cMonth}-${cDays}`).date;
             break;
         default:
-            const month = d >= day ? nMonth : cMonth;
-            gDate = (0, gregorian_1.gregorian)(`${month}-${day.toString().padStart(2, '0')}`).date;
-            while (+(0, string_1.toString)(JDate.getMoment(new Date(gDate), timezone).toDate(), { format: 'D' }) !== day) {
+            const month = d >= dayOfMonth ? nMonth : cMonth;
+            gDate = (0, gregorian_1.gregorian)(`${month}-${dayOfMonth.toString().padStart(2, '0')}`).date;
+            while (+(0, string_1.toString)(JDate.getMoment(new Date(gDate), timezone).toDate(), { format: 'D' }) !== dayOfMonth) {
                 m++;
                 if (m >= 13) {
                     y++;
@@ -68,11 +77,11 @@ const nextMonth = (day, date, timezone) => {
                 }
                 const Y = y.toString();
                 const M = m.toString().padStart(2, '0');
-                const D = day.toString().padStart(2, '0');
+                const D = dayOfMonth.toString().padStart(2, '0');
                 gDate = (0, gregorian_1.gregorian)(`${Y}-${M}-${D}`).date;
             }
     }
     return JDate.getMoment(new Date(gDate), timezone).startOf('D').toDate();
-};
-exports.nextMonth = nextMonth;
-//# sourceMappingURL=month.js.map
+}
+exports.nextDayOfMonth = nextDayOfMonth;
+//# sourceMappingURL=day-of-month.js.map

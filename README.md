@@ -23,7 +23,7 @@ Lightweight library for parsing and formating Jalali date with timezone function
     -   [gregorian](#gregorian)
     -   [timezones](#timezones)
     -   [nextDayOfWeek](#nextdayofweek)
-    -   [nextMonth](#nextmonth)
+    -   [nextDayOfMonth](#nextdayofmonth)
     -   [nextYear](#nextyear)
     -   [periodHour](#periodhour)
     -   [periodDay](#periodday)
@@ -636,38 +636,38 @@ const result = jalali.nextDayOfWeek(2);
 /* 2025-03-24T19:30:00.000Z */
 ```
 
-### [nextMonth](#nextmonth)
+### [nextDayOfMonth](#nextdayofmonth)
 
 Specific days in next month according to specific date in Jalali calendar
 
 **Parameters:**
 
-| Name     | Type           | Required | Description                                      |
-| -------- | -------------- | -------- | ------------------------------------------------ |
-| type     | String, number | Yes      | Month day type: 'FIRST', 'LAST', number (1 - 31) |
-| date     | Date           | No       | Date Value                                       |
-| timezone | String         | No       | Timezone Value                                   |
+| Name       | Type           | Required | Description                                       |
+| ---------- | -------------- | -------- | ------------------------------------------------- |
+| dayOfMonth | String, number | Yes      | Month day value: 'FIRST', 'LAST', number (1 - 31) |
+| date       | Date           | No       | Date Value                                        |
+| timezone   | String         | No       | Timezone Value                                    |
 
 **Return Value (Date):**
 
-If type value is not one of specified values then **TypeError** will thrown.
+If dayOfMonth value is not one of specified values then **TypeError** will thrown.
 
 If date parameter is not a valid Javascript Date then **TypeError** will thrown.
 
 **Results:**
 
--   FIRST: First day of next month
--   LAST: Last day of next month
--   DAY: Specific day of next month according to date (example: 1400-01-15 > 1400-02-15)
-    > If date is not valid for next month, first next month with valid date will be returned (example: 1400-06-31 > 1401-01-31)
+-   FIRST: First day of month
+-   LAST: Last day of month
+-   DAY: Specific day of month according to date (example: 1400-01-15 > 1400-02-15)
+    > If date is not valid for next month, first month with valid date will be returned (example: 1400-06-31 > 1401-01-31)
 
 **Sample:**
 
 ```javascript
-const result = jalali.nextMonth('FIRST');
+const result = jalali.nextDayOfMonth('FIRST');
 /* 2025-03-20T20:30:00.000Z */
 
-const result = jalali.nextMonth('LAST');
+const result = jalali.nextDayOfMonth('LAST');
 /* 2025-04-19T19:30:00.000Z */
 ```
 

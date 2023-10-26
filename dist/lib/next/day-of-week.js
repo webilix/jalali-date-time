@@ -35,7 +35,7 @@ function nextDay(day, date, timezone) {
 exports.nextDay = nextDay;
 function nextDayOfWeek(dayOfWeek, arg1, arg2) {
     if (isNaN(dayOfWeek) || dayOfWeek < 0 || dayOfWeek > 6)
-        throw new TypeError('Day must be between 0 and 6');
+        throw new TypeError('dayOfWeek must be between 0 and 6');
     const date = arg1 && JDate.checkDate(arg1) ? arg1 : new Date();
     if (!JDate.checkDate(date))
         throw new TypeError('Invalid Date');

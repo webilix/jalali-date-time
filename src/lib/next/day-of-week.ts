@@ -13,7 +13,7 @@ export function nextDayOfWeek(dayOfWeek: number, date: Date): Date;
 export function nextDayOfWeek(dayOfWeek: number, timezone: string): Date;
 export function nextDayOfWeek(dayOfWeek: number, date: Date, timezone: string): Date;
 export function nextDayOfWeek(dayOfWeek: number, arg1?: any, arg2?: any): Date {
-    if (isNaN(dayOfWeek) || dayOfWeek < 0 || dayOfWeek > 6) throw new TypeError('Day must be between 0 and 6');
+    if (isNaN(dayOfWeek) || dayOfWeek < 0 || dayOfWeek > 6) throw new TypeError('dayOfWeek must be between 0 and 6');
 
     const date: Date = arg1 && JDate.checkDate(arg1) ? arg1 : new Date();
     if (!JDate.checkDate(date)) throw new TypeError('Invalid Date');

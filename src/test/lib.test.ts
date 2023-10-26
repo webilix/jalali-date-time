@@ -85,6 +85,15 @@ test('nextMonth', () => {
     expect(last).toBe('1358-03-31');
 });
 
+test('nextDayOfMonth', () => {
+    const date = new Date(jalali.gregorian('1358-03-13').date);
+    const first = jalali.toDate(jalali.nextDayOfMonth('FIRST', date));
+    const last = jalali.toDate(jalali.nextDayOfMonth('LAST', date));
+
+    expect(first).toBe('1358-04-01');
+    expect(last).toBe('1358-03-31');
+});
+
 test('nextYear', () => {
     const date = new Date(jalali.gregorian('1403-12-30').date);
     const test = jalali.nextYear(date);
