@@ -8,6 +8,7 @@ import { now } from './lib/now';
 import { toDate } from './lib/date';
 import { toTime } from './lib/time';
 import { toString } from './lib/string';
+import { toTitle } from './lib/title';
 import { toFullText } from './lib/full-text';
 import { toObject } from './lib/object';
 import { dayOfWeek } from './lib/day-of-week';
@@ -27,7 +28,7 @@ export declare const JalaliDateTime: (options?: JalaliDateTimeOptions) => {
     toDate: typeof toDate;
     toTime: typeof toTime;
     toString: typeof toString;
-    toTitle: (date: Date, config?: import("./interface/config").JalaliDateTimeConfig | undefined) => string;
+    toTitle: typeof toTitle;
     toFullText: typeof toFullText;
     toObject: typeof toObject;
     dayOfWeek: typeof dayOfWeek;
