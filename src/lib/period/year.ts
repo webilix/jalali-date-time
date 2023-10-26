@@ -20,11 +20,18 @@ const getYear = (year: number, timezone?: string): { from: Date; to: Date } => {
     return { from, to };
 };
 
-export const periodYear = (years: number, date?: Date, timezone?: string): JalaliDateTimePeriod => {
-    date = date || new Date();
-    if (!JDate.checkDate(date)) throw new TypeError('Invalid Date');
-    if (!JDate.checkTimezone(timezone || '')) timezone = JDT.timezone();
+export function periodYear(years: number): JalaliDateTimePeriod;
+export function periodYear(years: number, date: Date): JalaliDateTimePeriod;
+export function periodYear(years: number, timezone: string): JalaliDateTimePeriod;
+export function periodYear(years: number, date: Date, timezone: string): JalaliDateTimePeriod;
+export function periodYear(years: number, arg1?: any, arg2?: any): JalaliDateTimePeriod {
     if (isNaN(years) || years < 1) throw new TypeError('Years must be bigger than 0');
+
+    const date: Date = arg1 && JDate.checkDate(arg1) ? arg1 : new Date();
+    if (!JDate.checkDate(date)) throw new TypeError('Invalid Date');
+
+    let timezone: string = arg1 && typeof arg1 === 'string' ? arg1 : arg2 || '';
+    if (!JDate.checkTimezone(timezone)) timezone = JDT.timezone();
 
     let year: number = +toString(date, { timezone, format: 'Y' });
 
@@ -32,4 +39,4 @@ export const periodYear = (years: number, date?: Date, timezone?: string): Jalal
     while (periods.length < years) periods.unshift(getYear(year--, timezone));
 
     return { from: periods[0].from, to: periods[periods.length - 1].to, periods };
-};
+}

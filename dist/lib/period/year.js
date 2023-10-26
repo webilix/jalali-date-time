@@ -39,19 +39,20 @@ const getYear = (year, timezone) => {
     const to = JDate.getMoment(new Date(gEnd), timezone).endOf('D').toDate();
     return { from, to };
 };
-const periodYear = (years, date, timezone) => {
-    date = date || new Date();
-    if (!JDate.checkDate(date))
-        throw new TypeError('Invalid Date');
-    if (!JDate.checkTimezone(timezone || ''))
-        timezone = JDT.timezone();
+function periodYear(years, arg1, arg2) {
     if (isNaN(years) || years < 1)
         throw new TypeError('Years must be bigger than 0');
+    const date = arg1 && JDate.checkDate(arg1) ? arg1 : new Date();
+    if (!JDate.checkDate(date))
+        throw new TypeError('Invalid Date');
+    let timezone = arg1 && typeof arg1 === 'string' ? arg1 : arg2 || '';
+    if (!JDate.checkTimezone(timezone))
+        timezone = JDT.timezone();
     let year = +(0, string_1.toString)(date, { timezone, format: 'Y' });
     const periods = [];
     while (periods.length < years)
         periods.unshift(getYear(year--, timezone));
     return { from: periods[0].from, to: periods[periods.length - 1].to, periods };
-};
+}
 exports.periodYear = periodYear;
 //# sourceMappingURL=year.js.map
