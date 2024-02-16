@@ -30,6 +30,8 @@ Lightweight library for parsing and formating Jalali date with timezone function
     -   [periodWeek](#periodweek)
     -   [periodMonth](#periodmonth)
     -   [periodYear](#periodyear)
+-   [Classes](#classes)
+    -   [Modify](#modify)
 -   [Custom Types](#custom-types)
 -   [Errors](#errors)
 -   [Tests](#tests)
@@ -870,6 +872,124 @@ const result = jalali.periodYear(4);
  *      ]
  *   }
  */
+```
+
+---
+
+## Classes
+
+### [Modify](#modify)
+
+Modifying date by adding or subtracting year / month / day according to jalali date-time
+
+### Create class instance
+
+**Parameters:**
+
+| Name     | Type   | Required | Description          |
+| -------- | ------ | -------- | -------------------- |
+| date     | Date   | No       | Date Value to modify |
+| timezone | String | No       | Timezone Value       |
+
+**Return Value:**
+
+New instance of modify class
+
+**Sample:**
+
+```javascript
+const modify = new jalali.modify(new Date(), 'Asia/Tehran');
+// or
+const modify = new jalali.modify();
+```
+
+### Change year value
+
+**Parameters:**
+
+| Name   | Type   | Required | Description                                                             |
+| ------ | ------ | -------- | ----------------------------------------------------------------------- |
+| change | Number | Yes      | Number of years to add (positive numbers) / subtract (negative numbers) |
+
+**Return Value:**
+
+Instance of modify class with changed values
+
+**Sample:**
+
+```javascript
+modify.year(10); // Add 10 years to current date
+modify.year(-10); // Subtract 10 years from current date
+```
+
+### Change month value
+
+**Parameters:**
+
+| Name   | Type   | Required | Description                                                              |
+| ------ | ------ | -------- | ------------------------------------------------------------------------ |
+| change | Number | Yes      | Number of months to add (positive numbers) / subtract (negative numbers) |
+
+**Return Value:**
+
+Instance of modify class with changed values
+
+**Sample:**
+
+```javascript
+modify.month(50); // Add 50 months to current date
+modify.month(-50); // Subtract 50 months from current date
+```
+
+### Change day value
+
+**Parameters:**
+
+| Name   | Type   | Required | Description                                                            |
+| ------ | ------ | -------- | ---------------------------------------------------------------------- |
+| change | Number | Yes      | Number of days to add (positive numbers) / subtract (negative numbers) |
+
+**Return Value:**
+
+Instance of modify class with changed values
+
+**Sample:**
+
+```javascript
+modify.day(150); // Add 150 days to current date
+modify.day(-150); // Subtract 150 days from current date
+```
+
+### Getting modified date value
+
+| Name | Type           | Required | Description                                                                                                                                                                                        |
+| ---- | -------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| time | 'START', 'END' | No       | Time of returned date<br><br>_START: Date value will be at the start of day (00:00:00)_<br>_END: Date value will be at the end of day (23:59:59)_<br>_Default: Time of date value will not change_ |
+
+**Return Value:**
+
+JavaScript Date object
+
+**Sample:**
+
+```javascript
+const date: Date = modify.toDate('START');
+// or
+const date: Date = modify.toDate();
+```
+
+### Chain methods
+
+**Sample:**
+
+```javascript
+const modify = new jalali.modify();
+// 2025-07-08T22:38:35.000Z
+
+// Adding 1 year and 5 months and subtracting 10 days from current date
+// and returning new Date value at the start of modified date
+const date: Date = modify.year(1).month(5).day(-10).toDate('START');
+// 2025-07-08T20:30:00.000Z
 ```
 
 ---

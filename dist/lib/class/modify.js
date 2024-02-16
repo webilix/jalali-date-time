@@ -1,19 +1,45 @@
 "use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.modify = void 0;
+const JDate = __importStar(require("../../script/date"));
 const date_1 = require("../../script/date");
 const days_in_month_1 = require("../days-in-month");
 const gregorian_1 = require("../gregorian");
 const day_1 = require("../period/day");
 const string_1 = require("../string");
 class modify {
-    constructor(date, timezone) {
+    constructor(arg1, arg2) {
         this._year = 0;
         this._month = 0;
         this._day = 0;
         this._time = '';
         this._timezone = 'Asia/Tehran';
-        const str = (0, string_1.toString)(date || new Date());
+        const date = JDate.isDate(arg1) ? arg1 : new Date();
+        const timezone = typeof arg1 === 'string' ? arg1 : arg2;
+        const str = (0, string_1.toString)(date);
         this._year = +str.substring(0, 4);
         this._month = +str.substring(5, 7);
         this._day = +str.substring(8, 10);

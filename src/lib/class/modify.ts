@@ -1,3 +1,5 @@
+import * as JDate from '../../script/date';
+
 import { isTimezone } from '../../script/date';
 import { daysInMonth } from '../days-in-month';
 import { gregorian } from '../gregorian';
@@ -11,8 +13,15 @@ export class modify {
     private _time: string = '';
     private _timezone: string = 'Asia/Tehran';
 
-    constructor(date?: Date, timezone?: string) {
-        const str: string = toString(date || new Date());
+    constructor();
+    constructor(date: Date);
+    constructor(timezone: string);
+    constructor(date: Date, timezone: string);
+    constructor(arg1?: any, arg2?: any) {
+        const date: Date = JDate.isDate(arg1) ? arg1 : new Date();
+        const timezone: string | undefined = typeof arg1 === 'string' ? arg1 : arg2;
+
+        const str: string = toString(date);
         this._year = +str.substring(0, 4);
         this._month = +str.substring(5, 7);
         this._day = +str.substring(8, 10);

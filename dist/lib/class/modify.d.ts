@@ -4,7 +4,10 @@ export declare class modify {
     private _day;
     private _time;
     private _timezone;
-    constructor(date?: Date, timezone?: string);
+    constructor();
+    constructor(date: Date);
+    constructor(timezone: string);
+    constructor(date: Date, timezone: string);
     private getDaysInMonth;
     private checkDaysInMonth;
     year(change: number): modify;
