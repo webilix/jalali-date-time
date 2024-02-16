@@ -22,6 +22,7 @@ import { periodDay } from './lib/period/day';
 import { periodWeek } from './lib/period/week';
 import { periodMonth } from './lib/period/month';
 import { periodYear } from './lib/period/year';
+import { modify } from './lib/class/modify';
 import { JalaliDateTimeOptions } from './interface/options';
 export declare const JalaliDateTime: (options?: JalaliDateTimeOptions) => {
     now: typeof now;
@@ -47,5 +48,6 @@ export declare const JalaliDateTime: (options?: JalaliDateTimeOptions) => {
     periodWeek: typeof periodWeek;
     periodMonth: typeof periodMonth;
     periodYear: typeof periodYear;
+    modify: typeof modify;
 };
 //# sourceMappingURL=index.d.ts.map

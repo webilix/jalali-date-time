@@ -30,6 +30,8 @@ import { periodWeek } from './lib/period/week';
 import { periodMonth } from './lib/period/month';
 import { periodYear } from './lib/period/year';
 
+import { modify } from './lib/class/modify';
+
 import { JalaliDateTimeOptions } from './interface/options';
 export const JalaliDateTime = (options?: JalaliDateTimeOptions) => {
     JDT.init(options);
@@ -60,5 +62,7 @@ export const JalaliDateTime = (options?: JalaliDateTimeOptions) => {
         periodWeek,
         periodMonth,
         periodYear,
+
+        modify,
     };
 };

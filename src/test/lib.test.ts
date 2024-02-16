@@ -1,9 +1,36 @@
 import { JalaliDateTime } from '../index';
+import { modify } from '../lib/class/modify';
 const jalali = JalaliDateTime();
 
 test('now', () => {
     const test = jalali.now();
     expect(test.length).toBe(19);
+});
+
+test('modify', () => {
+    const getString = (m: modify): string => jalali.toString(m.toDate()).substring(0, 10);
+
+    const modify = new jalali.modify();
+    const check: string = getString(modify);
+
+    expect(getString(modify.year(30).year(-30))).toBe(check);
+    expect(getString(modify.year(-30).year(30))).toBe(check);
+    expect(getString(modify.year(-60).year(30).year(30))).toBe(check);
+    expect(getString(modify.year(60).year(-30).year(-30))).toBe(check);
+
+    expect(getString(modify.month(300).month(-300))).toBe(check);
+    expect(getString(modify.month(-300).month(300))).toBe(check);
+    expect(getString(modify.month(-600).month(300).month(300))).toBe(check);
+    expect(getString(modify.month(600).month(-300).month(-300))).toBe(check);
+
+    expect(getString(modify.day(3000).day(-3000))).toBe(check);
+    expect(getString(modify.day(-3000).day(3000))).toBe(check);
+    expect(getString(modify.day(-6000).day(3000).day(3000))).toBe(check);
+    expect(getString(modify.day(6000).day(-3000).day(-3000))).toBe(check);
+
+    expect(getString(modify.year(30).month(300).day(3000).day(-3000).month(-300).year(-30))).toBe(check);
+    expect(getString(modify.year(-30).month(-300).day(-3000).day(3000).month(300).year(30))).toBe(check);
+    expect(getString(modify.year(-30).month(-300).day(-3000).year(30).month(300).day(3000))).toBe(check);
 });
 
 test('toDate', () => {

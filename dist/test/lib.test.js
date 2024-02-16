@@ -6,6 +6,26 @@ test('now', () => {
     const test = jalali.now();
     expect(test.length).toBe(19);
 });
+test('modify', () => {
+    const getString = (m) => jalali.toString(m.toDate()).substring(0, 10);
+    const modify = new jalali.modify();
+    const check = getString(modify);
+    expect(getString(modify.year(30).year(-30))).toBe(check);
+    expect(getString(modify.year(-30).year(30))).toBe(check);
+    expect(getString(modify.year(-60).year(30).year(30))).toBe(check);
+    expect(getString(modify.year(60).year(-30).year(-30))).toBe(check);
+    expect(getString(modify.month(300).month(-300))).toBe(check);
+    expect(getString(modify.month(-300).month(300))).toBe(check);
+    expect(getString(modify.month(-600).month(300).month(300))).toBe(check);
+    expect(getString(modify.month(600).month(-300).month(-300))).toBe(check);
+    expect(getString(modify.day(3000).day(-3000))).toBe(check);
+    expect(getString(modify.day(-3000).day(3000))).toBe(check);
+    expect(getString(modify.day(-6000).day(3000).day(3000))).toBe(check);
+    expect(getString(modify.day(6000).day(-3000).day(-3000))).toBe(check);
+    expect(getString(modify.year(30).month(300).day(3000).day(-3000).month(-300).year(-30))).toBe(check);
+    expect(getString(modify.year(-30).month(-300).day(-3000).day(3000).month(300).year(30))).toBe(check);
+    expect(getString(modify.year(-30).month(-300).day(-3000).year(30).month(300).day(3000))).toBe(check);
+});
 test('toDate', () => {
     const test = jalali.toDate(new Date('1979-06-03 12:00:00 GMT+4:30'));
     expect(test).toBe('1358-03-13');
