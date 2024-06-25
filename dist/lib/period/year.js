@@ -23,7 +23,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.periodYear = void 0;
+exports.periodYear = periodYear;
 const JDate = __importStar(require("../../script/date"));
 const JDT = __importStar(require("../../script/jdt"));
 const string_1 = require("../string");
@@ -49,5 +49,4 @@ function periodYear(years, arg1, arg2) {
         periods.unshift(getYear(year--, timezone));
     return { from: periods[0].from, to: periods[periods.length - 1].to, periods };
 }
-exports.periodYear = periodYear;
 //# sourceMappingURL=year.js.map

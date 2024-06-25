@@ -23,7 +23,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.toFullText = void 0;
+exports.toFullText = toFullText;
 const JDT = __importStar(require("../script/jdt"));
 function toFullText(date, config) {
     const locale = !config || !config.locale || config.locale != 'en' ? 'fa' : 'en';
@@ -32,5 +32,4 @@ function toFullText(date, config) {
     const format = JDT.format(config.format || '', ['W', 'N', 'Y', 'M', 'D', 'H', 'I', 'S']);
     return JDT.string(date, config, format);
 }
-exports.toFullText = toFullText;
 //# sourceMappingURL=full-text.js.map

@@ -23,7 +23,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.toTitle = void 0;
+exports.toTitle = toTitle;
 const JDT = __importStar(require("../script/jdt"));
 function toTitle(date, config) {
     const locale = !config || !config.locale || config.locale != 'en' ? 'fa' : 'en';
@@ -32,5 +32,4 @@ function toTitle(date, config) {
     const format = JDT.format(config.format || '', ['W', 'N', 'Y', 'M', 'D']);
     return JDT.string(date, config, format);
 }
-exports.toTitle = toTitle;
 //# sourceMappingURL=title.js.map

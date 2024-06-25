@@ -23,12 +23,11 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.now = void 0;
+exports.now = now;
 const JDT = __importStar(require("../script/jdt"));
 function now(config) {
     config = JDT.check(config || {}, JDT.type.now);
     const format = JDT.format(config.format || '', ['Y', 'M', 'D', 'H', 'I', 'S']);
     return JDT.string(new Date(), config, format);
 }
-exports.now = now;
 //# sourceMappingURL=now.js.map

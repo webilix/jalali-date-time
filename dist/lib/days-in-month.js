@@ -23,7 +23,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.daysInMonth = void 0;
+exports.daysInMonth = daysInMonth;
 const JDate = __importStar(require("../script/date"));
 const string_1 = require("./string");
 const gregorian_1 = require("./gregorian");
@@ -42,5 +42,4 @@ function daysInMonth(month) {
     }
     return daysInMonth;
 }
-exports.daysInMonth = daysInMonth;
 //# sourceMappingURL=days-in-month.js.map

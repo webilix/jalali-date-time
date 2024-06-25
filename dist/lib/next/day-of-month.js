@@ -23,7 +23,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.nextDayOfMonth = exports.nextMonth = void 0;
+exports.nextMonth = nextMonth;
+exports.nextDayOfMonth = nextDayOfMonth;
 const JDate = __importStar(require("../../script/date"));
 const JDT = __importStar(require("../../script/jdt"));
 const string_1 = require("../string");
@@ -35,7 +36,6 @@ const gregorian_1 = require("../gregorian");
 function nextMonth(day, date, timezone) {
     return nextDayOfMonth(day, date || new Date(), timezone || JDT.timezone());
 }
-exports.nextMonth = nextMonth;
 function nextDayOfMonth(dayOfMonth, arg1, arg2) {
     if (!['FIRST', 'LAST'].includes(dayOfMonth.toString()) &&
         (typeof dayOfMonth !== 'number' || dayOfMonth < 1 || dayOfMonth > 31))
@@ -78,5 +78,4 @@ function nextDayOfMonth(dayOfMonth, arg1, arg2) {
     }
     return JDate.getMoment(new Date(gDate), timezone).startOf('D').toDate();
 }
-exports.nextDayOfMonth = nextDayOfMonth;
 //# sourceMappingURL=day-of-month.js.map

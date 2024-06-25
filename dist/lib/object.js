@@ -23,7 +23,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.toObject = void 0;
+exports.toObject = toObject;
 const JDate = __importStar(require("../script/date"));
 const JDT = __importStar(require("../script/jdt"));
 function toObject(date, timezone) {
@@ -34,5 +34,4 @@ function toObject(date, timezone) {
     const value = JDate.getMoment(date, timezone);
     return JDate.toJalali(JDate.toObject(value));
 }
-exports.toObject = toObject;
 //# sourceMappingURL=object.js.map

@@ -23,7 +23,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.nextDayOfWeek = exports.nextDay = void 0;
+exports.nextDay = nextDay;
+exports.nextDayOfWeek = nextDayOfWeek;
 const JDate = __importStar(require("../../script/date"));
 const JDT = __importStar(require("../../script/jdt"));
 /**
@@ -32,7 +33,6 @@ const JDT = __importStar(require("../../script/jdt"));
 function nextDay(day, date, timezone) {
     return nextDayOfWeek(day, date || new Date(), timezone || JDT.timezone());
 }
-exports.nextDay = nextDay;
 function nextDayOfWeek(dayOfWeek, arg1, arg2) {
     if (isNaN(dayOfWeek) || dayOfWeek < 0 || dayOfWeek > 6)
         throw new TypeError('dayOfWeek must be between 0 and 6');
@@ -43,5 +43,4 @@ function nextDayOfWeek(dayOfWeek, arg1, arg2) {
     }
     return next;
 }
-exports.nextDayOfWeek = nextDayOfWeek;
 //# sourceMappingURL=day-of-week.js.map

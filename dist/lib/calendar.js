@@ -23,7 +23,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.calendar = void 0;
+exports.calendar = calendar;
 const JDate = __importStar(require("../script/date"));
 const gregorian_1 = require("./gregorian");
 const string_1 = require("./string");
@@ -53,5 +53,4 @@ function calendar(month) {
     }
     return { month, title, weeks };
 }
-exports.calendar = calendar;
 //# sourceMappingURL=calendar.js.map

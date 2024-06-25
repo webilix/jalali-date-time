@@ -23,7 +23,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.periodHour = void 0;
+exports.periodHour = periodHour;
 const JDate = __importStar(require("../../script/date"));
 const JDT = __importStar(require("../../script/jdt"));
 function periodHour(hours, arg1, arg2) {
@@ -39,5 +39,4 @@ function periodHour(hours, arg1, arg2) {
     }
     return { from: periods[0].from, to: periods[periods.length - 1].to, periods };
 }
-exports.periodHour = periodHour;
 //# sourceMappingURL=hour.js.map

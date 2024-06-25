@@ -23,7 +23,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.periodDay = void 0;
+exports.periodDay = periodDay;
 const JDate = __importStar(require("../../script/date"));
 const JDT = __importStar(require("../../script/jdt"));
 function periodDay(days, arg1, arg2) {
@@ -39,5 +39,4 @@ function periodDay(days, arg1, arg2) {
     }
     return { from: periods[0].from, to: periods[periods.length - 1].to, periods };
 }
-exports.periodDay = periodDay;
 //# sourceMappingURL=day.js.map

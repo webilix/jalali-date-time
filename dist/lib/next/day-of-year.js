@@ -23,7 +23,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.nextDayOfYear = exports.nextYear = void 0;
+exports.nextYear = nextYear;
+exports.nextDayOfYear = nextDayOfYear;
 const JDate = __importStar(require("../../script/date"));
 const JDT = __importStar(require("../../script/jdt"));
 const string_1 = require("../string");
@@ -39,7 +40,6 @@ const getMonth = (y, m) => {
 function nextYear(date, timezone) {
     return nextDayOfYear(date || new Date(), timezone || JDT.timezone());
 }
-exports.nextYear = nextYear;
 function nextDayOfYear(arg1, arg2) {
     const { date, timezone } = JDT.date_timezone(arg1, arg2);
     let y = +(0, string_1.toString)(date, { timezone, format: 'Y' });
@@ -50,5 +50,4 @@ function nextDayOfYear(arg1, arg2) {
     const gDate = (0, gregorian_1.gregorian)(y.toString() + month).date;
     return JDate.getMoment(new Date(gDate), timezone).startOf('D').toDate();
 }
-exports.nextDayOfYear = nextDayOfYear;
 //# sourceMappingURL=day-of-year.js.map
