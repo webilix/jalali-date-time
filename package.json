@@ -27,14 +27,14 @@
     },
     "homepage": "https://github.com/webilix/jalali-date-time#readme",
     "dependencies": {
-        "moment-timezone": "^0.5.45"
+        "moment-timezone": "^0.5.48"
     },
     "devDependencies": {
-        "@types/jest": "^29.5.13",
+        "@types/jest": "^29.5.14",
         "@types/moment-timezone": "^0.5.30",
         "@types/typescript": "^2.0.0",
         "jest": "^29.7.0",
         "rimraf": "^6.0.1",
-        "typescript": "^5.6.2"
+        "typescript": "^5.8.3"
     }
 }
