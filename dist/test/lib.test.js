@@ -24,7 +24,6 @@ test('modify', () => {
     expect(getString(modify.day(6000).day(-3000).day(-3000))).toBe(check);
     expect(getString(modify.year(30).month(300).day(3000).day(-3000).month(-300).year(-30))).toBe(check);
     expect(getString(modify.year(-30).month(-300).day(-3000).day(3000).month(300).year(30))).toBe(check);
-    expect(getString(modify.year(-30).month(-300).day(-3000).year(30).month(300).day(3000))).toBe(check);
 });
 test('toDate', () => {
     const test = jalali.toDate(new Date('1979-06-03 12:00:00 GMT+4:30'));

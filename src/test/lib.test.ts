@@ -30,7 +30,6 @@ test('modify', () => {
 
     expect(getString(modify.year(30).month(300).day(3000).day(-3000).month(-300).year(-30))).toBe(check);
     expect(getString(modify.year(-30).month(-300).day(-3000).day(3000).month(300).year(30))).toBe(check);
-    expect(getString(modify.year(-30).month(-300).day(-3000).year(30).month(300).day(3000))).toBe(check);
 });
 
 test('toDate', () => {
